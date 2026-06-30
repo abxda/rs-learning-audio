@@ -106,6 +106,45 @@ def enrich(concept: dict, passages: list) -> dict:
                            "source_type": p.fields.get("source_type")} for p in passages]}
 
 
+def run_all(force: bool = False) -> Path:
+    """Enrich ALL concepts: retrieve (sequential, fast) then DeepSeek rerank (threaded)."""
+    from concurrent.futures import ThreadPoolExecutor
+    out = build_dir() / "R_enrichment.json"
+    ont = read_json(out_dir() / "ontology.json"); by_id = {n["id"]: n for n in ont["nodes"]}
+    done = {}
+    if out.exists() and not force:
+        done = {r["id"]: r for r in read_json(out)["results"]}
+    col = zvec.open(db_path())
+    todo = [n for n in ont["nodes"] if n["id"] not in done]
+    print(f"  {len(done)} done, retrieving passages for {len(todo)} concepts ...")
+    jobs = []
+    for k, n in enumerate(todo):
+        q = f"{n['name']['en']}. {n['definition']['en']}"
+        jobs.append((n, retrieve(col, q)))
+        if (k + 1) % 50 == 0:
+            print(f"    retrieved {k+1}/{len(todo)}", flush=True)
+
+    def do(job):
+        n, passages = job
+        try:
+            return enrich({"id": n["id"], "name": n["name"]["en"], "definition": n["definition"]["en"]}, passages)
+        except Exception as e:  # noqa: BLE001
+            print(f"    ! enrich {n['id']} failed: {str(e)[:50]}", flush=True)
+            return None
+
+    print(f"  enriching {len(jobs)} concepts (DeepSeek rerank, threaded) ...")
+    with ThreadPoolExecutor(max_workers=6) as ex:
+        new = [r for r in ex.map(do, jobs) if r]
+    results = list(done.values()) + new
+    write_json(out, {"results": results})
+    aligned = {}
+    for r in results:
+        aligned[r["alignment"]] = aligned.get(r["alignment"], 0) + 1
+    withref = sum(1 for r in results if r["references"])
+    print(f"R full done: {len(results)} concepts, {withref} with references; alignment={aligned}")
+    return out
+
+
 def run(pilot=None) -> Path:
     ont = read_json(out_dir() / "ontology.json"); by_id = {n["id"]: n for n in ont["nodes"]}
     col = zvec.open(db_path())
@@ -131,4 +170,5 @@ def run(pilot=None) -> Path:
 
 
 if __name__ == "__main__":
-    run()
+    import sys
+    run_all(force="--force" in sys.argv)

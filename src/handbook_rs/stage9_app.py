@@ -105,13 +105,21 @@ def build_payload(ont: dict) -> dict:
 
     apath = build_dir() / "acronyms.json"
     acronyms = read_json(apath).get("acronyms", {}) if apath.exists() else {}
+    rpath = build_dir() / "R_enrichment.json"
+    deepen = {}
+    if rpath.exists():
+        for r in read_json(rpath)["results"]:
+            if r.get("deepen", {}).get("en") or r.get("references"):
+                deepen[r["id"]] = {"en": r["deepen"]["en"], "es": r["deepen"]["es"],
+                                   "refs": r.get("references", []),
+                                   "align": r.get("alignment", ""), "note": r.get("alignment_note", "")}
     return {"meta": {"title": ont["meta"]["source_book"], "stats": ont["meta"]["stats"],
                      "models": available_models(),
                      "clustering": {"method": clu.get("method"), "k": clu.get("k"),
                                     "silhouette": clu.get("silhouette")}},
             "nodes": out_nodes, "prereq": prereq, "rel": rel,
             "clusters": clusters, "node_xy": node_xy, "node_cluster": node_cluster,
-            "brains": brains, "acronyms": acronyms}
+            "brains": brains, "acronyms": acronyms, "deepen": deepen}
 
 
 def run(force: bool = False) -> Path:
@@ -184,6 +192,14 @@ header .title{font-weight:600;font-size:15px;margin-right:auto;white-space:nowra
 .audiobar button{padding:6px 12px;margin-right:6px}
 .siglas{background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:10px 12px}
 .siglas div{font-size:.92rem;margin:.2em 0}.siglas b{color:var(--accent)}
+.deepen{background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:11px 13px}
+.deepen .lay{font-family:var(--read);margin:.35em 0;line-height:1.55}.deepen .lay.es{color:var(--soft)}
+.deepen .ref{font-size:.85rem;margin:.3em 0;line-height:1.4}
+.deepen .src{font-size:.64rem;background:var(--chip);color:var(--soft);border-radius:7px;padding:0 6px;margin-left:4px}
+.align{display:inline-block;font-size:.72rem;border-radius:9px;padding:1px 9px;font-weight:700}
+.align.supported{background:rgba(46,125,50,.16);color:var(--accent2)}
+.align.partially_supported,.align.underspecified{background:rgba(239,108,0,.16);color:#b35900}
+.align.contradicts{background:rgba(198,40,40,.16);color:#c62828}
 #autoBtn.on{background:var(--accent);color:#fff;border-color:var(--accent)}
 #karaoke{display:none;margin:0 auto 18px;max-width:72ch;padding:14px 16px;background:var(--panel);
   border:1px solid var(--line);border-radius:12px;font-family:var(--read);font-size:1.3rem;line-height:2}
@@ -405,7 +421,8 @@ function openConcept(id, fromRoute){
     h+=`<div class="sec"><h3>Relacionados / Related</h3>`+
        rl.slice(0,20).map(x=>`<span class="pill" style="cursor:pointer" onclick="openConcept('${x}')">${esc(byId[x].en)}</span>`).join(' ')+`</div>`;
   }
-  // actions
+  // deepen (RAG literature layer) + actions
+  h+=deepenSection(id);
   h+=`<div class="sec">
       <button class="primary" onclick="setTarget('${id}')">🎯 Trazar mi ruta hasta aquí</button>
       <button onclick="toggleRead('${id}')">${S.visited[id]?'Marcar no leído':'✓ Marcar leído'}</button>
@@ -763,6 +780,26 @@ function showBrain(idx){
      <h3>Español</h3><div class="es">${mdToHtml(b.es)}</div>
      <h3>Referencias verificadas</h3><div class="reflist">${refs}</div></div>`;
   showReader(); window.scrollTo(0,0); closeDrawer();
+}
+
+/* ---------- deepen (RAG literature layer) ---------- */
+const DEEPEN = DATA.deepen || {};
+function deepenSection(id){
+  const d = DEEPEN[id]; if(!d) return '';
+  let h = `<div class="sec"><h3>📚 Profundiza · Investigación adicional</h3><div class="deepen">`;
+  if(d.align) h += `<div><span class="align ${esc(d.align)}">alineación con la literatura: ${esc(d.align.replace(/_/g,' '))}</span>`
+    + (d.note? ` <span class="muted">${esc(d.note)}</span>`:'') + `</div>`;
+  if(S.lang!=='es' && d.en) h += `<div class="lay"><b>EN.</b> ${esc(d.en)}</div>`;
+  if(S.lang!=='en' && d.es) h += `<div class="lay es"><b>ES.</b> ${esc(d.es)}</div>`;
+  if(d.refs && d.refs.length){
+    h += `<div style="margin-top:6px"><b>Referencias</b>`;
+    d.refs.forEach(r=>{ h += `<div class="ref">• <a href="${r.url||'#'}" target="_blank">${esc(r.title||'(referencia)')}</a>`
+      + (r.year?` (${r.year})`:'') + (r.venue?` — ${esc(r.venue)}`:'')
+      + `<span class="src">${esc(r.source_type||'')}</span>`
+      + (r.why?` <span class="muted">· ${esc(r.why)}</span>`:'') + `</div>`; });
+    h += `</div>`;
+  }
+  h += `</div></div>`; return h;
 }
 
 /* ---------- boot ---------- */
