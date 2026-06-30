@@ -70,6 +70,9 @@ the build is fully resumable.
 
 ---
 
+> 📄 **Formal technical documentation** (sources, models, clustering experiments, architecture,
+> reproducibility, attribution): see [`DOCUMENTATION.md`](DOCUMENTATION.md).
+
 ## Deliverables / Entregables (`out/`)
 
 - **`index.html`** — a **self-contained offline learning app** (≈600 KB, no external
