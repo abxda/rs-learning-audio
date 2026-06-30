@@ -1,43 +1,27 @@
 {
   "model": "qwen",
   "whisper": "large-v3",
-  "clips": 1126,
+  "clips": 1128,
   "mean_similarity": 0.977,
-  "flagged": 2,
-  "missing_content": 0,
-  "garbage": 2,
+  "flagged": 1,
+  "missing_content": 1,
+  "garbage": 0,
   "rows": [
     {
-      "similarity": 0.667,
-      "wer": 0.588,
-      "del_rate": 0.0,
+      "similarity": 0.852,
+      "wer": 0.235,
+      "del_rate": 0.176,
       "ins_rate": 0.0,
-      "len_ratio": 1.382,
+      "len_ratio": 0.794,
       "ngram_repeat": 1,
       "flag": true,
       "reasons": [
-        "BASURA"
+        "FALTA_CONTENIDO"
       ],
       "id": "overall-accuracy",
       "lang": "es",
       "source": "precisión general. La proporción de píxeles o muestras correctamente clasificados sobre el total, calculada como (VP + VN) / (VP + VN + FP + FN). Es una métrica de rendimiento global pero puede ser engañosa para clases desbalanceadas.",
-      "transcript": "PRECISIÓN GENERA  La proporción de tíxeles o muestras correctamente clasificados sobre el total,  calculada como vp más vm, b más mp, más e, más e, fe, me, más e, je, jo, me, zu, mec.  Es una métrica de rendimiento global, pero puede ser engañosa para clases desbalanceadas."
-    },
-    {
-      "similarity": 0.805,
-      "wer": 0.389,
-      "del_rate": 0.028,
-      "ins_rate": 0.278,
-      "len_ratio": 1.278,
-      "ngram_repeat": 1,
-      "flag": true,
-      "reasons": [
-        "BASURA"
-      ],
-      "id": "satellite-image-collections",
-      "lang": "es",
-      "source": "colecciones de imágenes satelitales. Archivos organizados de imágenes satelitales, típicamente proporcionados como Datos Listos para Análisis (ARD) o cubos de datos regulares, accesibles a través de plataformas en la nube como AWS, MPC, CDSE o DEAFRICA.",
-      "transcript": "Colecciones de imágenes satelitales.  Archivos organizados de imágenes satelitales,  típicamente proporcionados como datos listos para análisis.  O cubos de datos regulares.  Accesibles a través de plataformas en la nube como AWS.  Y esplo, o esta usarupo que da estrito por sistema MPC, CDSA o de Africa."
+      "transcript": "¡Predicción!  La proporción de píxeles o muestras correctamente clasificados sobre el total calculada como  Es una métrica de rendimiento global, pero puede ser engañosa para clases desbalanceadas."
     },
     {
       "similarity": 0.75,
@@ -696,6 +680,20 @@
       "lang": "es",
       "source": "sistema de teselas. Una partición espacial que divide la superficie de la Tierra en celdas de cuadrícula regulares e identificadas de manera única (teselas) utilizadas para organizar colecciones de imágenes satelitales, como la cuadrícula MGRS para Sentinel-2 o la WRS-2 para Landsat, permitiendo una gestión y procesamiento de datos consistentes.",
       "transcript": "Sistema de T-Celas, una partición espacial que divide la superficie de la Tierra en celdas  de cuadrícula regulares e identificadas de manera única. T-Celas utilizadas para organizar  colecciones de imágenes satelitales, como la cuadrícula MGR-SOSAT Sentinel-2 o la WR-2  para Landsat, permitiendo una gestión y procesamiento de datos consistentes."
+    },
+    {
+      "similarity": 0.889,
+      "wer": 0.111,
+      "del_rate": 0.0,
+      "ins_rate": 0.0,
+      "len_ratio": 1.0,
+      "ngram_repeat": 1,
+      "flag": false,
+      "reasons": [],
+      "id": "satellite-image-collections",
+      "lang": "es",
+      "source": "colecciones de imágenes satelitales. Archivos organizados de imágenes satelitales, típicamente proporcionados como Datos Listos para Análisis (ARD) o cubos de datos regulares, accesibles a través de plataformas en la nube como AWS, MPC, CDSE o DEAFRICA.",
+      "transcript": "colecciones de imágenes satelitales, archivos organizados de imágenes satelitales, típicamente proporcionados como datos listos para análisis,  AD, o cubos de datos regulares, accesibles a través de plataformas en la nube como AWS, BBC, CDC o DeFrica."
     },
     {
       "similarity": 0.889,
@@ -5696,6 +5694,20 @@
       "transcript": "Ed. Predicciones. Las predicciones son valores estimados de cantidades agrícolas, como el rendimiento o el área, generados por modelos o mapas derivados de satélite.  Requieren calibración con datos de verdad terreno para corregir el sesgo y producir estimaciones estadísticamente válidas."
     },
     {
+      "similarity": 0.987,
+      "wer": 0.026,
+      "del_rate": 0.0,
+      "ins_rate": 0.026,
+      "len_ratio": 1.026,
+      "ngram_repeat": 1,
+      "flag": false,
+      "reasons": [],
+      "id": "map-product",
+      "lang": "es",
+      "source": "producto cartográfico. Mapa temático generado a partir de imágenes satelitales u otros datos, que muestra la distribución espacial de la cobertura del suelo, tipos de cultivo u otras variables, a menudo utilizado como insumo para la estimación estadística.",
+      "transcript": "producto cartográfico mapa temático generado e a partir de imágenes satelitales u otros datos  que muestra la distribución espacial de la cobertura del suelo tipos de cultivo u otras variables a menudo utilizado como insumo para la estimación estadística"
+    },
+    {
       "similarity": 0.988,
       "wer": 0.025,
       "del_rate": 0.0,
@@ -5764,6 +5776,20 @@
       "lang": "es",
       "source": "tareas. Problemas o actividades específicas abordadas con datos de observación de la Tierra, como la clasificación de cultivos, la estimación de rendimiento, la cartografía de cobertura del suelo o la delimitación de límites de campo. El manual cubre múltiples tareas a lo largo de sus secciones.",
       "transcript": "Tareas, es problemas o actividades específicas abordadas con datos de observación de la tierra,  como la clasificación de cultivos, la estimación de rendimiento,  la cartografía de cobertura del suelo o la delimitación de límites de campo.  El manual cubre múltiples tareas a lo largo de sus secciones."
+    },
+    {
+      "similarity": 0.989,
+      "wer": 0.021,
+      "del_rate": 0.021,
+      "ins_rate": 0.0,
+      "len_ratio": 0.979,
+      "ngram_repeat": 1,
+      "flag": false,
+      "reasons": [],
+      "id": "topographic-information",
+      "lang": "es",
+      "source": "información topográfica. Datos que describen la elevación y la forma de la superficie de la Tierra, a menudo derivados de Modelos Digitales de Elevación (MDE). En la clasificación por teledetección, mejora la exactitud al distinguir tipos de cobertura del suelo influenciados por la altitud y la pendiente.",
+      "transcript": "Información topográfica  Datos que describen la elevación y la forma de la superficie de la Tierra a menudo derivados de modelos digitales de elevación  En la clasificación por teledetección, mejora la exactitud al distinguir tipos de cobertura del suelo influenciados por la altitud y la pendiente."
     },
     {
       "similarity": 1.0,

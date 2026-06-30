@@ -90,8 +90,12 @@ if ONLY:
     print(f"re-QA {len(targets)} clips (--only)", flush=True)
     for t in targets:
         cid, lang = t.rsplit("_", 1)
-        if cid in nodes and lang in ("en", "es"):
-            a = qa_clip(w, cid, lang); idx[(cid, lang)].update(a)
+        if cid in nodes and lang in ("en", "es") and os.path.exists(f"{ADIR}/{cid}_{lang}.mp3"):
+            a = qa_clip(w, cid, lang)
+            if (cid, lang) in idx:
+                idx[(cid, lang)].update(a)
+            else:
+                rows.append(a); idx[(cid, lang)] = a   # clip was missing from prior report
     mean, fl, miss, junk = write_outputs(rows)
 else:
     files = sorted(glob.glob(f"{ADIR}/*.mp3"))
