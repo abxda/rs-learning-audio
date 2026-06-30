@@ -13,7 +13,7 @@ import argparse
 
 from . import (stage0_fetch, stage1_clean, stage2_mine, stage3_canonicalize,
                stage4_define_close, stage5_graph, stage5b_lineage, stage6_translate,
-               stage7_emit, stage8_validate, stage9_app)
+               stage7_emit, stage8_validate, stage10_clusters, stage9_app)
 
 STAGES = [
     (0, "fetch", stage0_fetch.run),
@@ -26,6 +26,7 @@ STAGES = [
     (6, "translate", stage6_translate.run),
     (7, "emit", stage7_emit.run),
     (8, "validate", stage8_validate.run),
+    (85, "clusters", stage10_clusters.run),
     (9, "app", stage9_app.run),
 ]
 

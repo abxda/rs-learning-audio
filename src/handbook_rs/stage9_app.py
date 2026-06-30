@@ -13,7 +13,7 @@ from __future__ import annotations
 import json
 from pathlib import Path
 
-from .config import out_dir
+from .config import build_dir, out_dir
 from .io_utils import read_json
 from .stage7_emit import _display, _sources
 
@@ -68,9 +68,15 @@ def build_payload(ont: dict) -> dict:
             if k not in seen and a != b:
                 seen.add(k)
                 rel.append([a, b])
+    cpath = build_dir() / "10_clusters.json"
+    clu = read_json(cpath) if cpath.exists() else {"clusters": [], "node_xy": {}, "node_cluster": {}}
     return {"meta": {"title": ont["meta"]["source_book"], "stats": ont["meta"]["stats"],
-                     "models": available_models()},
-            "nodes": out_nodes, "prereq": prereq, "rel": rel}
+                     "models": available_models(),
+                     "clustering": {"method": clu.get("method"), "k": clu.get("k"),
+                                    "silhouette": clu.get("silhouette")}},
+            "nodes": out_nodes, "prereq": prereq, "rel": rel,
+            "clusters": clu.get("clusters", []), "node_xy": clu.get("node_xy", {}),
+            "node_cluster": clu.get("node_cluster", {})}
 
 
 def run(force: bool = False) -> Path:
@@ -150,6 +156,28 @@ header .title{font-weight:600;font-size:15px;margin-right:auto;white-space:nowra
 #karaoke .kw.done{color:var(--soft)}
 #karaoke .lead{font-size:.72rem;text-transform:uppercase;letter-spacing:.06em;color:var(--soft);
   font-family:var(--ui);display:block;margin-bottom:6px}
+/* ---- home / cover ---- */
+#home{max-width:1000px;margin:0 auto}
+#home h1{font-family:var(--read);font-size:2rem;margin:.1em 0}
+#home .sub{color:var(--soft);font-size:1.05rem;margin:.2em 0 1.2em;max-width:70ch}
+.minimap{width:100%;max-width:760px;margin:0 auto 18px;display:block;background:var(--panel);
+  border:1px solid var(--line);border-radius:14px}
+.mm-dot{cursor:pointer}
+.mm-label{font-family:var(--ui);font-weight:600;paint-order:stroke;stroke:var(--bg);stroke-width:3.5px;cursor:pointer}
+.mm-here{fill:none;stroke:var(--ink);stroke-width:1.6}
+.mm-here-txt{fill:var(--ink);font-family:var(--ui);font-weight:700}
+.themes{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:12px}
+.tcard{border:1px solid var(--line);border-radius:12px;padding:13px 14px;background:var(--panel);
+  cursor:pointer;display:flex;flex-direction:column;gap:6px;transition:none}
+.tcard:hover{border-color:var(--accent)}
+.tcard .tt{font-weight:700;font-size:1.05rem;display:flex;align-items:center;gap:7px}
+.tcard .sw{width:12px;height:12px;border-radius:3px;flex-shrink:0}
+.tcard .tes{color:var(--soft);font-size:.85rem;font-style:italic}
+.tcard .td{font-size:.9rem;line-height:1.45}
+.tcard .pg{height:6px;background:var(--chip);border-radius:4px;overflow:hidden;margin-top:auto}
+.tcard .pg i{display:block;height:100%;background:var(--accent2)}
+.tcard .meta{font-size:.74rem;color:var(--soft);display:flex;justify-content:space-between}
+.tcard.done{border-color:var(--accent2)}
 
 /* drawer sections */
 .dh{font-size:.74rem;text-transform:uppercase;letter-spacing:.06em;color:var(--soft);margin:14px 0 6px}
@@ -191,6 +219,7 @@ header .title{font-weight:600;font-size:15px;margin-right:auto;white-space:nowra
 <body>
 <header>
   <button class="iconbtn ghost" id="menuBtn" title="Menú" aria-label="Menú">☰</button>
+  <button class="iconbtn ghost" id="homeBtn" title="Inicio · mapa de temas">🏠</button>
   <span class="title">📡 Ruta de Aprendizaje · Teledetección Agrícola</span>
   <input id="search" placeholder="Buscar concepto / search…" autocomplete="off">
   <button class="iconbtn ghost" id="themeBtn" title="Tema">◐</button>
@@ -209,7 +238,7 @@ header .title{font-weight:600;font-size:15px;margin-right:auto;white-space:nowra
     <div id="routesPanel"></div>
     <div id="browse"></div>
   </aside>
-  <main id="main"><div id="karaoke"></div><div class="reader" id="reader"></div></main>
+  <main id="main"><div id="home" class="hidden"></div><div id="karaoke"></div><div class="reader" id="reader"></div></main>
 </div>
 
 <div id="compass"><div class="row">
@@ -271,6 +300,7 @@ function openConcept(id, fromRoute){
   if(!byId[id])return;
   S.viewing=id; save();
   const _k=document.getElementById('karaoke'); if(_k) _k.classList.remove('on');  /* reset karaoke */
+  showReader();
   const n=byId[id];
   const r=active();
   const off = r && r.order[r.pos]!==id;
@@ -392,7 +422,9 @@ function renderRoutes(){
   let h=`<div class="dh">Mis rutas (${ids.length})</div>`;
   if(!ids.length) h+=`<div class="res meta">Elige un concepto y pulsa “Trazar mi ruta”.</div>`;
   ids.forEach(id=>{const r=S.routes[id];const done=r.order.filter(x=>S.visited[x]).length;
-    const label=id==='__all__'?'Recorrido completo (todo el árbol)':esc(byId[id].en);
+    const label = id==='__all__' ? 'Recorrido completo (todo el árbol)'
+      : id.indexOf('theme:')===0 ? esc((cluById[+id.slice(6)]||{title:{en:'Tema'}}).title.en)
+      : esc(byId[id] ? byId[id].en : id);
     h+=`<div class="route ${S.activeRoute===id?'active':''}">
       <div><a onclick="selectRoute('${id}')"><b>${label}</b></a></div>
       <div class="meta" style="font-size:.74rem;color:var(--soft)">${done}/${r.order.length} · paso ${r.pos+1}
@@ -559,9 +591,70 @@ document.getElementById('autoBtn').onclick=toggleAuto;
   sel.value=S.model; sel.onchange=()=>{ S.model=sel.value; save(); player.pause(); };
 })();
 
+/* ---------- home / themes / minimap ---------- */
+const CLUSTERS = DATA.clusters || [];
+const NODE_XY = DATA.node_xy || {};
+const NODE_CLUSTER = DATA.node_cluster || {};
+const cluById = {}; CLUSTERS.forEach(c => cluById[c.idx] = c);
+
+function themeProgress(c){
+  const v = c.members.filter(id => S.visited[id]).length;
+  return {v, total: c.members.length, pct: c.members.length ? Math.round(100*v/c.members.length) : 0};
+}
+function startTheme(idx){
+  const c = cluById[idx]; if(!c) return;
+  const order = c.members.filter(id => byId[id])
+    .sort((a,b) => (byId[a].lvl-byId[b].lvl) || (byId[a].ord-byId[b].ord));
+  S.routes['theme:'+idx] = {target: c.entry, order, pos: 0, theme: idx}; S.activeRoute = 'theme:'+idx;
+  save(); openConcept(order[0]); renderCompass();
+}
+function minimapSVG(curId){
+  const W=760,H=460,P=26, sx=x=>P+x*(W-2*P), sy=y=>P+(1-y)*(H-2*P);
+  let dots='';
+  for(const id in NODE_XY){ const p=NODE_XY[id]; const c=cluById[NODE_CLUSTER[id]];
+    dots+=`<circle class="mm-dot" cx="${sx(p[0]).toFixed(1)}" cy="${sy(p[1]).toFixed(1)}" r="3"
+      fill="${c?c.color:'#888'}" opacity="${S.visited[id]?0.95:0.45}"
+      onclick="openConcept('${id}')"><title>${esc(byId[id].en)}</title></circle>`; }
+  let labels='';
+  CLUSTERS.forEach(c=>{ labels+=`<text class="mm-label" x="${sx(c.cx).toFixed(1)}" y="${sy(c.cy).toFixed(1)}"
+    fill="${c.color}" font-size="12.5" text-anchor="middle" onclick="startTheme(${c.idx})">${esc(c.title.en)}</text>`; });
+  let here='';
+  if(curId && NODE_XY[curId]){ const p=NODE_XY[curId];
+    here=`<circle class="mm-here" cx="${sx(p[0]).toFixed(1)}" cy="${sy(p[1]).toFixed(1)}" r="9"/>
+      <text class="mm-here-txt" x="${sx(p[0]).toFixed(1)}" y="${(sy(p[1])-12).toFixed(1)}" text-anchor="middle" font-size="10">● estás aquí</text>`; }
+  return `<svg class="minimap" viewBox="0 0 ${W} ${H}">${dots}${labels}${here}</svg>`;
+}
+function renderHome(){
+  const cur = S.viewing;
+  let h=`<h1>🛰️ Universo de aprendizaje</h1>
+    <p class="sub">Teledetección para estadísticas agrícolas — <b>${DATA.nodes.length}</b> conceptos
+    en <b>${CLUSTERS.length}</b> temas. Elige una ruta para empezar o explora el mapa (haz clic en un punto
+    o en el nombre de un tema). El glosario lateral sigue disponible. El círculo marca <b>dónde te quedaste</b>.</p>`;
+  h += minimapSVG(cur);
+  h += `<div class="themes">`;
+  CLUSTERS.forEach(c=>{ const p=themeProgress(c);
+    h+=`<div class="tcard ${p.pct===100?'done':''}" onclick="startTheme(${c.idx})">
+      <div class="tt"><span class="sw" style="background:${c.color}"></span>${esc(c.title.en)} ${p.pct===100?'✓':''}</div>
+      <div class="tes">${esc(c.title.es)}</div>
+      <div class="td">${esc(c.desc.es||c.desc.en)}</div>
+      <div class="pg"><i style="width:${p.pct}%"></i></div>
+      <div class="meta"><span>${p.v}/${p.total} vistos</span><span>Comenzar →</span></div></div>`; });
+  h += `</div>`;
+  document.getElementById('home').innerHTML = h;
+}
+function showHome(){ renderHome();
+  document.getElementById('home').classList.remove('hidden');
+  document.getElementById('reader').classList.add('hidden');
+  document.getElementById('karaoke').classList.remove('on');
+  window.scrollTo(0,0); closeDrawer(); }
+function showReader(){
+  document.getElementById('home').classList.add('hidden');
+  document.getElementById('reader').classList.remove('hidden'); }
+document.getElementById('homeBtn').onclick = showHome;
+
 /* ---------- boot ---------- */
 document.getElementById('langBtn').textContent={both:'EN/ES',en:'EN',es:'ES'}[S.lang];
-renderBrowse(); renderRoutes(); setAutoBtn(); openConcept(S.viewing);
+renderBrowse(); renderRoutes(); setAutoBtn(); openConcept(S.viewing); showHome();
 </script>
 </body>
 </html>

@@ -194,6 +194,32 @@ BRIDGES (index | english bridge):
 
 
 # --------------------------------------------------------------------------- #
+# Stage 10 — name the concept clusters (learning themes)
+# --------------------------------------------------------------------------- #
+CLUSTER_SYS = (
+    "You name learning THEMES for a course on remote sensing for agricultural "
+    "statistics. Each theme is a cluster of related concepts. You give a short, "
+    "inviting bilingual title and a one-sentence description of what the learner "
+    "will master. Output strict JSON only."
+)
+
+
+def name_clusters(blocks: str) -> str:
+    return f"""For each cluster (its most representative concepts are listed), produce a concise
+learning-theme name and description. Rules:
+- "title_en"/"title_es": <=5 words, clear and inviting (e.g. "Crop Classification",
+  "Yield & Phenology", "Sampling & Statistics").
+- "desc_en"/"desc_es": ONE sentence (<=22 words) describing what the learner will master.
+- Titles must be distinct across clusters.
+
+Return JSON: {{"clusters":[{{"idx":<int>,"title_en","title_es","desc_en","desc_es"}}]}}
+
+CLUSTERS (idx | representative concepts):
+{blocks}
+"""
+
+
+# --------------------------------------------------------------------------- #
 # Stage 6 — translation
 # --------------------------------------------------------------------------- #
 TRANSLATE_SYS = (
