@@ -1,2 +1,4 @@
-overall-accuracy_es BASURA
-satellite-image-collections_es BASURA
+map-product_es
+topographic-information_es
+overall-accuracy_es
+satellite-image-collections_es
