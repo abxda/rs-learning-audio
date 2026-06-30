@@ -1,10 +1,2 @@
-resolution_es BASURA
-analysis_es BASURA
-ground-truth_es BASURA
-data-processing_es BASURA
-yield_es BASURA
-range_en DIFERENCIAS
-chlorophyll-absorption_en BASURA
-earthdatalogin_en DIFERENCIAS
-quality_en FALTA_CONTENIDO
-statistical-rigor_en BASURA
+overall-accuracy_es BASURA
+satellite-image-collections_es BASURA
