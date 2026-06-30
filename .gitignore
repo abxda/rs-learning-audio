@@ -5,3 +5,4 @@ __pycache__/
 .env
 out/tts_samples/
 *.wav
+build/zvec_refs/

@@ -1,0 +1,526 @@
+{
+  "results": [
+    {
+      "id": "phenology",
+      "deepen": {
+        "en": "Phenology derived from satellite time series defines the average growing season, enabling crop type classification and yield prediction [1][3]. It also supports monitoring specific stages like transplanting and heading using optical and radar data [5].",
+        "es": "La fenología derivada de series temporales de satélite define la temporada de crecimiento promedio, permitiendo la clasificación de tipos de cultivos y la predicción del rendimiento [1][3]. También apoya el monitoreo de etapas específicas como el trasplante y la espigadura usando datos ópticos y de radar [5]."
+      },
+      "references": [
+        {
+          "title": "ASAP: a new global early warning system for agricultural production (JRC)",
+          "year": null,
+          "venue": "",
+          "url": "https://www.ncbi.nlm.nih.gov/pmc/articles/PMC6360855/",
+          "doi": null,
+          "source_type": "pmc",
+          "why": "Defines growing season via satellite phenology"
+        },
+        {
+          "title": "Satellite Image Time Series Classification With Pixel-Set Encoders and Temporal Self-Attention",
+          "year": 2019,
+          "venue": "Computer Vision and Pattern Recognition",
+          "url": "https://doi.org/10.1109/CVPR42600.2020.01234",
+          "doi": null,
+          "source_type": "arxiv",
+          "why": "Links phenology to crop classification"
+        },
+        {
+          "title": "Exploring potential of C band synthetic aperture radar imagery to investigate rice crop growth mechanism and productivity",
+          "year": 2021,
+          "venue": "Environmental science and pollution research international",
+          "url": "https://doi.org/10.1007/s11356-021-13759-z",
+          "doi": null,
+          "source_type": "web",
+          "why": "Maps specific phenological stages"
+        }
+      ],
+      "alignment": "supported",
+      "alignment_note": "Passages extend the definition by detailing how satellite-derived phenology is used to define growing seasons and monitor crop stages.",
+      "retrieved": [
+        {
+          "ref_id": "https-www-ncbi-nlm-nih-gov-pmc-articles-pmc6360855",
+          "title": "ASAP: a new global early warning system for agricultural production (JRC)",
+          "source_type": "pmc"
+        },
+        {
+          "ref_id": "https-pmc-ncbi-nlm-nih-gov-articles-pmc7922106",
+          "title": "Prediction of Crop Yield Using Phenological Information from RS Vegetation Index",
+          "source_type": "pmc"
+        },
+        {
+          "ref_id": "10-1109-cvpr42600-2020-01234",
+          "title": "Satellite Image Time Series Classification With Pixel-Set Encoders and Temporal Self-Attention",
+          "source_type": "arxiv"
+        },
+        {
+          "ref_id": "10-1051-e3sconf-202123203020",
+          "title": "Rice Crop Phenology Model to Monitor Rice Planting and Harvesting Time using Remote Sensing Approach",
+          "source_type": "oa"
+        },
+        {
+          "ref_id": "10-1007-s11356-021-13759-z",
+          "title": "Exploring potential of C band synthetic aperture radar imagery to investigate rice crop growth mechanism and productivity",
+          "source_type": "web"
+        },
+        {
+          "ref_id": "arxiv-2009-10189",
+          "title": "Resilient In-Season Crop Type Classification in Multispectral Satellite Observations using Growth Stage Normalization",
+          "source_type": "arxiv"
+        },
+        {
+          "ref_id": "https-e-sensing-github-io-sitsbook-introduction-html",
+          "title": "SITS: Satellite Image Time Series Analysis on EO Data Cubes (e-sensing book)",
+          "source_type": "web"
+        },
+        {
+          "ref_id": "10-1007-s13280-016-0772-y",
+          "title": "When is a forest a forest? Forest concepts and definitions in the era of forest and landscape restoration",
+          "source_type": "pmc"
+        }
+      ]
+    },
+    {
+      "id": "area-estimation",
+      "deepen": {
+        "en": "Area estimation critically depends on accounting for map classification errors. Using a non-gold-standard reference can cause substantial bias, especially for rare change classes [1]. Good practices recommend using reference sample data from accuracy assessments to produce unbiased area estimates with quantified uncertainty [2,7].",
+        "es": "La estimación de áreas depende críticamente de contabilizar los errores de clasificación del mapa. El uso de una referencia no estándar puede causar un sesgo sustancial, especialmente para clases de cambio raras [1]. Las buenas prácticas recomiendan usar datos de muestra de referencia de evaluaciones de precisión para producir estimaciones de área insesgadas con incertidumbre cuantificada [2,7]."
+      },
+      "references": [
+        {
+          "title": "Ground reference data error and the mis-estimation of the area of land cover change as a function of its abundance",
+          "year": 2013,
+          "venue": "",
+          "url": "https://www.tandfonline.com/doi/full/10.1080/2150704X.2013.798708",
+          "doi": null,
+          "source_type": "abstract",
+          "why": "Error magnitude in rare change area estimation"
+        },
+        {
+          "title": "Olofsson et al., Good practices for estimating area and assessing accuracy of land change (RSE 2014)",
+          "year": null,
+          "venue": "",
+          "url": "https://samv.elearning.unipd.it/pluginfile.php/175898/mod_resource/content/0/articolo_oloffson.pdf",
+          "doi": null,
+          "source_type": "web",
+          "why": "Good practices for unbiased area estimation"
+        },
+        {
+          "title": "Satellite Data Reveal Cropland Losses in South-Eastern Ukraine Under Military Conflict",
+          "year": 2019,
+          "venue": "Frontiers in Earth Science",
+          "url": "https://doi.org/10.3389/feart.2019.00305",
+          "doi": null,
+          "source_type": "oa",
+          "why": "Application of confusion matrix for area estimation"
+        }
+      ],
+      "alignment": "supported",
+      "alignment_note": "Passages confirm the use of confusion matrices and reference data for unbiased area estimation.",
+      "retrieved": [
+        {
+          "ref_id": "10-1080-2150704x-2013-798708",
+          "title": "Ground reference data error and the mis-estimation of the area of land cover change as a function of its abundance",
+          "source_type": "abstract"
+        },
+        {
+          "ref_id": "https-samv-elearning-unipd-it-pluginfile-php-175898-mod-reso",
+          "title": "Olofsson et al., Good practices for estimating area and assessing accuracy of land change (RSE 2014)",
+          "source_type": "web"
+        },
+        {
+          "ref_id": "arxiv-2407-13659",
+          "title": "Regression coefficient estimation from remote sensing maps",
+          "source_type": "arxiv"
+        },
+        {
+          "ref_id": "10-1016-j-rse-2025-114949",
+          "title": "Regression coefficient estimation from remote sensing maps",
+          "source_type": "arxiv"
+        },
+        {
+          "ref_id": "10-1016-j-rse-2014-02-015",
+          "title": "Good practices for estimating area and assessing accuracy of land change",
+          "source_type": "abstract"
+        },
+        {
+          "ref_id": "https-pmc-ncbi-nlm-nih-gov-articles-pmc11014375",
+          "title": "Spatially Explicit Active Learning for Crop-Type Mapping from SITS",
+          "source_type": "pmc"
+        },
+        {
+          "ref_id": "10-3389-feart-2019-00305",
+          "title": "Satellite Data Reveal Cropland Losses in South-Eastern Ukraine Under Military Conflict",
+          "source_type": "oa"
+        },
+        {
+          "ref_id": "https-eol-pages-cms-hu-berlin-de-geo-rs-s09-accuracy-assessm",
+          "title": "Accuracy assessment (confusion matrix, omission/commission) - HU Berlin EO Lab",
+          "source_type": "web"
+        }
+      ]
+    },
+    {
+      "id": "data-image",
+      "deepen": {
+        "en": "Data-image extends OCI container principles to deliver versioned, cacheable data payloads decoupled from application logic. They leverage image layering for efficient builds [1] and support reproducible workflows by enabling consistent data mounting across Kubernetes sessions [2].",
+        "es": "La imagen de datos extiende los principios de contenedor OCI para entregar cargas de datos versionadas y almacenables en caché, desacopladas de la lógica de aplicación. Aprovechan las capas de imagen para compilaciones eficientes [1] y admiten flujos de trabajo reproducibles al permitir el montaje consistente de datos en sesiones de Kubernetes [2]."
+      },
+      "references": [
+        {
+          "title": "Ten simple rules for writing Dockerfiles for reproducible data science",
+          "year": 2020,
+          "venue": "PLoS Comput. Biol.",
+          "url": "https://journals.plos.org/ploscompbiol/article?id=10.1371/journal.pcbi.1008316",
+          "doi": null,
+          "source_type": "pmc",
+          "why": "Image caching and building efficiency"
+        },
+        {
+          "title": "Containers in research workflows: reproducibility (Imperial College carpentry)",
+          "year": null,
+          "venue": "",
+          "url": "https://imperialcollegelondon.github.io/2020-07-13-Containers-Online/08-reproducibility/index.html",
+          "doi": null,
+          "source_type": "web",
+          "why": "Reproducibility via container images"
+        }
+      ],
+      "alignment": "partially_supported",
+      "alignment_note": "The literature supports general container image principles but lacks specific mention of CSI drivers or data-only images; the concept extends established ideas.",
+      "retrieved": [
+        {
+          "ref_id": "10-1371-journal-pcbi-1008316",
+          "title": "Ten simple rules for writing Dockerfiles for reproducible data science",
+          "source_type": "pmc"
+        },
+        {
+          "ref_id": "https-imperialcollegelondon-github-io-2020-07-13-containers-",
+          "title": "Containers in research workflows: reproducibility (Imperial College carpentry)",
+          "source_type": "web"
+        },
+        {
+          "ref_id": "10-5194-isprs-archives-xliii-b3-2022-1039-2022",
+          "title": "USING OPEN DATA CUBE ON THE CLOUD TO INVESTIGATE FOOD SECURITY BY MEANS OF CROPLAND CHANGES IN DJIBOUTI",
+          "source_type": "oa"
+        },
+        {
+          "ref_id": "arxiv-2204-08461",
+          "title": "Investigating Temporal Convolutional Neural Networks for Satellite Image Time Series Classification",
+          "source_type": "arxiv"
+        },
+        {
+          "ref_id": "https-docs-ogc-org-per-20-035-html",
+          "title": "OGC Testbed-16: EO Application Packages with Jupyter Notebooks",
+          "source_type": "web"
+        },
+        {
+          "ref_id": "https-www-nature-com-articles-s41597-026-06765-8",
+          "title": "Copernicus Data Space Ecosystem: public cloud processing for EO (Scientific Data 2026)",
+          "source_type": "web"
+        }
+      ]
+    },
+    {
+      "id": "ndvi",
+      "deepen": {
+        "en": "NDVI is computed as (NIR-Red)/(NIR+Red) [2]. It is widely used in operational crop monitoring systems like ASAP for early warning [1]. However, NDVI saturates over dense vegetation, prompting alternative indices like EVI [5]. Its time series enables phenology extraction and land cover classification [7].",
+        "es": "El NDVI se calcula como (NIR-Rojo)/(NIR+Rojo) [2]. Se usa ampliamente en sistemas operativos de monitoreo de cultivos como ASAP para alerta temprana [1]. Sin embargo, el NDVI se satura en vegetación densa, lo que motiva índices alternativos como EVI [5]. Sus series temporales permiten extraer fenología y clasificar coberturas [7]."
+      },
+      "references": [
+        {
+          "title": "ASAP: a new global early warning system for agricultural production (JRC)",
+          "year": null,
+          "venue": "",
+          "url": "https://www.ncbi.nlm.nih.gov/pmc/articles/PMC6360855/",
+          "doi": null,
+          "source_type": "pmc",
+          "why": "Operational use in early warning systems"
+        },
+        {
+          "title": "Application of Remote Sensors in Mapping Rice Area and Forecasting Its Production: A Review",
+          "year": 2015,
+          "venue": "Italian National Conference on Sensors",
+          "url": "https://doi.org/10.3390/s150100769",
+          "doi": null,
+          "source_type": "pmc",
+          "why": "Provides formula and reference"
+        },
+        {
+          "title": "Prediction of Crop Yield Using Phenological Information from RS Vegetation Index",
+          "year": null,
+          "venue": "",
+          "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC7922106/",
+          "doi": null,
+          "source_type": "pmc",
+          "why": "Highlights saturation limitation"
+        },
+        {
+          "title": "Detailed dynamic land cover mapping of Chile: Accuracy improvement by integrating multi-temporal data",
+          "year": 2016,
+          "venue": "",
+          "url": "https://doi.org/10.1016/j.rse.2016.05.016",
+          "doi": null,
+          "source_type": "oa",
+          "why": "Shows phenology and land cover use"
+        }
+      ],
+      "alignment": "supported",
+      "alignment_note": "Passages confirm NDVI formula, operational use, and limitations.",
+      "retrieved": [
+        {
+          "ref_id": "https-www-ncbi-nlm-nih-gov-pmc-articles-pmc6360855",
+          "title": "ASAP: a new global early warning system for agricultural production (JRC)",
+          "source_type": "pmc"
+        },
+        {
+          "ref_id": "10-3390-s150100769",
+          "title": "Application of Remote Sensors in Mapping Rice Area and Forecasting Its Production: A Review",
+          "source_type": "pmc"
+        },
+        {
+          "ref_id": "10-1016-j-isprsjprs-2018-09-008",
+          "title": "UAV-based multispectral remote sensing for precision agriculture: A comparison between different cameras",
+          "source_type": "abstract"
+        },
+        {
+          "ref_id": "https-www-ncbi-nlm-nih-gov-pmc-articles-pmc8971471",
+          "title": "Wheat growth monitoring and yield via RS assimilation into SAFY",
+          "source_type": "pmc"
+        },
+        {
+          "ref_id": "https-pmc-ncbi-nlm-nih-gov-articles-pmc7922106",
+          "title": "Prediction of Crop Yield Using Phenological Information from RS Vegetation Index",
+          "source_type": "pmc"
+        },
+        {
+          "ref_id": "https-www-ncbi-nlm-nih-gov-pmc-articles-pmc3231680",
+          "title": "Evaluation of Sentinel-2 Red-Edge Bands for Green LAI and Chlorophyll",
+          "source_type": "pmc"
+        },
+        {
+          "ref_id": "10-1016-j-rse-2016-05-016",
+          "title": "Detailed dynamic land cover mapping of Chile: Accuracy improvement by integrating multi-temporal data",
+          "source_type": "oa"
+        },
+        {
+          "ref_id": "10-3390-s19040904",
+          "title": "Multi-Crop Green LAI Estimation with a New Simple Sentinel-2 LAI Index (SeLI)",
+          "source_type": "pmc"
+        }
+      ]
+    },
+    {
+      "id": "random-forest",
+      "deepen": {
+        "en": "Random forest's generalization error converges to a limit as tree count increases, depending on individual tree strength and inter-tree correlation [1]. Each tree is built on a bootstrap sample, with optimal splits at nodes [6], making it robust for high-dimensional remote sensing data.",
+        "es": "El error de generalización del random forest converge a un límite al aumentar el número de árboles, dependiendo de la fortaleza individual y la correlación entre árboles [1]. Cada árbol se construye con una muestra bootstrap y divisiones óptimas en nodos [6], siendo robusto para datos remotos de alta dimensión."
+      },
+      "references": [
+        {
+          "title": "Random Forests",
+          "year": 2001,
+          "venue": "Machine-mediated learning",
+          "url": "https://doi.org/10.1023/A:1010933404324",
+          "doi": null,
+          "source_type": "oa",
+          "why": "Defines error convergence and key properties"
+        },
+        {
+          "title": "BREIZHCROPS: A TIME SERIES DATASET FOR CROP TYPE MAPPING",
+          "year": 2019,
+          "venue": "The International Archives of the Photogrammetry, Remote Sensing and Spatial Information Sciences",
+          "url": "https://arxiv.org/pdf/1905.11893",
+          "doi": null,
+          "source_type": "arxiv",
+          "why": "Describes bootstrap sampling and node splits"
+        }
+      ],
+      "alignment": "supported",
+      "alignment_note": "The literature directly supports and extends the handbook definition with convergence and bootstrap details.",
+      "retrieved": [
+        {
+          "ref_id": "10-1023-a-1010933404324",
+          "title": "Random Forests",
+          "source_type": "oa"
+        },
+        {
+          "ref_id": "10-1145-2939672-2939785",
+          "title": "XGBoost: A Scalable Tree Boosting System",
+          "source_type": "arxiv"
+        },
+        {
+          "ref_id": "10-1186-s40537-024-00943-4",
+          "title": "Data oversampling and imbalanced datasets: an investigation of performance for machine learning and feature engineering",
+          "source_type": "oa"
+        },
+        {
+          "ref_id": "10-5311-josis-2020-20-645",
+          "title": "On the semantics of big Earth observation data for land classification",
+          "source_type": "arxiv"
+        },
+        {
+          "ref_id": "10-1016-j-rse-2016-05-016",
+          "title": "Detailed dynamic land cover mapping of Chile: Accuracy improvement by integrating multi-temporal data",
+          "source_type": "oa"
+        },
+        {
+          "ref_id": "arxiv-1905-11893",
+          "title": "BREIZHCROPS: A TIME SERIES DATASET FOR CROP TYPE MAPPING",
+          "source_type": "arxiv"
+        }
+      ]
+    },
+    {
+      "id": "accuracy",
+      "deepen": {
+        "en": "Accuracy extends beyond overall proportion correct. Passages emphasize statistical rigor via confusion matrices to quantify per-class user's (commission error) and producer's (omission error) accuracy [3][6]. Threshold-based rules (e.g., >90% high) are common for large-scale crop maps [5].",
+        "es": "La exactitud va más allá de la proporción general correcta. Los pasajes enfatizan el rigor estadístico mediante matrices de confusión para cuantificar la exactitud del usuario (error de comisión) y del productor (error de omisión) por clase [3][6]. Las reglas basadas en umbrales (ej., >90% alta) son comunes para mapas de cultivos a gran escala [5]."
+      },
+      "references": [
+        {
+          "title": "Data oversampling and imbalanced datasets: an investigation of performance for machine learning and feature engineering",
+          "year": 2024,
+          "venue": "Journal of Big Data",
+          "url": "https://doi.org/10.1186/s40537-024-00943-4",
+          "doi": null,
+          "source_type": "oa",
+          "why": "Defines accuracy, precision, recall, F1 in ML context"
+        },
+        {
+          "title": "Olofsson et al., Good practices for estimating area and assessing accuracy of land change (RSE 2014)",
+          "year": null,
+          "venue": "",
+          "url": "https://samv.elearning.unipd.it/pluginfile.php/175898/mod_resource/content/0/articolo_oloffson.pdf",
+          "doi": null,
+          "source_type": "web",
+          "why": "Good practices for overall, user's, producer's accuracy"
+        },
+        {
+          "title": "Crop Type Maps for Operational Global Agricultural Monitoring",
+          "year": 2023,
+          "venue": "Scientific Data",
+          "url": "https://doi.org/10.1038/s41597-023-02047-9",
+          "doi": null,
+          "source_type": "pmc",
+          "why": "Provides scoring rules for overall accuracy thresholds"
+        }
+      ],
+      "alignment": "supported",
+      "alignment_note": "The literature supports and expands the Handbook definition by detailing confusion matrix metrics and operational thresholds.",
+      "retrieved": [
+        {
+          "ref_id": "https-pure-iiasa-ac-at-id-eprint-20873-1-ceos-wgcv-lpv-land-",
+          "title": "CEOS WGCV LPV Land Cover & Change accuracy protocol (2025)",
+          "source_type": "web"
+        },
+        {
+          "ref_id": "https-eol-pages-cms-hu-berlin-de-geo-rs-s09-accuracy-assessm",
+          "title": "Accuracy assessment (confusion matrix, omission/commission) - HU Berlin EO Lab",
+          "source_type": "web"
+        },
+        {
+          "ref_id": "10-1186-s40537-024-00943-4",
+          "title": "Data oversampling and imbalanced datasets: an investigation of performance for machine learning and feature engineering",
+          "source_type": "oa"
+        },
+        {
+          "ref_id": "10-1016-s0034-4257-01-00295-4",
+          "title": "Status of land cover classification accuracy assessment",
+          "source_type": "abstract"
+        },
+        {
+          "ref_id": "10-1038-s41597-023-02047-9",
+          "title": "Crop Type Maps for Operational Global Agricultural Monitoring",
+          "source_type": "pmc"
+        },
+        {
+          "ref_id": "https-samv-elearning-unipd-it-pluginfile-php-175898-mod-reso",
+          "title": "Olofsson et al., Good practices for estimating area and assessing accuracy of land change (RSE 2014)",
+          "source_type": "web"
+        },
+        {
+          "ref_id": "10-1186-s40537-019-0192-5",
+          "title": "Survey on deep learning with class imbalance",
+          "source_type": "oa"
+        },
+        {
+          "ref_id": "10-1016-j-rse-2007-11-013",
+          "title": "Some challenges in global land cover mapping : An assessment of agreement and accuracy in existing 1 km datasets",
+          "source_type": "abstract"
+        }
+      ]
+    },
+    {
+      "id": "overall-accuracy",
+      "deepen": {
+        "en": "Overall accuracy (OA) is a global metric that sums correct predictions over all classes, but it can be misleading when classes are imbalanced because it is dominated by the majority class [2]. In remote sensing, OA is often reported alongside per-class metrics like F1 to provide a more complete assessment [8].",
+        "es": "La precisión global (OA) es una métrica global que suma las predicciones correctas sobre todas las clases, pero puede ser engañosa cuando las clases están desbalanceadas porque está dominada por la clase mayoritaria [2]. En teledetección, la OA a menudo se reporta junto con métricas por clase como F1 para proporcionar una evaluación más completa [8]."
+      },
+      "references": [
+        {
+          "title": "Survey on deep learning with class imbalance",
+          "year": 2019,
+          "venue": "Journal of Big Data",
+          "url": "https://doi.org/10.1186/s40537-019-0192-5",
+          "doi": null,
+          "source_type": "oa",
+          "why": "Explains OA's limitation with imbalance"
+        },
+        {
+          "title": "Investigating Temporal Convolutional Neural Networks for Satellite Image Time Series Classification",
+          "year": 2022,
+          "venue": "arXiv.org",
+          "url": "https://arxiv.org/pdf/2204.08461",
+          "doi": null,
+          "source_type": "arxiv",
+          "why": "Shows OA use with F1 in remote sensing"
+        }
+      ],
+      "alignment": "supported",
+      "alignment_note": "The passages confirm that OA is a global metric and highlight its weakness with imbalanced classes, aligning with the handbook definition.",
+      "retrieved": [
+        {
+          "ref_id": "10-1186-s40537-024-00943-4",
+          "title": "Data oversampling and imbalanced datasets: an investigation of performance for machine learning and feature engineering",
+          "source_type": "oa"
+        },
+        {
+          "ref_id": "10-1186-s40537-019-0192-5",
+          "title": "Survey on deep learning with class imbalance",
+          "source_type": "oa"
+        },
+        {
+          "ref_id": "https-eol-pages-cms-hu-berlin-de-geo-rs-s09-accuracy-assessm",
+          "title": "Accuracy assessment (confusion matrix, omission/commission) - HU Berlin EO Lab",
+          "source_type": "web"
+        },
+        {
+          "ref_id": "10-1080-01431169308904456",
+          "title": "Crop area estimates through remote sensing: stability of the regression correction",
+          "source_type": "abstract"
+        },
+        {
+          "ref_id": "10-1016-j-ins-2019-06-007",
+          "title": "Geometric SMOTE a geometrically enhanced drop-in replacement for SMOTE",
+          "source_type": "oa"
+        },
+        {
+          "ref_id": "10-1109-cvpr-2017-113",
+          "title": "Temporal Convolutional Networks for Action Segmentation and Detection",
+          "source_type": "arxiv"
+        },
+        {
+          "ref_id": "10-1137-16m1080173",
+          "title": "Optimization Methods for Large-Scale Machine Learning",
+          "source_type": "arxiv"
+        },
+        {
+          "ref_id": "arxiv-2204-08461",
+          "title": "Investigating Temporal Convolutional Neural Networks for Satellite Image Time Series Classification",
+          "source_type": "arxiv"
+        }
+      ]
+    }
+  ]
+}
