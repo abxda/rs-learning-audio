@@ -1,0 +1,115 @@
+{
+  "idx": "9",
+  "title": {
+    "en": "Area Estimation from Samples",
+    "es": "Estimación de Áreas por Muestras"
+  },
+  "slug": "area-estimation-from-samples",
+  "members": [
+    "area-estimation",
+    "sample-based-estimators",
+    "ground-survey-estimators",
+    "estimator",
+    "statistical-survey",
+    "area-frame"
+  ],
+  "refs": [
+    {
+      "tag": "R1",
+      "text": "Olofsson et al., Good practices for estimating area and assessing accuracy of land change (RSE 2014)",
+      "url": "https://www.sciencedirect.com/science/article/abs/pii/S0034425714000704",
+      "kind": "deep-research"
+    },
+    {
+      "tag": "R2",
+      "text": "Gallego, Remote sensing and land cover area estimation (IJRS 2004)",
+      "url": "https://doi.org/10.1080/01431160310001619607",
+      "kind": "deep-research"
+    },
+    {
+      "tag": "R3",
+      "text": "Regression coefficient estimation from remote sensing maps (arXiv 2024)",
+      "url": "https://arxiv.org/pdf/2407.13659",
+      "kind": "deep-research"
+    },
+    {
+      "tag": "R4",
+      "text": "[2] F. D. W. Witmer, “Remote sensing of violent conflict: Eyes from above,” International Journal of Remote Sensing , vol. 36, no. 9, pp. 2326–2352, 2015, doi: ",
+      "url": "https://doi.org/10.1080/01431161.2015.1035412",
+      "kind": "handbook-bibliography"
+    },
+    {
+      "tag": "R5",
+      "text": "[3] X.-P. Song et al. , “National-scale soybean mapping and area estimation in the United States using medium resolution satellite imagery and field survey,” Re",
+      "url": "https://doi.org/10.1016/j.rse.2017.01.008",
+      "kind": "handbook-bibliography"
+    },
+    {
+      "tag": "R6",
+      "text": "[4] R. S. Chhikara, “Effect of mixed (boundary) pixels on crop proportion estimation,” Remote Sensing of Environment , vol. 14, no. 1, pp. 207–218, 1984, doi: 1",
+      "url": "https://doi.org/10.1016/0034-4257(84)90016-6",
+      "kind": "handbook-bibliography"
+    },
+    {
+      "tag": "R7",
+      "text": "[5] S. Skakun, “The impact of map accuracy on area estimation with remotely sensed data within the stratified random sampling design,” Remote Sensing of Environ",
+      "url": "https://doi.org/10.1016/j.rse.2025.114805",
+      "kind": "handbook-bibliography"
+    },
+    {
+      "tag": "R8",
+      "text": "[6] F. J. Gallego, “Remote sensing and land cover area estimation,” International Journal of Remote Sensing , vol. 25, no. 15, pp. 3019–3047, 2004, doi: 10.1080",
+      "url": "https://doi.org/10.1080/01431160310001619607",
+      "kind": "handbook-bibliography"
+    }
+  ],
+  "call_id": "ae954f05c0de596323408c937bfe884546eb47f391f31c548a6d3078f4188c81",
+  "brain_en": "## Area Estimation from Samples: Design-Based Inference with Map Integration\n\nArea estimation from samples is the gold standard for unbiased quantification of land cover and crop extent. Unlike simple pixel-counting of a thematic map—which is biased due to classification errors that vary by class—design-based inference using a probability sample of reference units produces statistically rigorous estimates with known uncertainty [R1][R2].\n\nThe core method is the **error-matrix-adjusted estimator**: a stratified random sample, typically with strata equal to map classes, is collected via ground survey or high-quality reference data. The resulting confusion matrix rescales the map's class proportions by the reference proportions, yielding approximately unbiased area estimates along with standard errors and confidence intervals [R1]. This approach embodies the good-practice triad of sampling, response, and analysis design.\n\nKey methodological points:\n- **Stratified random sampling** using the map as a stratification tool greatly increases precision; better maps (higher accuracy) can reduce the required sample size by 20–40% for a target coefficient of variation [R1][R7].\n- **Mixed or boundary pixels** introduce proportion estimation bias, addressed by regression, sub-pixel, or unmixing techniques [R6][R3].\n- Modern **prediction-powered inference** or **regression estimators** can tighten confidence intervals without introducing bias, especially when auxiliary satellite data are available [R3].\n\n### How This Grounds the Handbook Concepts\n- **area-estimation**: Provides the exact statistical framework—error-matrix-adjusted estimator—that converts sample data into unbiased, interpretable area totals for crops or land use.\n- **sample-based-estimators**: Specifies the design (stratified by map class) and the estimator (confusion-matrix correction) that are essential for valid area estimation, moving beyond simple pixel counting.\n- **ground-survey-estimators**: Refines the notion: ground surveys are not just data collection; they are the reference sample against which map classifications are corrected, producing unbiased estimates.\n- **estimator**: Exemplifies a concrete, scientifically validated estimator formulation—with formal variance estimation—that replaces ad-hoc rules.\n\n### GAP Filled\nThis research fills the critical gap between the Handbook’s conceptual description of area estimation and the operational best practice: it provides the exact statistical recipe (stratified random sampling + confusion-matrix adjustment), explains why pixel counting fails, quantifies the sample-size benefit of better maps, and introduces modern extensions (prediction-powered inference, sub-pixel methods) that are ready for operational use in agricultural statistics. Without this, a user might mistakenly believe a simple map area tally is sufficient, leading to biased statistics [R1][R2][R3].",
+  "brain_es": "## Estimación de Área a Partir de Muestras: Inferencia Basada en Diseño con Integración de Mapas\n\nLa estimación de área a partir de muestras es el estándar de oro para cuantificar sin sesgo la extensión de coberturas terrestres y cultivos. A diferencia del simple conteo de píxeles de un mapa temático —que está sesgado debido a errores de clasificación que varían por clase— la inferencia basada en diseño utilizando una muestra probabilística de unidades de referencia produce estimaciones estadísticamente rigurosas con incertidumbre conocida [R1][R2].\n\nEl método central es el **estimador ajustado por matriz de error**: se diseña una muestra aleatoria estratificada, típicamente con estratos iguales a las clases del mapa, y se recolectan datos de referencia mediante encuesta de campo o imágenes de alta resolución. La matriz de confusión resultante reescala las proporciones de clase del mapa con las proporciones de referencia, generando estimaciones de área aproximadamente insesgadas junto con errores estándar e intervalos de confianza [R1]. Este enfoque encarna la tríada de buenas prácticas: diseño de muestreo, diseño de respuesta y diseño de análisis.\n\nPuntos metodológicos clave:\n- El **muestreo aleatorio estratificado** usando el mapa como herramienta de estratificación aumenta enormemente la precisión; mapas mejores (mayor exactitud) pueden reducir el tamaño de muestra requerido en un 20–40% para un coeficiente de variación objetivo [R1][R7].\n- Los **píxeles mixtos o de borde** introducen sesgo en la estimación de proporciones, lo que se aborda mediante técnicas de regresión, subpixel o desmezclado [R6][R3].\n- Métodos modernos de **inferencia potenciada por predicción** o **estimadores de regresión** pueden estrechar los intervalos de confianza sin introducir sesgo, especialmente cuando se dispone de datos auxiliares de satélite [R3].\n\n### Cómo Fundamenta los Conceptos del Manual\n- **area-estimation**: Proporciona el marco estadístico exacto —estimador ajustado por matriz de error— que convierte datos muestrales en totales de área interpretables y no sesgados para cultivos o usos del suelo.\n- **sample-based-estimators**: Especifica el diseño (estratificado por clase del mapa) y el estimador (corrección por matriz de confusión) esenciales para una estimación de área válida, superando el simple conteo de píxeles.\n- **ground-survey-estimators**: Refina la noción: las encuestas de campo no son solo recolección de datos; son la muestra de referencia contra la cual se corrigen las clasificaciones del mapa, produciendo estimaciones no sesgadas.\n- **estimator**: Ejemplifica una formulación de estimador concreta y científicamente validada —con estimación formal de varianza— que reemplaza reglas ad-hoc.\n\n### Brecha que se Llena\nEsta investigación llena la brecha crítica entre la descripción conceptual del Manual sobre estimación de área y la mejor práctica operativa: proporciona la receta estadística exacta (muestreo aleatorio estratificado + ajuste por matriz de confusión), explica por qué el conteo de píxeles falla, cuantifica el beneficio de mapas mejores en el tamaño de muestra, e introduce extensiones modernas (inferencia potenciada por predicción, métodos subpixel) listas para uso operativo en estadísticas agrícolas. Sin esto, un usuario podría creer erróneamente que un simple total de área del mapa es suficiente, llevando a estadísticas sesgadas [R1][R2][R3].",
+  "enrich": [
+    {
+      "id": "area-estimation",
+      "disambiguation_en": "Design-based area estimation corrects map bias using a probability reference sample, not pixel counting.",
+      "disambiguation_es": "La estimación de área basada en diseño corrige el sesgo del mapa usando una muestra probabilística de referencia, no el conteo de píxeles.",
+      "enrich_en": "The error-matrix-adjusted estimator uses a probability sample to produce unbiased area estimates with uncertainty, replacing biased pixel counts [R1][R2].",
+      "enrich_es": "El estimador ajustado por matriz de error usa una muestra probabilística para producir estimaciones de área no sesgadas con incertidumbre, reemplazando los conteos de píxeles sesgados [R1][R2].",
+      "refs": [
+        "R1",
+        "R2"
+      ]
+    },
+    {
+      "id": "sample-based-estimators",
+      "disambiguation_en": "The recommended estimator is a stratified random sample with strata defined by map classes.",
+      "disambiguation_es": "El estimador recomendado es una muestra aleatoria estratificada con estratos definidos por las clases del mapa.",
+      "enrich_en": "Stratified random sampling by map class is the core design; map accuracy can reduce sample size by 20-40% for a target CV [R1][R7].",
+      "enrich_es": "El muestreo aleatorio estratificado por clase del mapa es el diseño central; la exactitud del mapa puede reducir el tamaño muestral en 20-40% para un CV objetivo [R1][R7].",
+      "refs": [
+        "R1",
+        "R7"
+      ]
+    },
+    {
+      "id": "ground-survey-estimators",
+      "disambiguation_en": "Ground surveys serve as the reference sample to correct map classification errors, not as a direct area measure.",
+      "disambiguation_es": "Las encuestas de campo sirven como muestra de referencia para corregir errores de clasificación del mapa, no como medida directa de área.",
+      "enrich_en": "Ground surveys provide the reference labels for the confusion matrix, enabling bias correction via ratio or regression estimators [R1][R3].",
+      "enrich_es": "Las encuestas de campo proporcionan las etiquetas de referencia para la matriz de confusión, permitiendo la corrección de sesgo mediante estimadores de razón o regresión [R1][R3].",
+      "refs": [
+        "R1",
+        "R3"
+      ]
+    },
+    {
+      "id": "estimator",
+      "disambiguation_en": "The estimator is a formula that combines map proportions with reference data to produce unbiased area and variance.",
+      "disambiguation_es": "El estimador es una fórmula que combina proporciones del mapa con datos de referencia para producir área y varianza no sesgadas.",
+      "enrich_en": "The error-matrix-adjusted estimator and prediction-powered regression estimators both deliver unbiased estimates with tighter confidence intervals [R1][R3].",
+      "enrich_es": "El estimador ajustado por matriz de error y los estimadores de regresión potenciados por predicción entregan estimaciones no sesgadas con intervalos de confianza más estrechos [R1][R3].",
+      "refs": [
+        "R1",
+        "R3"
+      ]
+    }
+  ]
+}

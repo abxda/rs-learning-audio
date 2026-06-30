@@ -1,0 +1,101 @@
+{
+  "idx": "12",
+  "title": {
+    "en": "Geospatial Data Handling",
+    "es": "Manejo de Datos Geoespaciales"
+  },
+  "slug": "geospatial-data-handling",
+  "members": [
+    "georeferenced-information",
+    "geospatial-data",
+    "spatial-information",
+    "geographic-data",
+    "geoinformation",
+    "gis"
+  ],
+  "refs": [
+    {
+      "tag": "R1",
+      "text": "Introduction to Coordinate Reference Systems (UW-Madison Data Science)",
+      "url": "https://uw-madison-datascience.github.io/organization-geospatial/03-crs/index.html",
+      "kind": "deep-research"
+    },
+    {
+      "tag": "R2",
+      "text": "Reprojecting geographic data (Geocomputation with R, ch.7)",
+      "url": "https://r.geocompx.org/reproj-geo-data",
+      "kind": "deep-research"
+    },
+    {
+      "tag": "R3",
+      "text": "Coordinate Reference Systems (QGIS gentle GIS introduction)",
+      "url": "https://docs.qgis.org/3.44/en/docs/gentle_gis_introduction/coordinate_reference_systems.html",
+      "kind": "deep-research"
+    },
+    {
+      "tag": "R4",
+      "text": "[6] P. Sarricolea, M. Herrera-Ossandon, and Ó. Meseguer-Ruiz, “Climatic regionalisation of continental Chile,” Journal of Maps , vol. 13, no. 2, pp. 66–73, Nov.",
+      "url": "https://doi.org/10.1080/17445647.2016.1259592",
+      "kind": "handbook-bibliography"
+    },
+    {
+      "tag": "R5",
+      "text": "[10] H. E. Beck, N. E. Zimmermann, T. R. McVicar, N. Vergopolan, A. Berg, and E. F. Wood, “Present and future Köppen-Geiger climate classification maps at 1-km ",
+      "url": "https://doi.org/10.1038/sdata.2018.214",
+      "kind": "handbook-bibliography"
+    },
+    {
+      "tag": "R6",
+      "text": "[11] G. O. Ojwang et al. , “An integrated hierarchical classification and machine learning approach for mapping land use and land cover in complex social-ecolog",
+      "url": "https://doi.org/10.3389/frsen.2023.1188635",
+      "kind": "handbook-bibliography"
+    },
+    {
+      "tag": "R7",
+      "text": "[12] Md. S. Chowdhury, “GIS based method for mapping actual LULC by combining seasonal LULCs,” MethodsX , vol. 11, p. 102472, Dec. 2023, doi: 10.1016/j.mex.2023",
+      "url": "https://doi.org/10.1016/j.mex.2023.102472",
+      "kind": "handbook-bibliography"
+    },
+    {
+      "tag": "R8",
+      "text": "[13] D. T. Myers, D. Jones, D. Oviedo-Vargas, J. P. Schmit, D. L. Ficklin, and X. Zhang, “Seasonal variation in land cover estimates reveals sensitivities and o",
+      "url": "https://doi.org/10.5194/hess-28-5295-2024",
+      "kind": "handbook-bibliography"
+    }
+  ],
+  "call_id": "9e772d62d235a96ab79eaf4631c9a0cf5aef1bded56f79001b62f391004d0a63",
+  "brain_en": "## Geospatial Data Handling: The Foundation of Remote Sensing for Agricultural Statistics\n\nEffective agricultural statistics from remote sensing depend on precise geospatial data handling. The core challenge is linking Earth observation data (satellite images) with survey data (field observations). This requires a Coordinate Reference System (CRS) to give coordinates geographic meaning, ensuring data layers align correctly [R1]. Map projections transform the 3D Earth to a 2D plane, each trading off area, shape, or distance [R3]. Data are structured as **vector** (points, lines, polygons for discrete features like field boundaries) or **raster** (grid cells for continuous variables like NDVI). Reprojecting vector data moves vertices; reprojecting raster resamples values to a new grid, affecting pixel alignment and accuracy [R2]. The **gap** the Handbook leaves is the explicit mechanical difference between vector and raster reprojection and the practical importance of choosing the correct CRS when integrating multiple data sources, such as combining satellite imagery (often in a geographic CRS like WGS84) with survey GPS points (collected in a projected CRS).\n\n### How it grounds Handbook concepts:\n- **georeferenced-information**: A CRS is the mechanism that transforms raw coordinates into georeferenced information, enabling spatial analysis [R1].\n- **geospatial-data**: The vector/raster distinction is fundamental; both require correct CRS handling to be useful geospatial data [R3].\n- **spatial-information**: Accurate location and shape (spatial information) rely on proper reprojection to preserve geometry [R2].\n- **geographic-data**: Geographic data integrity depends on consistent CRS use to avoid misalignment errors [R1].\n- **geoinformation**: Geoinformation becomes actionable when coordinate systems ensure reliable spatial relationships [R3].\n- **gis**: GIS software tools manage CRS definitions, reprojections, and overlays for integrated analysis [R2].",
+  "brain_es": "## Manejo de Datos Geoespaciales: La Base para Estadísticas Agrícolas con Teledetección\n\nLas estadísticas agrícolas confiables a partir de teledetección dependen de un manejo preciso de datos geoespaciales. El desafío central es vincular datos de observación de la Tierra (imágenes satelitales) con datos de encuestas (observaciones de campo). Esto requiere un Sistema de Referencia de Coordenadas (SRC) que otorgue significado geográfico a las coordenadas, asegurando que las capas de datos se alineen correctamente [R1]. Las proyecciones cartográficas transforman la Tierra 3D a un plano 2D, cada una compensando área, forma o distancia [R3]. Los datos se estructuran como **vectoriales** (puntos, líneas, polígonos para entidades discretas como límites de parcelas) o **ráster** (celdas de cuadrícula para variables continuas como NDVI). Reprojectar datos vectoriales mueve vértices; reprojectar ráster remuestrea valores a una nueva cuadrícula, afectando la alineación de píxeles y la precisión [R2]. La **brecha** que deja el Manual es la diferencia mecánica explícita entre reproyección vectorial y ráster, y la importancia práctica de elegir el SRC correcto al integrar múltiples fuentes de datos, como combinar imágenes satelitales (a menudo en un SRC geográfico como WGS84) con puntos GPS de encuestas (recopilados en un SRC proyectado).\n\n### Cómo fundamenta los conceptos del Manual:\n- **georeferenced-information**: Un SRC es el mecanismo que transforma coordenadas brutas en información georreferenciada, habilitando el análisis espacial [R1].\n- **geospatial-data**: La distinción vectorial/ráster es fundamental; ambos requieren un manejo correcto del SRC para ser datos geoespaciales útiles [R3].\n- **spatial-information**: La ubicación y forma precisas (información espacial) dependen de una reproyección adecuada para preservar la geometría [R2].\n- **geographic-data**: La integridad de los datos geográficos depende del uso consistente del SRC para evitar errores de desalineación [R1].\n- **geoinformation**: La geoinformación se vuelve procesable cuando los sistemas de coordenadas aseguran relaciones espaciales confiables [R3].\n- **gis**: Las herramientas de software GIS gestionan definiciones de SRC, reproyecciones y superposiciones para un análisis integrado [R2].",
+  "enrich": [
+    {
+      "id": "georeferenced-information",
+      "disambiguation_en": "A CRS gives coordinates meaningful location on Earth; without it, data are just x,y positions in arbitrary space.",
+      "disambiguation_es": "Un SRC otorga a las coordenadas una ubicación significativa en la Tierra; sin él, los datos son solo posiciones x, y en un espacio arbitrario.",
+      "enrich_en": "CRS defines the datum, projection, and units, enabling overlay of satellite imagery with survey data for agricultural area estimation [R1].",
+      "enrich_es": "El SRC define el datum, proyección y unidades, permitiendo superponer imágenes satelitales con datos de encuesta para la estimación de áreas agrícolas [R1].",
+      "refs": [
+        "R1"
+      ]
+    },
+    {
+      "id": "geospatial-data",
+      "disambiguation_en": "Data with geographic location includes vector and raster types, each needing CRS handling for integration.",
+      "disambiguation_es": "Los datos con ubicación geográfica incluyen tipos vectoriales y ráster, cada uno requiere manejo del SRC para su integración.",
+      "enrich_en": "Vector data stores discrete features as coordinates; raster data uses grid cells. Correct CRS ensures alignment when combining both types [R3].",
+      "enrich_es": "Los datos vectoriales almacenan entidades discretas como coordenadas; los datos ráster usan celdas de cuadrícula. Un SRC correcto asegura la alineación al combinar ambos tipos [R3].",
+      "refs": [
+        "R3"
+      ]
+    },
+    {
+      "id": "spatial-information",
+      "disambiguation_en": "Describes location, shape, and relationships of features; spatial accuracy depends on projection choice.",
+      "disambiguation_es": "Describe ubicación, forma y relaciones de entidades; la precisión espacial depende de la elección de proyección.",
+      "enrich_en": "Reprojection of vector data moves vertices, potentially distorting area and shape. Proper CRS selection preserves spatial information for area calculations [R2].",
+      "enrich_es": "La reproyección de datos vectoriales mueve vértices, distorsionando potencialmente área y forma. Una selección adecuada del SRC preserva la información espacial para cálculos de área [R2].",
+      "refs": [
+        "R2"
+      ]
+    }
+  ]
+}

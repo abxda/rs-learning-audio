@@ -1,0 +1,114 @@
+{
+  "idx": "7",
+  "title": {
+    "en": "Crop and Yield Basics",
+    "es": "Fundamentos de Cultivos y Rendimiento"
+  },
+  "slug": "crop-and-yield-basics",
+  "members": [
+    "cropland",
+    "crop",
+    "field",
+    "agriculture",
+    "crop-yield",
+    "agricultural-land-areas"
+  ],
+  "refs": [
+    {
+      "tag": "R1",
+      "text": "Crop yield estimation by assimilation of crop models and RS: a systematic evaluation (Agric. Systems 2023)",
+      "url": "https://www.sciencedirect.com/science/article/abs/pii/S0308521X23001166",
+      "kind": "deep-research"
+    },
+    {
+      "tag": "R2",
+      "text": "RS-crop-model assimilation + seasonal forecasts for early-season yield forecasting (AgForMet 2021)",
+      "url": "https://www.sciencedirect.com/science/article/abs/pii/S0378429021003440",
+      "kind": "deep-research"
+    },
+    {
+      "tag": "R3",
+      "text": "Wheat growth monitoring and yield via RS assimilation into SAFY",
+      "url": "https://www.ncbi.nlm.nih.gov/pmc/articles/PMC8971471/",
+      "kind": "deep-research"
+    },
+    {
+      "tag": "R4",
+      "text": "[2] F. D. W. Witmer, “Remote sensing of violent conflict: Eyes from above,” International Journal of Remote Sensing , vol. 36, no. 9, pp. 2326–2352, 2015, doi: ",
+      "url": "https://doi.org/10.1080/01431161.2015.1035412",
+      "kind": "handbook-bibliography"
+    },
+    {
+      "tag": "R5",
+      "text": "[3] X.-P. Song et al. , “National-scale soybean mapping and area estimation in the United States using medium resolution satellite imagery and field survey,” Re",
+      "url": "https://doi.org/10.1016/j.rse.2017.01.008",
+      "kind": "handbook-bibliography"
+    },
+    {
+      "tag": "R6",
+      "text": "[4] R. S. Chhikara, “Effect of mixed (boundary) pixels on crop proportion estimation,” Remote Sensing of Environment , vol. 14, no. 1, pp. 207–218, 1984, doi: 1",
+      "url": "https://doi.org/10.1016/0034-4257(84)90016-6",
+      "kind": "handbook-bibliography"
+    },
+    {
+      "tag": "R7",
+      "text": "[5] S. Skakun, “The impact of map accuracy on area estimation with remotely sensed data within the stratified random sampling design,” Remote Sensing of Environ",
+      "url": "https://doi.org/10.1016/j.rse.2025.114805",
+      "kind": "handbook-bibliography"
+    },
+    {
+      "tag": "R8",
+      "text": "[6] F. J. Gallego, “Remote sensing and land cover area estimation,” International Journal of Remote Sensing , vol. 25, no. 15, pp. 3019–3047, 2004, doi: 10.1080",
+      "url": "https://doi.org/10.1080/01431160310001619607",
+      "kind": "handbook-bibliography"
+    }
+  ],
+  "call_id": "526e97402bb2666a8b3925b02475ed5b8f828c3f3ce133e126110c76581d9867",
+  "brain_en": "## Crop and Yield Basics: Overview\n\nCrop and yield estimation are at the core of agricultural statistics, combining traditional agronomic knowledge with modern remote sensing (RS) technologies. The field relies on two primary families of methods: process-based crop-growth models (e.g., WOFOST, SAFY) that simulate plant development, and observational RS data that provide actual conditions on the ground. Data assimilation is the critical technique that fuses these two sources, enabling accurate, spatially explicit yield forecasts at regional scales. Key RS inputs include cultivation area (from land cover classification), phenological stages, and growth status indicators such as leaf area index (LAI), commonly derived from Sentinel-2 imagery [R1][R2]. The Ensemble Kalman Filter (EnKF) is a standard assimilation method, and hybrid frameworks combining EnKF with random forest (RF) machine learning allow for early-season, large-area forecasting [R1][R2]. These techniques have been successfully applied to wheat monitoring, where LAI assimilation into the SAFY model improved yield predictions [R3].\n\n### How This Grounds the Handbook Concepts:\n- **cropland**: RS provides precise delineation of cropland extent, including temporally fallow areas, essential for area estimation and stratification for sample surveys (see [R5] for soybean mapping).\n- **crop**: Identifying crop type (e.g., wheat, maize) via phenological signatures and time series analysis is a prerequisite for growth modelling and yield prediction [R3].\n- **field**: The field is the fundamental analysis unit; data assimilation operates at field or pixel level, and mixed (boundary) pixels require careful handling to avoid proportion estimation errors [R6].\n- **agriculture**: Agricultural land areas (crop + pasture) are the spatial domain; accurate mapping and area estimation rely on RS and field survey integration, with map accuracy affecting uncertainty [R7][R8].\n- **crop-yield**: Yield estimation directly benefits from RS-crop model assimilation, improving upon traditional survey-based methods [R1].\n- **agricultural-land-areas**: Area estimation methods depend on RS classification accuracy and design-based inference (e.g., stratified random sampling) [R7][R8].\n\n### GAP Filled:\nThe deep research fills the Handbook's gap in explaining **how** RS is operationally used for yield forecasting, moving beyond the conceptual definitions. It provides the scientific foundation for data assimilation techniques (EnKF, hybrid ML) and their application to specific crops, linking RS observations (LAI) to physiological models. This is crucial for building a documentary brain that can explain modern crop monitoring workflows in agricultural statistics.",
+  "brain_es": "## Conceptos Básicos de Cultivos y Rendimiento: Resumen\n\nLa estimación de cultivos y rendimientos es el núcleo de las estadísticas agrícolas, combinando el conocimiento agronómico tradicional con tecnologías modernas de teledetección (RS). El campo se basa en dos familias principales de métodos: modelos de crecimiento de cultivos basados en procesos (ej., WOFOST, SAFY) que simulan el desarrollo de las plantas, y datos observacionales de RS que proporcionan condiciones reales sobre el terreno. La asimilación de datos (data assimilation) es la técnica crítica que fusiona estas dos fuentes, permitiendo pronósticos de rendimiento precisos y espacialmente explícitos a escala regional. Los insumos clave de RS incluyen el área de cultivo (a partir de clasificación de cobertura terrestre), etapas fenológicas e indicadores del estado de crecimiento como el índice de área foliar (LAI), que se deriva comúnmente de imágenes Sentinel-2 [R1][R2]. El Filtro de Kalman por Ensamble (EnKF) es un método de asimilación estándar, y los marcos híbridos que combinan EnKF con bosques aleatorios (RF) permiten pronósticos tempranos a gran escala [R1][R2]. Estas técnicas se han aplicado con éxito al monitoreo del trigo, donde la asimilación de LAI en el modelo SAFY mejoró las predicciones de rendimiento [R3].\n\n### Cómo fundamenta los conceptos del Manual:\n- **cropland (tierras de cultivo)**: La RS proporciona una delimitación precisa de la extensión de las tierras de cultivo, incluyendo áreas en barbecho temporal, esencial para la estimación de área y estratificación en encuestas por muestreo (ver [R5] para mapeo de soja).\n- **crop (cultivo)**: Identificar el tipo de cultivo (ej., trigo, maíz) mediante firmas fenológicas y series temporales es un requisito previo para el modelado del crecimiento y la predicción del rendimiento [R3].\n- **field (campo)**: El campo es la unidad fundamental de análisis; la asimilación de datos opera a nivel de campo o píxel, y los píxeles mixtos (límite) requieren un manejo cuidadoso para evitar errores en la estimación de proporciones [R6].\n- **agriculture (agricultura)**: Las áreas de tierra agrícola (cultivo + pastizal) son el dominio espacial; el mapeo preciso y la estimación de área dependen de la RS y la integración de encuestas de campo, y la precisión del mapa afecta la incertidumbre [R7][R8].\n- **crop-yield (rendimiento de cultivos)**: La estimación del rendimiento se beneficia directamente de la asimilación de modelos de cultivo y RS, mejorando los métodos tradicionales basados en encuestas [R1].\n- **agricultural-land-areas (áreas de tierra agrícola)**: Los métodos de estimación de área dependen de la precisión de la clasificación RS y la inferencia basada en el diseño (ej., muestreo aleatorio estratificado) [R7][R8].\n\n### Brecha (GAP) que se llena:\nLa investigación profunda llena el vacío del Manual al explicar **cómo** se usa operativamente la RS para el pronóstico de rendimiento, más allá de las definiciones conceptuales. Proporciona la base científica para las técnicas de asimilación de datos (EnKF, ML híbrido) y su aplicación a cultivos específicos, vinculando las observaciones de RS (LAI) con modelos fisiológicos. Esto es crucial para construir un cerebro documental que pueda explicar los flujos de trabajo modernos de monitoreo de cultivos en estadísticas agrícolas.",
+  "enrich": [
+    {
+      "id": "cropland",
+      "disambiguation_en": "Cropland is land used for crops, including fallow periods, distinguished from pasture or forest by RS classification.",
+      "disambiguation_es": "Tierra de cultivo es el terreno usado para cultivos, incluyendo barbechos, distinguida de pastizales o bosques mediante clasificación RS.",
+      "enrich_en": "RS provides direct area estimation via classification (e.g., soybean mapping [R5]) and stratification for sample surveys; mixed pixels require correction to avoid proportion biases [R6].",
+      "enrich_es": "La RS proporciona estimación directa de área mediante clasificación (ej., mapeo de soja [R5]) y estratificación para encuestas; los píxeles mixtos requieren corrección para evitar sesgos de proporción [R6].",
+      "refs": [
+        "R5",
+        "R6"
+      ]
+    },
+    {
+      "id": "crop",
+      "disambiguation_en": "A crop is a plant species cultivated for harvest, identified by its unique phenological cycle in RS time series.",
+      "disambiguation_es": "Un cultivo es una especie vegetal cultivada para cosecha, identificada por su ciclo fenológico único en series temporales RS.",
+      "enrich_en": "Crop-type identification from RS time series is essential for model calibration and growth simulation in data assimilation frameworks like WOFOST/SAFY [R1][R3].",
+      "enrich_es": "La identificación del tipo de cultivo a partir de series temporales RS es esencial para la calibración del modelo y la simulación del crecimiento en marcos de asimilación como WOFOST/SAFY [R1][R3].",
+      "refs": [
+        "R1",
+        "R3"
+      ]
+    },
+    {
+      "id": "field",
+      "disambiguation_en": "A field is a contiguous area managed as a single unit, often the spatial unit for RS-based crop monitoring (e.g., pixel-level or object-based).",
+      "disambiguation_es": "Un campo es un área contigua manejada como una sola unidad, a menudo la unidad espacial para el monitoreo de cultivos basado en RS (ej., a nivel de píxel u objetos).",
+      "enrich_en": "Data assimilation operates on field/pixel scale; mixed boundary pixels affect proportion estimates, necessitating sub-pixel analysis [R6]. Field shape aids object-based classification.",
+      "enrich_es": "La asimilación de datos opera a escala de campo/píxel; los píxeles mixtos de límite afectan las estimaciones de proporción, requiriendo análisis subpíxel [R6]. La forma del campo ayuda a la clasificación orientada a objetos.",
+      "refs": [
+        "R6"
+      ]
+    },
+    {
+      "id": "agriculture",
+      "disambiguation_en": "Agriculture covers cropland, pastures, and permanent crops; RS data helps map these categories for area statistics.",
+      "disambiguation_es": "La agricultura cubre tierras de cultivo, pastizales y cultivos permanentes; los datos RS ayudan a mapear estas categorías para estadísticas de área.",
+      "enrich_en": "Statistical area estimation from RS relies on design-based inference (e.g., stratified sampling) accounting for map accuracy and mixed pixels [R7][R8].",
+      "enrich_es": "La estimación estadística de área a partir de RS se basa en inferencia basada en diseño (ej., muestreo estratificado) considerando la precisión del mapa y los píxeles mixtos [R7][R8].",
+      "refs": [
+        "R7",
+        "R8"
+      ]
+    }
+  ]
+}

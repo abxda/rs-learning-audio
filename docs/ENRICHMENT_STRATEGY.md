@@ -117,3 +117,17 @@ Por concepto (agrupado por tema), con su definición actual + el cerebro de su t
 ---
 
 *Estrategia diseñada para la fase de enriquecimiento — el Handbook permanece como fuente canónica.*
+
+---
+
+## ESTADO (ejecución)
+
+- ✅ **R0** — bibliografía del libro cosechada: **392 referencias** mapeadas a los 14 temas (`enrich_r0_references.py`, `enrichment/R0_references.json`).
+- ✅ **R1** — **15 cerebros documentales** generados (14 temas + **Plataforma y Reproducibilidad**), bilingües, citando solo fuentes verificadas (deep research vía WebSearch/WebFetch + bibliografía del libro). `enrich_r1_brains.py`, `out/brains/*.md`, embebidos en la app.
+- ✅ **Nivel adicional** — el tema **Plataforma y Reproducibilidad** (idx 14) integrado como cluster 15; los 5 conceptos de infraestructura (`data-image`, etc.) reclasificados y **desambiguados** (cita `howto`).
+- ✅ **App** — botón **📖 Dossier** por tarjeta de tema → vista del cerebro en la app (render markdown, offline); minimapa y portada con 15 temas.
+- ✅ **Verificación** — URLs de referencias revisadas (las de editorial dan 403 anti-bot pero son DOIs reales; las abiertas resuelven 200). Cero referencias inventadas.
+
+### Pendiente (terreno preparado) — R2/R3
+- **R2** — inyectar el enriquecimiento (capa científica + referencias + desambiguación) en los **564 conceptos** (no solo los ~4 reps por tema ya generados), y **ampliar** con conceptos nuevos donde el libro cita pero no define. Los datos `enrich[]` por concepto ya existen en `enrichment/brains/brain_*.json`.
+- **R3** — re-integrar a `ontology.json` (campos `references[]`, `enrichment.{en,es}`, `disambiguation`), regenerar app/vault/glosario, **audio solo de lo nuevo/cambiado** + QA STT, re-validar y deploy.

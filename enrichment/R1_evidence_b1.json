@@ -1,0 +1,39 @@
+{
+ "0": {"title": "Satellite Data Cubes",
+  "findings": "The Open Data Cube (ODC) is the open-source standard for managing and analysing large EO archives; data cubes deliver Analysis-Ready Data (ARD) - standardised, harmonised, cloud-stored time series after geometric/radiometric/atmospheric correction, removing demanding pre-processing for the user. The Agriculture monitoring Data Cube (ADC) is an automated modular pipeline indexing optical and SAR imagery. The SITS 'time-first, space-later' paradigm organises big EO images as data cubes for satellite image time-series (SITS) land/crop classification.",
+  "refs": [
+   {"t": "Open Data Cube (open-source EO data management)", "u": "https://www.opendatacube.org/"},
+   {"t": "A Data Cube of Big Satellite Image Time-Series for Agriculture Monitoring (2022)", "u": "https://arxiv.org/abs/2205.07752"},
+   {"t": "SITS: Satellite Image Time Series Analysis on EO Data Cubes (e-sensing book)", "u": "https://e-sensing.github.io/sitsbook/introduction.html"},
+   {"t": "Copernicus OBSERVER: Data cubes enabling EO applications", "u": "https://www.copernicus.eu/en/news/news/observer-data-cubes-enabling-and-facilitating-earth-observation-applications"}
+  ]},
+ "1": {"title": "Field Ground Truth",
+  "findings": "Supervised crop classification requires extensive ground-truth reference data for training and validation; the quality, quantity and spatial representativeness of reference labels fundamentally determine accuracy - sparse or spatially biased data impairs performance. Conventional ground-truthing (field surveys, census, photo-interpretation) is costly; modern strategies use GPS plot capture, geotagged photos and farmer interviews, with stratified sampling and route-optimised campaigns to cover spectrally complex zones. Scarcity of timely interoperable ground data is acute in smallholder systems.",
+  "refs": [
+   {"t": "Strategic Ground Data Planning for Efficient Crop Classification (Geographies 2024)", "u": "https://doi.org/10.3390/geographies5040059"},
+   {"t": "Collecting and Disseminating Ground Truth Data for Generation of Agriculture Statistics", "u": "https://www.researchgate.net/publication/362490067"},
+   {"t": "Scaling Ground Truth Data Collection for Advanced Crop Analytics (Tetra Tech)", "u": "https://www.tetratech.com/insights/scaling-ground-truth-data-collection-use-and-sharing-to-promote-advanced-crop-analytics/"}
+  ]},
+ "2": {"title": "Image Preprocessing Basics",
+  "findings": "Atmospheric correction is essential pre-processing for biophysical retrieval, multi-temporal analysis and classification. Sentinel-2 Level-1C is Top-of-Atmosphere reflectance (radiometric + geometric/orthorectification corrections); Level-2A is Bottom-of-Atmosphere (atmospherically corrected) produced by SEN2COR, which also performs terrain and cirrus correction and scene classification (AOT and water-vapour retrieval, TOA->BOA). Radiometric calibration normalises sensor noise/striping. The Harmonized Landsat Sentinel-2 (HLS) dataset provides cross-sensor ARD surface reflectance.",
+  "refs": [
+   {"t": "Impact of Atmospheric Corrections on Sentinel-2 Land-Cover Classification (MDPI IJGI 2020)", "u": "https://www.mdpi.com/2220-9964/9/4/277"},
+   {"t": "Harmonized Landsat and Sentinel-2 v2.0 surface reflectance dataset (RSE 2025)", "u": "https://www.sciencedirect.com/science/article/pii/S0034425725001270"},
+   {"t": "Assessment of atmospheric correction methods for Sentinel-2 (ISPRS/IJAEOG)", "u": "https://www.sciencedirect.com/science/article/abs/pii/S0303243418301843"}
+  ]},
+ "3": {"title": "Large-Scale Crop Monitoring",
+  "findings": "Landsat (since 1972) is the longest operational agricultural-monitoring record. Operational national programmes include Canada's Annual Crop Inventory. The JRC ASAP system provides global anomaly hot-spot early warning for food security. FAO's STI portal catalogues satellite monitoring platforms. Operational pipelines fuse multispectral imagery, weather and machine learning for real-time crop health, production forecasting and market intelligence, supporting national statistics and SDG reporting.",
+  "refs": [
+   {"t": "UN Handbook on Remote Sensing for Agricultural Statistics (FAO, official PDF)", "u": "https://openknowledge.fao.org/server/api/core/bitstreams/dcadd248-cccb-43ad-9e3c-7aa0cf2bb577/content"},
+   {"t": "ASAP: a new global early warning system for agricultural production (JRC)", "u": "https://www.ncbi.nlm.nih.gov/pmc/articles/PMC6360855/"},
+   {"t": "FAO STI: Satellite- and Remote-Sensing-Based Agricultural Monitoring Platforms", "u": "https://sti-portal.fao.org/families/satellite-and-remote-sensing-based-agricultural-monitoring-platforms"},
+   {"t": "NASA Earthdata: Satellite Remote Sensing for Agricultural Applications", "u": "https://www.earthdata.nasa.gov/learn/trainings/satellite-remote-sensing-agricultural-applications"}
+  ]},
+ "4": {"title": "Vegetation Indices Deep Dive",
+  "findings": "NDVI is a simple, fast, non-destructive spectral index from red/near-infrared reflectance, the workhorse of crop status monitoring. Phenology metrics (start/peak/end of season) are derived per-pixel from time series such as MODIS 16-day NDVI and correlate with yield. NDVI is computed across MODIS, AVHRR, Landsat, Sentinel and UAV. Complementary indices include GNDVI (chlorophyll sensitivity), ARVI (atmospheric resistance) and SAVI (soil-brightness adjustment). Applications span yield prediction, irrigation scheduling, classification, change detection and phenology.",
+  "refs": [
+   {"t": "Improving remotely-sensed crop monitoring by NDVI-based crop phenology estimators (Agric. & Forest Meteorology)", "u": "https://www.sciencedirect.com/science/article/abs/pii/S0378429017317379"},
+   {"t": "Prediction of Crop Yield Using Phenological Information from RS Vegetation Index", "u": "https://pmc.ncbi.nlm.nih.gov/articles/PMC7922106/"},
+   {"t": "NDVI and Beyond: Vegetation Indices for Crop Recognition (Sensors 2025)", "u": "https://www.mdpi.com/1424-8220/25/12/3817"}
+  ]}
+}

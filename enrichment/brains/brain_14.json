@@ -1,0 +1,89 @@
+{
+  "idx": "14",
+  "title": {
+    "en": "Platform & Reproducibility",
+    "es": "Plataforma y Reproducibilidad"
+  },
+  "slug": "platform-reproducibility",
+  "members": [
+    "data-image",
+    "data-volumes",
+    "csi-image-driver",
+    "oci-artifact",
+    "stateless-data"
+  ],
+  "refs": [
+    {
+      "tag": "R1",
+      "text": "Earth Observation Open Science: Enhancing Reproducible Science Using Data Cubes (Data 2019)",
+      "url": "https://www.mdpi.com/2306-5729/4/4/147",
+      "kind": "deep-research"
+    },
+    {
+      "tag": "R2",
+      "text": "Containers in research workflows: reproducibility (Imperial College carpentry)",
+      "url": "https://imperialcollegelondon.github.io/2020-07-13-Containers-Online/08-reproducibility/index.html",
+      "kind": "deep-research"
+    },
+    {
+      "tag": "R3",
+      "text": "Ten simple rules for writing Dockerfiles for reproducible data science (PLOS Comp Biol 2020)",
+      "url": "https://journals.plos.org/ploscompbiol/article?id=10.1371/journal.pcbi.1008316",
+      "kind": "deep-research"
+    },
+    {
+      "tag": "R4",
+      "text": "OGC Testbed-16: EO Application Packages with Jupyter Notebooks",
+      "url": "https://docs.ogc.org/per/20-035.html",
+      "kind": "deep-research"
+    }
+  ],
+  "call_id": "bff8abaa23dfe500c390a9539414c3945a5edde9e46ffe71ec280b7a63cc5e3c",
+  "brain_en": "## Platform & Reproducibility: The Handbook’s Execution Infrastructure\n\nThis theme describes the **reproducible-execution infrastructure** that underpins every chapter of the Handbook. It is not an Earth‑observation method but rather a cloud‑native platform that ensures all code and data can be run identically by any user, anywhere, at any time. The core idea is to decouple data from compute by packaging each chapter’s local data files (models, samples) as immutable, content‑addressed **OCI artifacts** (container images) and mounting them read‑only into Kubernetes pods via a **CSI Image Driver**. This gives fast, stateless, cached startup without requiring persistent storage per session.\n\n### Key Methods & Scientific Distinctions\n- **Containerisation (Docker/OCI):** Captures exact software + data versions, enabling cross‑platform reproducibility. This is standard practice in open science (e.g., BinderHub, repo2Docker) and is directly supported by the Handbook’s infrastructure. [R2][R3]\n- **Kubernetes CSI Driver:** The Container Storage Interface (CSI) for images allows OCI containers to be mounted as volumes, not run as processes. This is a specialised use of container technology that treats data as read‑only artifacts.\n- **Stateless, immutable data:** Each chapter’s data is versioned and hash‑addressed, meaning any change produces a new artifact and the old one remains untouched. This mirrors the reproducibility ideals of data cubes and Earth Observation open science. [R1][R4]\n\n### How It Grounds the Handbook Concepts\n- **data-image (data image):** A lightweight OCI container image that holds a chapter’s local data files. It is the unit of data packaging and distribution.\n- **data-volumes (DataVolumes):** A Kubernetes resource that imports and persistently stores data from external sources into the cluster; it complements the ephemeral, read‑only data images.\n- **csi-image-driver (CSI Image Driver):** A Kubernetes CSI driver that mounts OCI container images as read‑only volumes, enabling fast, stateless data access without running the container as a process.\n- **oci-artifact (OCI artifact):** A versioned, immutable snapshot of a chapter’s data, packaged as a container image and registered by content hash. It is the canonical form for all chapter data.\n\n### What Gap It Fills\nBefore this platform, reproducing a chapter required manually downloading data files, installing dependencies, and hoping the environment matched. The Handbook’s infrastructure fills the gap by providing a **reproducible, automated, and cloud‑native environment** where every user can spin up a session that is bit‑for‑bit identical to the author’s original analysis. This aligns with the broader movement toward reproducible notebooks and application packages in EO science. [R1][R4]",
+  "brain_es": "## Plataforma y Reproducibilidad: Infraestructura de Ejecución del Manual\n\nEste tema describe la **infraestructura de ejecución reproducible** que sustenta cada capítulo del Manual. No es un método de observación de la Tierra, sino una plataforma nativa en la nube que garantiza que todo el código y los datos puedan ejecutarse de manera idéntica por cualquier usuario, en cualquier lugar y en cualquier momento. La idea central es separar los datos del cómputo empaquetando los archivos de datos locales de cada capítulo (modelos, muestras) como **artefactos OCI** inmutables y direccionados por contenido (imágenes de contenedor) y montándolos como solo lectura en pods de Kubernetes mediante un **CSI Image Driver**. Esto proporciona un inicio rápido, sin estado y con caché, sin necesidad de almacenamiento persistente por sesión.\n\n### Métodos Clave y Distinciones Científicas\n- **Contenedores (Docker/OCI):** Capturan versiones exactas de software y datos, permitiendo reproducibilidad entre plataformas. Es una práctica estándar en ciencia abierta (ej. BinderHub, repo2Docker) y está directamente soportada por la infraestructura del Manual. [R2][R3]\n- **Controlador CSI de Kubernetes:** La interfaz de almacenamiento de contenedores (CSI) para imágenes permite montar contenedores OCI como volúmenes, no ejecutarlos como procesos. Es un uso especializado de la tecnología de contenedores que trata los datos como artefactos de solo lectura.\n- **Datos inmutables y sin estado:** Los datos de cada capítulo tienen versiones y se direccionan por hash, de modo que cualquier cambio produce un nuevo artefacto y el anterior permanece intacto. Esto refleja los ideales de reproducibilidad de los cubos de datos y la ciencia abierta de Observación de la Tierra. [R1][R4]\n\n### Cómo Fundamenta los Conceptos del Manual\n- **data-image (imagen de datos):** Una imagen de contenedor OCI ligera que contiene los archivos de datos locales de un capítulo. Es la unidad de empaquetado y distribución de datos.\n- **data-volumes (volúmenes de datos):** Un recurso de Kubernetes que importa y almacena datos de forma persistente desde fuentes externas al clúster; complementa las imágenes de datos efímeras y de solo lectura.\n- **csi-image-driver (controlador de imágenes CSI):** Un controlador CSI de Kubernetes que monta imágenes de contenedor OCI como volúmenes de solo lectura, permitiendo acceso rápido y sin estado a los datos sin ejecutar el contenedor como proceso.\n- **oci-artifact (artefacto OCI):** Una instantánea versionada e inmutable de los datos de un capítulo, empaquetada como imagen de contenedor y registrada mediante un hash de contenido. Es la forma canónica de todos los datos del capítulo.\n\n### Qué Vacío Llena\nAntes de esta plataforma, reproducir un capítulo requería descargar manualmente los archivos de datos, instalar dependencias y esperar que el entorno coincidiera. La infraestructura del Manual llena el vacío proporcionando un **entorno reproducible, automatizado y nativo en la nube** donde cada usuario puede iniciar una sesión bit‑por‑bit idéntica al análisis original del autor. Esto se alinea con el movimiento hacia cuadernos reproducibles y paquetes de aplicaciones en la ciencia de la Observación de la Tierra. [R1][R4]",
+  "enrich": [
+    {
+      "id": "data-image",
+      "disambiguation_en": "A data image is an OCI container image that stores a chapter's local data files, not a disk image or operating system snapshot.",
+      "disambiguation_es": "Una imagen de datos es una imagen de contenedor OCI que almacena los archivos de datos locales de un capítulo, no una imagen de disco o instantánea del sistema operativo.",
+      "enrich_en": "Data images follow reproducible container best practices, ensuring exact data versioning and portability across platforms. [R2][R3]",
+      "enrich_es": "Las imágenes de datos siguen las mejores prácticas de contenedores reproducibles, asegurando versionado exacto y portabilidad entre plataformas. [R2][R3]",
+      "refs": [
+        "R2",
+        "R3"
+      ]
+    },
+    {
+      "id": "data-volumes",
+      "disambiguation_en": "DataVolumes are Kubernetes resources that import and persist external data, distinct from ephemeral, read‑only data images.",
+      "disambiguation_es": "Los DataVolumes son recursos de Kubernetes que importan y persisten datos externos, distintos de las imágenes de datos efímeras y de solo lectura.",
+      "enrich_en": "DataVolumes enable hybrid data workflows: persistent storage for large external datasets, complementary to immutable data images. [R1]",
+      "enrich_es": "Los DataVolumes permiten flujos de trabajo híbridos: almacenamiento persistente para grandes conjuntos de datos externos, complementarios a las imágenes inmutables. [R1]",
+      "refs": [
+        "R1"
+      ]
+    },
+    {
+      "id": "csi-image-driver",
+      "disambiguation_en": "The CSI Image Driver mounts OCI container images as read‑only volumes in Kubernetes, not as executable containers.",
+      "disambiguation_es": "El CSI Image Driver monta imágenes de contenedor OCI como volúmenes de solo lectura en Kubernetes, no como contenedores ejecutables.",
+      "enrich_en": "This driver treats data artifacts as immutable volumes, providing fast, stateless access aligned with reproducible data cube platforms. [R1][R4]",
+      "enrich_es": "Este controlador trata los artefactos de datos como volúmenes inmutables, proporcionando acceso rápido y sin estado, alineado con plataformas de cubos de datos reproducibles. [R1][R4]",
+      "refs": [
+        "R1",
+        "R4"
+      ]
+    },
+    {
+      "id": "oci-artifact",
+      "disambiguation_en": "An OCI artifact is a versioned, immutable snapshot of data stored as a container image in a registry, referenced by content hash.",
+      "disambiguation_es": "Un artefacto OCI es una instantánea versionada e inmutable de datos almacenada como imagen de contenedor en un registro, referenciada por hash de contenido.",
+      "enrich_en": "OCI artifacts enable bit‑for‑bit reproducibility, as each artifact captures a fixed state of data, mirroring open‑science practices. [R2][R3]",
+      "enrich_es": "Los artefactos OCI permiten reproducibilidad bit‑por‑bit, ya que cada artefacto captura un estado fijo de los datos, reflejando prácticas de ciencia abierta. [R2][R3]",
+      "refs": [
+        "R2",
+        "R3"
+      ]
+    }
+  ]
+}

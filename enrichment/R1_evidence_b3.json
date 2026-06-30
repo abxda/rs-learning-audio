@@ -1,0 +1,40 @@
+{
+ "9": {"title": "Area Estimation from Samples",
+  "findings": "Pixel-counting mapped area is biased because classification errors vary by class. The design-based, error-matrix-adjusted estimator combines a probability reference sample with the map: a confusion matrix rescales mapped proportions by reference proportions, giving approximately unbiased area with standard errors and confidence intervals. Recommended design: stratified random sampling with strata = map classes (the sampling/response/analysis good-practice triad). Better maps cut sample size 20-40% for a target CV; mixed/boundary pixels need regression/sub-pixel methods; modern prediction-powered/regression estimators tighten CIs without bias.",
+  "refs": [
+   {"t": "Olofsson et al., Good practices for estimating area and assessing accuracy of land change (RSE 2014)", "u": "https://www.sciencedirect.com/science/article/abs/pii/S0034425714000704"},
+   {"t": "Gallego, Remote sensing and land cover area estimation (IJRS 2004)", "u": "https://doi.org/10.1080/01431160310001619607"},
+   {"t": "Regression coefficient estimation from remote sensing maps (arXiv 2024)", "u": "https://arxiv.org/pdf/2407.13659"}
+  ]},
+ "11": {"title": "Error Analysis: Omission/Commission",
+  "findings": "From the confusion/error matrix (columns = reference, rows = map) come overall accuracy, producer's and user's accuracy and the two error types. OMISSION error: reference pixels of a class left out of that class on the map (complement of producer's accuracy). COMMISSION error: pixels assigned to a class that truly belong to another (= 100% - user's accuracy). These class-specific errors are exactly what the area estimator uses to CORRECT classification bias, so area can be estimated correctly even when the map's accuracy is modest. Avoid the kappa coefficient and normalised matrices.",
+  "refs": [
+   {"t": "Accuracy assessment (confusion matrix, omission/commission) - HU Berlin EO Lab", "u": "https://eol.pages.cms.hu-berlin.de/geo_rs/S09_Accuracy_assessment.html"},
+   {"t": "Stehman & Foody, Key issues in rigorous accuracy assessment (RSE 2019)", "u": "https://www.sciencedirect.com/science/article/abs/pii/S0034425719302111"},
+   {"t": "Ground reference data error and mis-estimation of land cover change area (RSL 2013)", "u": "https://www.tandfonline.com/doi/full/10.1080/2150704X.2013.798708"}
+  ]},
+ "12": {"title": "Geospatial Data Handling",
+  "findings": "A Coordinate Reference System (CRS) gives coordinates meaning on Earth and lets datasets align; without it data are coordinates in arbitrary space. Map projections transform the 3D ellipsoid to a 2D plane (each projection trades off area/shape/distance). Data come as VECTOR (points/lines/polygons, discrete features by coordinates) or RASTER (a regular grid of cells with fixed resolution, continuous values). Reprojecting vector moves every vertex; reprojecting raster resamples to a new grid (different rows/cols). Correct CRS handling is foundational to combining EO and survey data.",
+  "refs": [
+   {"t": "Introduction to Coordinate Reference Systems (UW-Madison Data Science)", "u": "https://uw-madison-datascience.github.io/organization-geospatial/03-crs/index.html"},
+   {"t": "Reprojecting geographic data (Geocomputation with R, ch.7)", "u": "https://r.geocompx.org/reproj-geo-data"},
+   {"t": "Coordinate Reference Systems (QGIS gentle GIS introduction)", "u": "https://docs.qgis.org/3.44/en/docs/gentle_gis_introduction/coordinate_reference_systems.html"}
+  ]},
+ "13": {"title": "Satellite Imagery Essentials",
+  "findings": "Optical sensors are characterised by four resolutions. SPATIAL: Sentinel-2 MSI = 10/20/60 m across 13 bands; Landsat = 30 m (15 m pan). TEMPORAL (revisit): Sentinel-2 ~5 days (two-satellite constellation) vs Landsat 16 days. SPECTRAL: Sentinel-2's 13 bands span visible, red-edge, NIR and SWIR (red-edge bands aid LAI/chlorophyll). RADIOMETRIC: bit-depth/sensitivity. SAR (e.g. Sentinel-1 C-band, 10 m, ~6-day) is active, cloud-penetrating; optical+SAR fusion gives dense, all-weather time series for crop mapping.",
+  "refs": [
+   {"t": "Sentinel-2 - an overview (ScienceDirect Topics)", "u": "https://www.sciencedirect.com/topics/engineering/sentinel-2"},
+   {"t": "Evaluation of Sentinel-2 Red-Edge Bands for Green LAI and Chlorophyll", "u": "https://www.ncbi.nlm.nih.gov/pmc/articles/PMC3231680/"},
+   {"t": "Synergetic Use of Sentinel-1 and Sentinel-2 for Soil Moisture Mapping", "u": "https://www.ncbi.nlm.nih.gov/pmc/articles/PMC5621168/"}
+  ]},
+ "14": {"title": "Platform & Reproducibility",
+  "is_platform": true,
+  "members": ["data-image", "data-volumes", "csi-image-driver", "oci-artifact", "stateless-data"],
+  "findings": "These concepts are the Handbook's REPRODUCIBLE-EXECUTION INFRASTRUCTURE (from the 'howto' page), NOT Earth-observation methods. To make every chapter's code runnable and bit-for-bit reproducible, chapter data are packaged as immutable, content-addressed OCI container images (OCI artifacts) and mounted read-only into cloud sessions via a CSI Image Driver on Kubernetes, giving fast, stateless, cached startup. This mirrors open-science practice: containers (Docker/OCI) capture exact software+data versions for cross-platform reproducibility; BinderHub/repo2Docker provision Jupyter environments on Kubernetes; EO open science increasingly ships analyses as reproducible notebooks over data cubes.",
+  "refs": [
+   {"t": "Earth Observation Open Science: Enhancing Reproducible Science Using Data Cubes (Data 2019)", "u": "https://www.mdpi.com/2306-5729/4/4/147"},
+   {"t": "Containers in research workflows: reproducibility (Imperial College carpentry)", "u": "https://imperialcollegelondon.github.io/2020-07-13-Containers-Online/08-reproducibility/index.html"},
+   {"t": "Ten simple rules for writing Dockerfiles for reproducible data science (PLOS Comp Biol 2020)", "u": "https://journals.plos.org/ploscompbiol/article?id=10.1371/journal.pcbi.1008316"},
+   {"t": "OGC Testbed-16: EO Application Packages with Jupyter Notebooks", "u": "https://docs.ogc.org/per/20-035.html"}
+  ]}
+}

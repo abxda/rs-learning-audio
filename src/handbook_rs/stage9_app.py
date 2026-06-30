@@ -70,13 +70,46 @@ def build_payload(ont: dict) -> dict:
                 rel.append([a, b])
     cpath = build_dir() / "10_clusters.json"
     clu = read_json(cpath) if cpath.exists() else {"clusters": [], "node_xy": {}, "node_cluster": {}}
+    clusters = clu.get("clusters", [])
+    node_cluster = dict(clu.get("node_cluster", {}))
+    node_xy = clu.get("node_xy", {})
+
+    # ---- embed documentary brains + add the Platform & Reproducibility theme ----
+    brains = {}
+    bidx = build_dir() / "brains" / "index.json"
+    if bidx.exists():
+        for b in read_json(bidx)["brains"]:
+            bj = read_json(build_dir() / "brains" / f"brain_{b['idx']}.json")
+            t = bj["title"] if isinstance(bj["title"], dict) else {"en": bj["title"], "es": bj["title"]}
+            brains[str(b["idx"])] = {"title": t, "slug": b["slug"], "en": bj["brain_en"],
+                                     "es": bj["brain_es"], "refs": bj["refs"]}
+            if b["idx"] == 14:  # platform: add as a 15th cluster + reclassify its members
+                mem = [m for m in b["members"] if m in node_xy]
+                for m in mem:
+                    node_cluster[m] = 14
+                if mem:
+                    cx = sum(node_xy[m][0] for m in mem) / len(mem)
+                    cy = sum(node_xy[m][1] for m in mem) / len(mem)
+                    entry = min(mem, key=lambda mid: next((n["lvl"] for n in out_nodes if n["id"] == mid), 0))
+                    clusters = [c for c in clusters if c["idx"] != 14] + [{
+                        "idx": 14, "title": t,
+                        "desc": {"en": "The Handbook's reproducible-execution platform (OCI images on Kubernetes) — not an EO method.",
+                                 "es": "La plataforma de reproducibilidad del Handbook (imágenes OCI en Kubernetes), no un método de teledetección."},
+                        "members": mem, "reps": mem, "size": len(mem), "entry": entry,
+                        "color": "#6d4c41", "cx": round(cx, 4), "cy": round(cy, 4)}]
+                    # drop reclassified members from their old EO clusters' member lists
+                    for c in clusters:
+                        if c["idx"] != 14:
+                            c["members"] = [x for x in c["members"] if x not in mem]
+                            c["size"] = len(c["members"])
+
     return {"meta": {"title": ont["meta"]["source_book"], "stats": ont["meta"]["stats"],
                      "models": available_models(),
                      "clustering": {"method": clu.get("method"), "k": clu.get("k"),
                                     "silhouette": clu.get("silhouette")}},
             "nodes": out_nodes, "prereq": prereq, "rel": rel,
-            "clusters": clu.get("clusters", []), "node_xy": clu.get("node_xy", {}),
-            "node_cluster": clu.get("node_cluster", {})}
+            "clusters": clusters, "node_xy": node_xy, "node_cluster": node_cluster,
+            "brains": brains}
 
 
 def run(force: bool = False) -> Path:
@@ -178,6 +211,12 @@ header .title{font-weight:600;font-size:15px;margin-right:auto;white-space:nowra
 .tcard .pg i{display:block;height:100%;background:var(--accent2)}
 .tcard .meta{font-size:.74rem;color:var(--soft);display:flex;justify-content:space-between}
 .tcard.done{border-color:var(--accent2)}
+.tcard .meta a{color:var(--link);font-weight:600}
+.brain{max-width:74ch;margin:0 auto;font-family:var(--read);line-height:1.7}
+.brain h1{font-size:1.7rem}.brain h3{font-size:1.05rem;margin:1.1em 0 .3em;font-family:var(--ui);color:var(--accent)}
+.brain h4{margin:.8em 0 .2em}.brain p{margin:.6em 0}.brain ul{margin:.4em 0 .4em 1.1em}
+.brain .es{color:var(--soft)}.brain .reflist{font-size:.85rem}.brain .reflist div{margin:.3em 0}
+.brain .tag{display:inline-block;font-size:.7rem;background:var(--chip);color:var(--soft);border-radius:8px;padding:0 7px;margin-left:5px}
 
 /* drawer sections */
 .dh{font-size:.74rem;text-transform:uppercase;letter-spacing:.06em;color:var(--soft);margin:14px 0 6px}
@@ -638,7 +677,7 @@ function renderHome(){
       <div class="tes">${esc(c.title.es)}</div>
       <div class="td">${esc(c.desc.es||c.desc.en)}</div>
       <div class="pg"><i style="width:${p.pct}%"></i></div>
-      <div class="meta"><span>${p.v}/${p.total} vistos</span><span>Comenzar →</span></div></div>`; });
+      <div class="meta"><span>${p.v}/${p.total} vistos</span>${(DATA.brains||{})[c.idx]?`<a onclick="event.stopPropagation();showBrain(${c.idx})">📖 Dossier</a>`:''}<span>Comenzar →</span></div></div>`; });
   h += `</div>`;
   document.getElementById('home').innerHTML = h;
 }
@@ -651,6 +690,36 @@ function showReader(){
   document.getElementById('home').classList.add('hidden');
   document.getElementById('reader').classList.remove('hidden'); }
 document.getElementById('homeBtn').onclick = showHome;
+
+/* ---------- documentary brains (dossiers) ---------- */
+const BRAINS = DATA.brains || {};
+function mdToHtml(s){
+  if(!s) return '';
+  const e2 = t => t.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+  const inline = t => e2(t).replace(/\*\*(.+?)\*\*/g,'<b>$1</b>')
+    .replace(/\[([^\]]+)\]\((https?:[^)]+)\)/g,'<a href="$2" target="_blank">$1</a>');
+  let html='', inUl=false;
+  for(let ln of s.split(/\r?\n/)){
+    if(/^\s*[-*]\s+/.test(ln)){ if(!inUl){html+='<ul>';inUl=true;} html+='<li>'+inline(ln.replace(/^\s*[-*]\s+/,''))+'</li>'; continue; }
+    if(inUl){html+='</ul>';inUl=false;}
+    if(/^#{2,4}\s+/.test(ln)) html+='<h3>'+inline(ln.replace(/^#{2,4}\s+/,''))+'</h3>';
+    else if(ln.trim()) html+='<p>'+inline(ln)+'</p>';
+  }
+  if(inUl)html+='</ul>';
+  return html;
+}
+function showBrain(idx){
+  const b = BRAINS[idx]; if(!b) return;
+  const refs = (b.refs||[]).map(r=>`<div>[${r.tag}] ${esc(r.text)} — <a href="${r.url}" target="_blank">${esc(r.url)}</a> <span class="tag">${r.kind}</span></div>`).join('');
+  document.getElementById('reader').innerHTML =
+    `<div class="brain"><button onclick="showHome()">← Volver al mapa</button>
+     <h1>🧠 ${esc(b.title.en)} / ${esc(b.title.es)}</h1>
+     <p class="muted">Dossier científico — el Handbook es la columna; la investigación es aditiva y citada (cero fuentes inventadas).</p>
+     <h3>English</h3>${mdToHtml(b.en)}
+     <h3>Español</h3><div class="es">${mdToHtml(b.es)}</div>
+     <h3>Referencias verificadas</h3><div class="reflist">${refs}</div></div>`;
+  showReader(); window.scrollTo(0,0); closeDrawer();
+}
 
 /* ---------- boot ---------- */
 document.getElementById('langBtn').textContent={both:'EN/ES',en:'EN',es:'ES'}[S.lang];

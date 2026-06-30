@@ -1,0 +1,288 @@
+{
+  "brains": [
+    {
+      "idx": 0,
+      "title": {
+        "en": "Satellite Data Cubes",
+        "es": "Cubos de Datos Satelitales"
+      },
+      "slug": "satellite-data-cubes",
+      "file": "brains/satellite-data-cubes.md",
+      "n_refs": 9,
+      "n_enrich": 4,
+      "members": [
+        "spatial-datasets",
+        "satellite-data-cube",
+        "copernicus-data-space-ecosystem",
+        "dataset",
+        "cloud-based-services",
+        "satellite-image-collections"
+      ]
+    },
+    {
+      "idx": 1,
+      "title": {
+        "en": "Field Ground Truth",
+        "es": "Verdad Terreno en Campo"
+      },
+      "slug": "field-ground-truth",
+      "file": "brains/field-ground-truth.md",
+      "n_refs": 8,
+      "n_enrich": 4,
+      "members": [
+        "field-samples",
+        "data-collection",
+        "ground-measurements",
+        "ground-observations",
+        "reference",
+        "ground-truth-2"
+      ]
+    },
+    {
+      "idx": 2,
+      "title": {
+        "en": "Image Preprocessing Basics",
+        "es": "Fundamentos de Preprocesamiento"
+      },
+      "slug": "image-preprocessing-basics",
+      "file": "brains/image-preprocessing-basics.md",
+      "n_refs": 8,
+      "n_enrich": 4,
+      "members": [
+        "processing",
+        "data-processing",
+        "atmospheric-correction",
+        "terrain-correction",
+        "radiometric-corrections",
+        "cloud-masking"
+      ]
+    },
+    {
+      "idx": 3,
+      "title": {
+        "en": "Large-Scale Crop Monitoring",
+        "es": "Monitoreo de Cultivos a Gran Escala"
+      },
+      "slug": "large-scale-crop-monitoring",
+      "file": "brains/large-scale-crop-monitoring.md",
+      "n_refs": 9,
+      "n_enrich": 4,
+      "members": [
+        "national-scale-applications",
+        "agricultural-monitoring",
+        "agricultural-statistical-production",
+        "remote-sensing-estimation",
+        "crop-assessment",
+        "large-scale-agricultural-monitoring"
+      ]
+    },
+    {
+      "idx": 4,
+      "title": {
+        "en": "Vegetation Indices Deep Dive",
+        "es": "Inmersión en Índices de Vegetación"
+      },
+      "slug": "vegetation-indices-deep-dive",
+      "file": "brains/vegetation-indices-deep-dive.md",
+      "n_refs": 8,
+      "n_enrich": 4,
+      "members": [
+        "satellite-vegetation-indices",
+        "vegetation-monitoring",
+        "ndvi",
+        "indices",
+        "vegetation-health",
+        "vegetation"
+      ]
+    },
+    {
+      "idx": 5,
+      "title": {
+        "en": "Crop Classification Methods",
+        "es": "Métodos de Clasificación de Cultivos"
+      },
+      "slug": "crop-classification-methods",
+      "file": "brains/crop-classification-methods.md",
+      "n_refs": 8,
+      "n_enrich": 4,
+      "members": [
+        "land-classification",
+        "satellite-image-classification",
+        "crop-classification",
+        "classification",
+        "classification-map",
+        "classified-map"
+      ]
+    },
+    {
+      "idx": 6,
+      "title": {
+        "en": "Building a Workflow",
+        "es": "Construcción de un Flujo de Trabajo"
+      },
+      "slug": "building-a-workflow",
+      "file": "brains/building-a-workflow.md",
+      "n_refs": 9,
+      "n_enrich": 4,
+      "members": [
+        "methodology",
+        "process",
+        "system",
+        "step",
+        "framework",
+        "training-program"
+      ]
+    },
+    {
+      "idx": 7,
+      "title": {
+        "en": "Crop and Yield Basics",
+        "es": "Fundamentos de Cultivos y Rendimiento"
+      },
+      "slug": "crop-and-yield-basics",
+      "file": "brains/crop-and-yield-basics.md",
+      "n_refs": 8,
+      "n_enrich": 4,
+      "members": [
+        "cropland",
+        "crop",
+        "field",
+        "agriculture",
+        "crop-yield",
+        "agricultural-land-areas"
+      ]
+    },
+    {
+      "idx": 8,
+      "title": {
+        "en": "Accuracy Assessment",
+        "es": "Evaluación de Precisión"
+      },
+      "slug": "accuracy-assessment",
+      "file": "brains/accuracy-assessment.md",
+      "n_refs": 8,
+      "n_enrich": 4,
+      "members": [
+        "performance",
+        "model-accuracy",
+        "classification-accuracy",
+        "accuracy",
+        "classification-performance",
+        "accuracy-metrics"
+      ]
+    },
+    {
+      "idx": 9,
+      "title": {
+        "en": "Area Estimation from Samples",
+        "es": "Estimación de Áreas por Muestras"
+      },
+      "slug": "area-estimation-from-samples",
+      "file": "brains/area-estimation-from-samples.md",
+      "n_refs": 8,
+      "n_enrich": 4,
+      "members": [
+        "area-estimation",
+        "sample-based-estimators",
+        "ground-survey-estimators",
+        "estimator",
+        "statistical-survey",
+        "area-frame"
+      ]
+    },
+    {
+      "idx": 10,
+      "title": {
+        "en": "Model Training and Algorithms",
+        "es": "Entrenamiento y Algoritmos de Modelos"
+      },
+      "slug": "model-training-and-algorithms",
+      "file": "brains/model-training-and-algorithms.md",
+      "n_refs": 8,
+      "n_enrich": 4,
+      "members": [
+        "training",
+        "model",
+        "classification-algorithm",
+        "model-training",
+        "training-samples",
+        "model-development"
+      ]
+    },
+    {
+      "idx": 11,
+      "title": {
+        "en": "Error Analysis: Omission/Commission",
+        "es": "Análisis de Errores: Omisión/Comisión"
+      },
+      "slug": "error-analysis-omission-commission",
+      "file": "brains/error-analysis-omission-commission.md",
+      "n_refs": 8,
+      "n_enrich": 4,
+      "members": [
+        "omission",
+        "commission",
+        "errors",
+        "overestimation",
+        "false-positive",
+        "bias"
+      ]
+    },
+    {
+      "idx": 12,
+      "title": {
+        "en": "Geospatial Data Handling",
+        "es": "Manejo de Datos Geoespaciales"
+      },
+      "slug": "geospatial-data-handling",
+      "file": "brains/geospatial-data-handling.md",
+      "n_refs": 8,
+      "n_enrich": 3,
+      "members": [
+        "georeferenced-information",
+        "geospatial-data",
+        "spatial-information",
+        "geographic-data",
+        "geoinformation",
+        "gis"
+      ]
+    },
+    {
+      "idx": 13,
+      "title": {
+        "en": "Satellite Imagery Essentials",
+        "es": "Esenciales de Imágenes Satelitales"
+      },
+      "slug": "satellite-imagery-essentials",
+      "file": "brains/satellite-imagery-essentials.md",
+      "n_refs": 8,
+      "n_enrich": 4,
+      "members": [
+        "satellite-imagery",
+        "imagery",
+        "sensors",
+        "earth-observation",
+        "satellite-data",
+        "images"
+      ]
+    },
+    {
+      "idx": 14,
+      "title": {
+        "en": "Platform & Reproducibility",
+        "es": "Plataforma y Reproducibilidad"
+      },
+      "slug": "platform-reproducibility",
+      "file": "brains/platform-reproducibility.md",
+      "n_refs": 4,
+      "n_enrich": 4,
+      "members": [
+        "data-image",
+        "data-volumes",
+        "csi-image-driver",
+        "oci-artifact",
+        "stateless-data"
+      ]
+    }
+  ]
+}

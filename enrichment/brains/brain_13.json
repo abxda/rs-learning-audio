@@ -1,0 +1,114 @@
+{
+  "idx": "13",
+  "title": {
+    "en": "Satellite Imagery Essentials",
+    "es": "Esenciales de Imágenes Satelitales"
+  },
+  "slug": "satellite-imagery-essentials",
+  "members": [
+    "satellite-imagery",
+    "imagery",
+    "sensors",
+    "earth-observation",
+    "satellite-data",
+    "images"
+  ],
+  "refs": [
+    {
+      "tag": "R1",
+      "text": "Sentinel-2 - an overview (ScienceDirect Topics)",
+      "url": "https://www.sciencedirect.com/topics/engineering/sentinel-2",
+      "kind": "deep-research"
+    },
+    {
+      "tag": "R2",
+      "text": "Evaluation of Sentinel-2 Red-Edge Bands for Green LAI and Chlorophyll",
+      "url": "https://www.ncbi.nlm.nih.gov/pmc/articles/PMC3231680/",
+      "kind": "deep-research"
+    },
+    {
+      "tag": "R3",
+      "text": "Synergetic Use of Sentinel-1 and Sentinel-2 for Soil Moisture Mapping",
+      "url": "https://www.ncbi.nlm.nih.gov/pmc/articles/PMC5621168/",
+      "kind": "deep-research"
+    },
+    {
+      "tag": "R4",
+      "text": "[1] A. Mullissa et al. , “Sentinel-1 SAR Backscatter Analysis Ready Data Preparation in Google Earth Engine ,” Remote Sensing , vol. 13, no. 10, p. 1954, 2021, ",
+      "url": "https://doi.org/10.3390/rs13101954",
+      "kind": "handbook-bibliography"
+    },
+    {
+      "tag": "R5",
+      "text": "[2] C. F. Brown et al. , “Dynamic World , Near real-time global 10 m land use land cover mapping,” Scientific Data , vol. 9, no. 1, p. 251, 2022, doi: 10.1038/s",
+      "url": "https://doi.org/10.1038/s41597-022-01307-4",
+      "kind": "handbook-bibliography"
+    },
+    {
+      "tag": "R6",
+      "text": "[3] D. Amitrano, G. Di Martino, A. Di Simone, and P. Imperatore, “Flood detection with SAR : A review of techniques and datasets,” Remote Sensing , vol. 16, no.",
+      "url": "https://doi.org/10.3390/rs16040656",
+      "kind": "handbook-bibliography"
+    },
+    {
+      "tag": "R7",
+      "text": "[4] B. DeVries, C. Huang, J. Armston, W. Huang, J. W. Jones, and M. W. Lang, “Rapid and robust monitoring of flood events using Sentinel-1 and Landsat data on t",
+      "url": "https://doi.org/10.1016/j.rse.2020.111664",
+      "kind": "handbook-bibliography"
+    },
+    {
+      "tag": "R8",
+      "text": "[9] G. W. Zack, W. E. Rogers, and S. A. Latt, “Automatic measurement of sister chromatid exchange frequency.” Journal of Histochemistry & Cytochemistry , vol. 2",
+      "url": "https://doi.org/10.1177/25.7.70454",
+      "kind": "handbook-bibliography"
+    }
+  ],
+  "call_id": "c68d79073a014915d6593e5c38007ac0d787405c59d971656e5f0f4228324234",
+  "brain_en": "Satellite imagery is the foundational data source for agricultural statistics, collected by sensors on orbiting platforms that measure electromagnetic radiation. The key scientific distinction lies in sensor types: **optical** sensors (e.g., Sentinel-2 MSI, Landsat OLI) capture reflected sunlight in multiple spectral bands, while **SAR** (Synthetic Aperture Radar) sensors (e.g., Sentinel-1 C-band) actively emit microwave pulses and measure backscatter, enabling cloud-penetrating, all-weather imaging [R1][R3]. Optical sensors are characterized by four resolutions: **spatial** (pixel size: Sentinel-2 10/20/60 m across 13 bands; Landsat 30 m with 15 m panchromatic), **temporal** (revisit frequency: Sentinel-2 ~5 days with two satellites vs. Landsat 16 days), **spectral** (number and width of bands: Sentinel-2's 13 bands include red-edge bands critical for leaf area index and chlorophyll estimation [R2]), and **radiometric** (bit-depth, e.g., 12-bit for Sentinel-2). SAR sensors offer their own spatial (e.g., 10 m for Sentinel-1 IW mode) and temporal (e.g., 6-day revisit) resolutions, but are active and thus independent of solar illumination. The fusion of optical and SAR data provides dense, all-weather time series essential for crop mapping and monitoring [R3]. This deep research grounds the Handbook concepts by adding precise technical specifications and comparative performance metrics, filling the gap between general definitions and operational understanding needed for agricultural applications.\n\n- **satellite-imagery**: Defined as data from satellite sensors; enriched by specifying optical vs. SAR types, their resolutions, and fusion benefits [R1][R3].\n- **imagery**: Broad term; now understood as including both optical (multispectral) and SAR (radar) images, each with unique properties for crop monitoring.\n- **sensors**: Instruments characterized by four resolutions (spatial, temporal, spectral, radiometric) for optical, and active microwave emission for SAR [R1][R2].\n- **earth-observation**: The practice of collecting satellite data; enhanced by knowledge of sensor-specific capabilities (e.g., Sentinel-2 red-edge for vegetation health, Sentinel-1 for soil moisture) [R2][R3].\n- **satellite-data**: Information from sensors; now includes both optical reflectance and SAR backscatter, with known revisit cycles and spatial detail.\n- **images**: Digital representations; now recognized as multi-band optical or single/dual-pol SAR, with resolutions that dictate analysis scale.\n\n**GAP filled**: The Handbook provides general definitions; this research adds quantitative sensor specifications (e.g., 10 m resolution, 5-day revisit, 13 bands) and the critical optical-SAR distinction, enabling users to select appropriate data for specific agricultural tasks (e.g., crop type mapping, soil moisture estimation).",
+  "brain_es": "Las imágenes satelitales son la fuente de datos fundamental para las estadísticas agrícolas, recolectadas por sensores en plataformas orbitales que miden la radiación electromagnética. La distinción científica clave radica en los tipos de sensores: los **ópticos** (ej. Sentinel-2 MSI, Landsat OLI) capturan la luz solar reflejada en múltiples bandas espectrales, mientras que los **SAR** (Radar de Apertura Sintética, ej. Sentinel-1 banda C) emiten activamente pulsos de microondas y miden la retrodispersión, permitiendo imágenes en cualquier clima y penetrando nubes [R1][R3]. Los sensores ópticos se caracterizan por cuatro resoluciones: **espacial** (tamaño de píxel: Sentinel-2 10/20/60 m en 13 bandas; Landsat 30 m con 15 m pancromática), **temporal** (frecuencia de revisita: Sentinel-2 ~5 días con dos satélites vs. Landsat 16 días), **espectral** (número y ancho de bandas: las 13 bandas de Sentinel-2 incluyen bandas de borde rojo críticas para el índice de área foliar y clorofila [R2]), y **radiométrica** (profundidad de bits, ej. 12 bits para Sentinel-2). Los sensores SAR ofrecen sus propias resoluciones espacial (ej. 10 m para Sentinel-1 modo IW) y temporal (ej. 6 días de revisita), pero son activos e independientes de la iluminación solar. La fusión de datos ópticos y SAR proporciona series temporales densas y resistentes a la intemperie, esenciales para el mapeo y monitoreo de cultivos [R3]. Esta investigación profunda fundamenta los conceptos del Manual añadiendo especificaciones técnicas precisas y métricas de rendimiento comparativas, llenando el vacío entre las definiciones generales y la comprensión operativa necesaria para aplicaciones agrícolas.\n\n- **satellite-imagery**: Definido como datos de sensores satelitales; enriquecido especificando tipos ópticos vs. SAR, sus resoluciones y beneficios de fusión [R1][R3].\n- **imagery**: Término amplio; ahora entendido como incluyendo imágenes ópticas (multiespectrales) y SAR (radar), cada una con propiedades únicas para el monitoreo de cultivos.\n- **sensors**: Instrumentos caracterizados por cuatro resoluciones (espacial, temporal, espectral, radiométrica) para ópticos, y emisión activa de microondas para SAR [R1][R2].\n- **earth-observation**: La práctica de recolectar datos satelitales; mejorada por el conocimiento de capacidades específicas de sensores (ej. borde rojo de Sentinel-2 para salud vegetal, Sentinel-1 para humedad del suelo) [R2][R3].\n- **satellite-data**: Información de sensores; ahora incluye reflectancia óptica y retrodispersión SAR, con ciclos de revisita y detalle espacial conocidos.\n- **images**: Representaciones digitales; ahora reconocidas como ópticas multibanda o SAR de una/doble polarización, con resoluciones que dictan la escala de análisis.\n\n**VACÍO llenado**: El Manual proporciona definiciones generales; esta investigación añade especificaciones cuantitativas de sensores (ej. resolución 10 m, revisita 5 días, 13 bandas) y la distinción crítica óptico-SAR, permitiendo a los usuarios seleccionar datos apropiados para tareas agrícolas específicas (ej. mapeo de tipos de cultivo, estimación de humedad del suelo).",
+  "enrich": [
+    {
+      "id": "satellite-imagery",
+      "disambiguation_en": "Satellite imagery is data collected by sensors on satellites, including both optical (multispectral) and radar (SAR) types, each with distinct physical principles and resolutions.",
+      "disambiguation_es": "Las imágenes satelitales son datos recolectados por sensores en satélites, incluyendo tipos ópticos (multiespectrales) y de radar (SAR), cada uno con principios físicos y resoluciones distintas.",
+      "enrich_en": "Optical sensors (e.g., Sentinel-2) have 10/20/60 m spatial resolution and 5-day revisit; SAR (e.g., Sentinel-1) offers 10 m, 6-day revisit, and cloud penetration [R1][R3].",
+      "enrich_es": "Los sensores ópticos (ej. Sentinel-2) tienen resolución espacial de 10/20/60 m y revisita de 5 días; el SAR (ej. Sentinel-1) ofrece 10 m, revisita de 6 días y penetración de nubes [R1][R3].",
+      "refs": [
+        "R1",
+        "R3"
+      ]
+    },
+    {
+      "id": "imagery",
+      "disambiguation_en": "Imagery refers to the digital products from satellite sensors, encompassing both optical multispectral images and SAR radar images.",
+      "disambiguation_es": "Las imágenes se refieren a los productos digitales de sensores satelitales, abarcando tanto imágenes ópticas multiespectrales como imágenes de radar SAR.",
+      "enrich_en": "Optical imagery includes 13 spectral bands (Sentinel-2) with red-edge for vegetation; SAR imagery uses C-band backscatter for soil moisture [R2][R3].",
+      "enrich_es": "Las imágenes ópticas incluyen 13 bandas espectrales (Sentinel-2) con borde rojo para vegetación; las imágenes SAR usan retrodispersión en banda C para humedad del suelo [R2][R3].",
+      "refs": [
+        "R2",
+        "R3"
+      ]
+    },
+    {
+      "id": "sensors",
+      "disambiguation_en": "Sensors are instruments on satellites that detect electromagnetic radiation; they are characterized by spatial, temporal, spectral, and radiometric resolutions.",
+      "disambiguation_es": "Los sensores son instrumentos en satélites que detectan radiación electromagnética; se caracterizan por resoluciones espacial, temporal, espectral y radiométrica.",
+      "enrich_en": "Optical sensors (Sentinel-2 MSI) have 13 bands including red-edge; SAR sensors (Sentinel-1 C-band) are active, providing all-weather data [R1][R2].",
+      "enrich_es": "Los sensores ópticos (Sentinel-2 MSI) tienen 13 bandas incluyendo borde rojo; los sensores SAR (Sentinel-1 banda C) son activos, proporcionando datos en cualquier clima [R1][R2].",
+      "refs": [
+        "R1",
+        "R2"
+      ]
+    },
+    {
+      "id": "earth-observation",
+      "disambiguation_en": "Earth Observation is the collection of satellite data for monitoring the Earth's surface, leveraging both optical and SAR sensors for comprehensive coverage.",
+      "disambiguation_es": "La Observación de la Tierra es la recolección de datos satelitales para monitorear la superficie terrestre, aprovechando sensores ópticos y SAR para una cobertura integral.",
+      "enrich_en": "Fusion of Sentinel-2 optical and Sentinel-1 SAR enables dense time series for crop mapping, overcoming cloud cover limitations [R3].",
+      "enrich_es": "La fusión de Sentinel-2 óptico y Sentinel-1 SAR permite series temporales densas para mapeo de cultivos, superando las limitaciones de nubosidad [R3].",
+      "refs": [
+        "R3"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,121 @@
+{
+  "idx": "3",
+  "title": {
+    "en": "Large-Scale Crop Monitoring",
+    "es": "Monitoreo de Cultivos a Gran Escala"
+  },
+  "slug": "large-scale-crop-monitoring",
+  "members": [
+    "national-scale-applications",
+    "agricultural-monitoring",
+    "agricultural-statistical-production",
+    "remote-sensing-estimation",
+    "crop-assessment",
+    "large-scale-agricultural-monitoring"
+  ],
+  "refs": [
+    {
+      "tag": "R1",
+      "text": "UN Handbook on Remote Sensing for Agricultural Statistics (FAO, official PDF)",
+      "url": "https://openknowledge.fao.org/server/api/core/bitstreams/dcadd248-cccb-43ad-9e3c-7aa0cf2bb577/content",
+      "kind": "deep-research"
+    },
+    {
+      "tag": "R2",
+      "text": "ASAP: a new global early warning system for agricultural production (JRC)",
+      "url": "https://www.ncbi.nlm.nih.gov/pmc/articles/PMC6360855/",
+      "kind": "deep-research"
+    },
+    {
+      "tag": "R3",
+      "text": "FAO STI: Satellite- and Remote-Sensing-Based Agricultural Monitoring Platforms",
+      "url": "https://sti-portal.fao.org/families/satellite-and-remote-sensing-based-agricultural-monitoring-platforms",
+      "kind": "deep-research"
+    },
+    {
+      "tag": "R4",
+      "text": "NASA Earthdata: Satellite Remote Sensing for Agricultural Applications",
+      "url": "https://www.earthdata.nasa.gov/learn/trainings/satellite-remote-sensing-agricultural-applications",
+      "kind": "deep-research"
+    },
+    {
+      "tag": "R5",
+      "text": "[1] I. Becker-Reshef et al. , “Crop type maps for operational global agricultural monitoring,” Scientific Data , vol. 10, no. 1, Mar. 2023, doi: 10.1038/s41597-",
+      "url": "https://doi.org/10.1038/s41597-023-02047-9",
+      "kind": "handbook-bibliography"
+    },
+    {
+      "tag": "R6",
+      "text": "[2] C. Zhang et al. , “Remote sensing for crop mapping: A perspective on current and future crop-specific land cover data products,” Remote Sensing of Environme",
+      "url": "https://doi.org/10.1016/j.rse.2025.114995",
+      "kind": "handbook-bibliography"
+    },
+    {
+      "tag": "R7",
+      "text": "[3] K. Van Tricht et al. , “ESA WorldCereal 10 m 2021 v100.” Zenodo, 2023, doi: 10.5281/ZENODO.7875104 .",
+      "url": "https://doi.org/10.5281/ZENODO.7875104",
+      "kind": "handbook-bibliography"
+    },
+    {
+      "tag": "R8",
+      "text": "[4] C. Butsko et al. , “Deploying geospatial foundation models in the real world: Lessons from WorldCereal.” arXiv, 2025, doi: 10.48550/ARXIV.2508.00858 .",
+      "url": "https://doi.org/10.48550/ARXIV.2508.00858",
+      "kind": "handbook-bibliography"
+    },
+    {
+      "tag": "R9",
+      "text": "[5] S. Karanam et al. , “WorldCereal reference data module (RDM).” International Institute for Applied Systems Analysis (IIASA), 2024, doi: 10.60566/80P50-6Z433",
+      "url": "https://doi.org/10.60566/80P50-6Z433",
+      "kind": "handbook-bibliography"
+    }
+  ],
+  "call_id": "881f5d23a0d48e3471d55c9e3b133def996ccf86217663fecc213793ded82929",
+  "brain_en": "## Overview\nLarge-scale crop monitoring leverages satellite remote sensing and statistical methods to systematically observe crop growth, health, and extent across national or global domains. This operational approach supports official agricultural statistics, early warning systems, and food security assessments.\n\n## Key Methods & Distinctions\n- **Satellite records**: Landsat (since 1972) provides the longest continuous record for agricultural monitoring [R1][R4].\n- **Operational programmes**: Canada's Annual Crop Inventory, JRC ASAP (global anomaly hot-spot early warning) [R2], and FAO's STI portal (catalogues satellite platforms) [R3] exemplify national and global implementations.\n- **Pipelines**: Modern systems fuse multispectral imagery, weather data, and machine learning for real-time crop health, production forecasting, and market intelligence, supporting SDG reporting [R1][R8].\n- **Distinction from research**: Large-scale monitoring is operational—focused on routine, reliable output for decision-makers, unlike experimental studies.\n\n## How It Grounds Handbook Concepts\n- **national-scale-applications**: Operational use of remote sensing and statistics to generate official national agricultural statistics [R1][R3].\n- **agricultural-monitoring**: Systematic observation of crop growth over time using satellite and field data [R1][R4].\n- **agricultural-statistical-production**: Generation of crop area, yield, and production through surveys and remote sensing, enhanced by early warning systems [R1][R2].\n- **remote-sensing-estimation**: Deriving crop yield or planted area from spectral models, now fused with machine learning for real-time forecasts [R1][R8].\n- **crop-assessment**: Evaluation of condition, area, or yield using remote sensing, field surveys, and models [R1].\n- **large-scale-agricultural-monitoring**: Automated satellite methods to track crops across extensive regions, as done by ASAP and WorldCereal [R2][R7].\n\n## Gap Filled\nLarge-scale crop monitoring bridges the gap between raw satellite data and robust national statistics by integrating operational pipelines, automated classification (e.g., WorldCereal [R7]), and early warning systems. It enables timely, area-wide assessments that are essential for food security and policy planning, moving beyond pilot studies to sustained, credible official outputs [R1][R5][R6].",
+  "brain_es": "## Resumen\nEl monitoreo de cultivos a gran escala utiliza la teledetección satelital y métodos estadísticos para observar sistemáticamente el crecimiento, la salud y la extensión de los cultivos en ámbitos nacionales o globales. Este enfoque operativo apoya las estadísticas agrícolas oficiales, los sistemas de alerta temprana y las evaluaciones de seguridad alimentaria.\n\n## Métodos Clave y Distinciones\n- **Registros satelitales**: Landsat (desde 1972) proporciona el registro continuo más largo para monitoreo agrícola [R1][R4].\n- **Programas operativos**: El Inventario Anual de Cultivos de Canadá, ASAP del JRC (alerta temprana global de anomalías) [R2] y el portal STI de la FAO (catálogo de plataformas satelitales) [R3] ejemplifican implementaciones nacionales y globales.\n- **Pipelines**: Los sistemas modernos fusionan imágenes multiespectrales, datos meteorológicos y aprendizaje automático para monitoreo en tiempo real de salud de cultivos, pronóstico de producción e inteligencia de mercado, apoyando los informes ODS [R1][R8].\n- **Distinción de la investigación**: El monitoreo a gran escala es operativo—enfocado en resultados rutinarios y confiables para tomadores de decisiones, a diferencia de estudios experimentales.\n\n## Cómo Fundamenta los Conceptos del Manual\n- **national-scale-applications**: Uso operativo de teledetección y estadísticas para generar estadísticas agrícolas oficiales nacionales [R1][R3].\n- **agricultural-monitoring**: Observación sistemática del crecimiento de cultivos a lo largo del tiempo con datos satelitales y de campo [R1][R4].\n- **agricultural-statistical-production**: Generación de área, rendimiento y producción de cultivos mediante encuestas y teledetección, mejorada con sistemas de alerta temprana [R1][R2].\n- **remote-sensing-estimation**: Estimación del rendimiento o área sembrada a partir de modelos espectrales, ahora fusionados con aprendizaje automático para pronósticos en tiempo real [R1][R8].\n- **crop-assessment**: Evaluación de condición, área o rendimiento usando teledetección, encuestas de campo y modelos [R1].\n- **large-scale-agricultural-monitoring**: Métodos satelitales automatizados para rastrear cultivos en regiones extensas, como los de ASAP y WorldCereal [R2][R7].\n\n## Brecha que Llena\nEl monitoreo de cultivos a gran escala cierra la brecha entre los datos satelitales brutos y las estadísticas nacionales sólidas al integrar pipelines operativos, clasificación automatizada (ej. WorldCereal [R7]) y sistemas de alerta temprana. Permite evaluaciones oportunas y a escala de área, esenciales para la seguridad alimentaria y la planificación de políticas, avanzando más allá de estudios piloto hacia productos oficiales sostenidos y creíbles [R1][R5][R6].",
+  "enrich": [
+    {
+      "id": "national-scale-applications",
+      "disambiguation_en": "Operational use of remote sensing and statistical methods to generate official agricultural statistics for an entire country.",
+      "disambiguation_es": "Uso operativo de la teledetección y métodos estadísticos para generar estadísticas agrícolas oficiales para todo un país.",
+      "enrich_en": "Operational programmes like Canada's Annual Crop Inventory and FAO STI platform demonstrate national-scale integration of satellite data for official statistics [R1][R3].",
+      "enrich_es": "Programas operativos como el Inventario Anual de Cultivos de Canadá y la plataforma STI de la FAO demuestran la integración a escala nacional de datos satelitales para estadísticas oficiales [R1][R3].",
+      "refs": [
+        "R1",
+        "R3"
+      ]
+    },
+    {
+      "id": "agricultural-monitoring",
+      "disambiguation_en": "Systematic observation of crop growth, health, and extent over time using remote sensing and field data.",
+      "disambiguation_es": "Observación sistemática del crecimiento, salud y extensión de los cultivos a lo largo del tiempo mediante teledetección y datos de campo.",
+      "enrich_en": "Long-term Landsat record since 1972 provides baseline for monitoring changes in agricultural extent and condition [R1][R4].",
+      "enrich_es": "El registro a largo plazo de Landsat desde 1972 proporciona una línea base para monitorear cambios en la extensión y condición agrícola [R1][R4].",
+      "refs": [
+        "R1",
+        "R4"
+      ]
+    },
+    {
+      "id": "agricultural-statistical-production",
+      "disambiguation_en": "The process of generating official quantitative information on agricultural activities, including crop area, yield, and production, using surveys and remote sensing.",
+      "disambiguation_es": "Proceso de generar información cuantitativa oficial sobre actividades agrícolas, incluyendo área, rendimiento y producción de cultivos, mediante encuestas y teledetección.",
+      "enrich_en": "JRC ASAP system provides early warning anomalies to augment traditional production statistics for food security [R1][R2].",
+      "enrich_es": "El sistema ASAP del JRC proporciona alertas tempranas de anomalías para complementar las estadísticas de producción tradicionales para la seguridad alimentaria [R1][R2].",
+      "refs": [
+        "R1",
+        "R2"
+      ]
+    },
+    {
+      "id": "remote-sensing-estimation",
+      "disambiguation_en": "Deriving agricultural parameters, such as crop yield or planted area, from satellite imagery using models that relate spectra to ground conditions.",
+      "disambiguation_es": "Derivación de parámetros agrícolas, como rendimiento de cultivos o área sembrada, a partir de imágenes satelitales usando modelos que relacionan espectros con condiciones de campo.",
+      "enrich_en": "Machine learning fusion of multispectral imagery and weather data enables real-time production forecasting for market intelligence [R1][R8].",
+      "enrich_es": "La fusión mediante aprendizaje automático de imágenes multiespectrales y datos meteorológicos permite pronósticos de producción en tiempo real para inteligencia de mercado [R1][R8].",
+      "refs": [
+        "R1",
+        "R8"
+      ]
+    }
+  ]
+}

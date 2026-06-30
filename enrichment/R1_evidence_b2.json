@@ -1,0 +1,38 @@
+{
+ "5": {"title": "Crop Classification Methods",
+  "findings": "Crop-type classification from satellite image time series evolved from traditional machine learning (Random Forest, SVM) trained on hand-crafted features (vegetation indices, texture) - interpretable but dependent on manual feature design and brittle when crop mixtures or temporal patterns change - to deep learning with end-to-end representation learning that now dominates. Reported accuracies vary by context (e.g. ~77-80% several weeks before harvest with RF/SVM and active learning). In-season classification, growth-stage normalisation and active learning reduce labelling needs.",
+  "refs": [
+   {"t": "Spatially Explicit Active Learning for Crop-Type Mapping from SITS", "u": "https://pmc.ncbi.nlm.nih.gov/articles/PMC11014375/"},
+   {"t": "Resilient In-Season Crop Type Classification (Growth Stage Normalization)", "u": "https://arxiv.org/pdf/2009.10189"},
+   {"t": "Deep Learning for Satellite Image Time Series Analysis: A Review (IEEE GRSM 2024)", "u": "https://arxiv.org/pdf/2404.03936"}
+  ]},
+ "6": {"title": "Building a Workflow",
+  "findings": "Reproducible, scalable EO workflows are increasingly expressed as technology-agnostic openEO 'process graphs' on cloud back-ends (Copernicus Data Space Ecosystem), reducing code complexity and enabling open-science reproducibility. A canonical crop-mapping workflow composites Sentinel-2 L2A (10-daily medians) and Sentinel-1 sigma0 backscatter, masks agriculture (e.g. WorldCover), aligns to a common grid and fuses into a single datacube. ESA WorldCereal delivers a global, seasonal, reproducible crop and irrigation mapping system on this stack.",
+  "refs": [
+   {"t": "Continental-scale crop type mapping in openEO platform", "u": "https://medium.com/openeo-platform/crop-type-mapping-in-openeo-platform-2ade43aab662"},
+   {"t": "Copernicus Data Space Ecosystem: public cloud processing for EO (Scientific Data 2026)", "u": "https://www.nature.com/articles/s41597-026-06765-8"},
+   {"t": "Open-EO/openeo-gfmap: generic framework for EO mapping", "u": "https://github.com/Open-EO/openeo-gfmap"},
+   {"t": "Deploying Geospatial Foundation Models: Lessons from WorldCereal", "u": "https://arxiv.org/pdf/2508.00858"}
+  ]},
+ "7": {"title": "Crop and Yield Basics",
+  "findings": "Crop yield estimation combines two families: process-based crop-growth model simulation and remote-sensing observation, fused through data assimilation - the vital tool for regional yield forecasting. RS supplies cultivation area, phenology and growth status (e.g. leaf area index from Sentinel-2) that supplement/parameterise crop models. Common designs assimilate LAI into WOFOST/SAFY via the Ensemble Kalman Filter (EnKF), and hybrid EnKF-RF frameworks couple assimilation with machine learning for early-season, large-area forecasting.",
+  "refs": [
+   {"t": "Crop yield estimation by assimilation of crop models and RS: a systematic evaluation (Agric. Systems 2023)", "u": "https://www.sciencedirect.com/science/article/abs/pii/S0308521X23001166"},
+   {"t": "RS-crop-model assimilation + seasonal forecasts for early-season yield forecasting (AgForMet 2021)", "u": "https://www.sciencedirect.com/science/article/abs/pii/S0378429021003440"},
+   {"t": "Wheat growth monitoring and yield via RS assimilation into SAFY", "u": "https://www.ncbi.nlm.nih.gov/pmc/articles/PMC8971471/"}
+  ]},
+ "8": {"title": "Accuracy Assessment",
+  "findings": "Rigorous map accuracy assessment rests on three components: sampling design, response (reference) design and analysis. The confusion/error matrix is the starting point, and good practice is to report area estimated from the reference classification with confidence intervals. Probability sampling and design-based inference are essential. Documented BAD practices to avoid: using estimation formulas that do not match the sampling design, normalising the error matrix, and relying on the kappa coefficient. Key decisions: stratified vs simple random, clusters vs not, systematic vs random.",
+  "refs": [
+   {"t": "Stehman & Foody, Key issues in rigorous accuracy assessment of land cover products (RSE 2019)", "u": "https://www.sciencedirect.com/science/article/abs/pii/S0034425719302111"},
+   {"t": "Olofsson et al., Good practices for estimating area and assessing accuracy of land change (RSE 2014)", "u": "https://samv.elearning.unipd.it/pluginfile.php/175898/mod_resource/content/0/articolo_oloffson.pdf"},
+   {"t": "CEOS WGCV LPV Land Cover & Change accuracy protocol (2025)", "u": "https://pure.iiasa.ac.at/id/eprint/20873/1/CEOS_WGCV_LPV_Land_Cover_protocol_Sept2025_V1.pdf"}
+  ]},
+ "10": {"title": "Model Training and Algorithms",
+  "findings": "For satellite image time-series crop classification, Random Forest remains a strong, interpretable baseline; deep architectures generally improve accuracy: 1D temporal CNNs (TempCNN) use multi-scale temporal filters and better delineate spectrally similar crops than RF; RNN/LSTM (incl. attention) model sequence dynamics; and Transformer (self-attention, e.g. PSE+TAE) architectures model temporal (and spatial) dependencies with strong results. Benchmarks such as BreizhCrops standardise comparison; interpretability of multi-temporal deep models is an active concern.",
+  "refs": [
+   {"t": "Investigating Temporal CNNs for SITS Classification: a survey (TempCNN)", "u": "https://arxiv.org/pdf/2204.08461"},
+   {"t": "BreizhCrops: A Time Series Dataset for Crop Type Mapping", "u": "https://arxiv.org/pdf/1905.11893"},
+   {"t": "Towards interpreting multi-temporal deep learning models in crop mapping (RSE 2021)", "u": "https://www.sciencedirect.com/science/article/abs/pii/S0034425721003199"}
+  ]}
+}

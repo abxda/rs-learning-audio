@@ -1,0 +1,115 @@
+{
+  "idx": "8",
+  "title": {
+    "en": "Accuracy Assessment",
+    "es": "Evaluación de Precisión"
+  },
+  "slug": "accuracy-assessment",
+  "members": [
+    "performance",
+    "model-accuracy",
+    "classification-accuracy",
+    "accuracy",
+    "classification-performance",
+    "accuracy-metrics"
+  ],
+  "refs": [
+    {
+      "tag": "R1",
+      "text": "Stehman & Foody, Key issues in rigorous accuracy assessment of land cover products (RSE 2019)",
+      "url": "https://www.sciencedirect.com/science/article/abs/pii/S0034425719302111",
+      "kind": "deep-research"
+    },
+    {
+      "tag": "R2",
+      "text": "Olofsson et al., Good practices for estimating area and assessing accuracy of land change (RSE 2014)",
+      "url": "https://samv.elearning.unipd.it/pluginfile.php/175898/mod_resource/content/0/articolo_oloffson.pdf",
+      "kind": "deep-research"
+    },
+    {
+      "tag": "R3",
+      "text": "CEOS WGCV LPV Land Cover & Change accuracy protocol (2025)",
+      "url": "https://pure.iiasa.ac.at/id/eprint/20873/1/CEOS_WGCV_LPV_Land_Cover_protocol_Sept2025_V1.pdf",
+      "kind": "deep-research"
+    },
+    {
+      "tag": "R4",
+      "text": "[2] F. D. W. Witmer, “Remote sensing of violent conflict: Eyes from above,” International Journal of Remote Sensing , vol. 36, no. 9, pp. 2326–2352, 2015, doi: ",
+      "url": "https://doi.org/10.1080/01431161.2015.1035412",
+      "kind": "handbook-bibliography"
+    },
+    {
+      "tag": "R5",
+      "text": "[3] X.-P. Song et al. , “National-scale soybean mapping and area estimation in the United States using medium resolution satellite imagery and field survey,” Re",
+      "url": "https://doi.org/10.1016/j.rse.2017.01.008",
+      "kind": "handbook-bibliography"
+    },
+    {
+      "tag": "R6",
+      "text": "[4] R. S. Chhikara, “Effect of mixed (boundary) pixels on crop proportion estimation,” Remote Sensing of Environment , vol. 14, no. 1, pp. 207–218, 1984, doi: 1",
+      "url": "https://doi.org/10.1016/0034-4257(84)90016-6",
+      "kind": "handbook-bibliography"
+    },
+    {
+      "tag": "R7",
+      "text": "[5] S. Skakun, “The impact of map accuracy on area estimation with remotely sensed data within the stratified random sampling design,” Remote Sensing of Environ",
+      "url": "https://doi.org/10.1016/j.rse.2025.114805",
+      "kind": "handbook-bibliography"
+    },
+    {
+      "tag": "R8",
+      "text": "[6] F. J. Gallego, “Remote sensing and land cover area estimation,” International Journal of Remote Sensing , vol. 25, no. 15, pp. 3019–3047, 2004, doi: 10.1080",
+      "url": "https://doi.org/10.1080/01431160310001619607",
+      "kind": "handbook-bibliography"
+    }
+  ],
+  "call_id": "3fb000379068b5bacad761cc0c514bafa4a5ebfa89881a66342d8b8d43c6ece9",
+  "brain_en": "Accuracy assessment in remote sensing for agricultural statistics is a rigorous design-based inference process, not merely a set of metrics. According to Stehman & Foody [R1] and the CEOS protocol [R3], a proper accuracy assessment rests on three fundamental components: sampling design, response (reference) design, and analysis. The confusion (error) matrix remains the standard starting point, but modern best practices emphasize reporting area estimates derived from the reference classification along with confidence intervals [R2]. Probability sampling (e.g., stratified random, simple random) and design-based inference are essential to ensure that accuracy and area estimates are unbiased and statistically valid [R2][R3]. It is also critical to avoid common pitfalls: using estimation formulas that do not match the sampling design (e.g., a simple random estimator on a stratified sample), normalizing the error matrix, or relying on the kappa coefficient, which is no longer recommended by the remote sensing community [R1][R2]. Key design decisions include stratified vs. simple random sampling, cluster vs. non-cluster units, and systematic vs. random selection, each affecting precision and cost differently [R8]. Furthermore, map errors can propagate into area estimation; for example, mixed (boundary) pixels influence crop proportion estimates [R6], and the impact of map accuracy on stratified area estimation can be quantified [R7]. National-scale operational programs, such as the soybean mapping study by Song et al. [R5], illustrate how these rigorous protocols are applied in practice to produce official agricultural statistics.\n\nThis research grounds the Handbook concepts as follows:\n- **performance**: Performance is understood as the outcome of a valid assessment design; overall accuracy and F1-score must be accompanied by confidence intervals and derived from a proper probability sample [R2].\n- **model-accuracy**: Model accuracy is measured by overall accuracy and per-class user's and producer's accuracies, but these metrics must be estimated using design-based estimators that weight the confusion matrix according to the sampling design [R2][R3].\n- **classification-accuracy**: Classification accuracy quantifies the degree of agreement between the map and reference data; the confusion matrix is the foundation, but area-adjusted accuracy and stratified estimators are required for unbiased results [R2].\n- **accuracy**: Accuracy as a metric of correctness relative to reality is only meaningful when obtained from a probability sample and reported with uncertainty bounds [R1][R2].\n- **classification-performance**: Classification performance metrics (overall accuracy, user's, producer's, F1-score) remain useful but should be complemented by area-based metrics and must avoid the kappa coefficient [R1][R3].\n- **accuracy-metrics**: Accuracy metrics (overall accuracy, precision, recall, F1) are essential for evaluating models, but their calculation requires design-based inference to avoid bias; the CEOS protocol provides a standard framework [R3].\n\nThe GAP filled: The Handbook provides basic definitions of accuracy and performance metrics, but lacks the methodological rigor needed for operational agricultural statistics. The verified research fills this gap by introducing the critical framework of design-based inference, emphasizing proper sampling design, matching estimators to the design, and explicitly discouraging outdated metrics like kappa. This ensures that accuracy assessments are statistically defensible, supporting reliable area estimation and change detection—key outputs for national and international agricultural monitoring programs.",
+  "brain_es": "La evaluación de la exactitud en teledetección para estadísticas agrícolas es un proceso riguroso basado en inferencia basada en el diseño, no solo un conjunto de métricas. Según Stehman y Foody [R1] y el protocolo CEOS [R3], una evaluación adecuada de la exactitud se sustenta en tres componentes fundamentales: diseño de muestreo, diseño de respuesta (referencia) y análisis. La matriz de confusión (error) sigue siendo el punto de partida estándar, pero las mejores prácticas modernas enfatizan reportar estimaciones de área derivadas de la clasificación de referencia junto con intervalos de confianza [R2]. El muestreo por probabilidad (por ejemplo, aleatorio estratificado, aleatorio simple) y la inferencia basada en el diseño son esenciales para garantizar que las estimaciones de exactitud y área sean insesgadas y estadísticamente válidas [R2][R3]. También es crítico evitar errores comunes: usar fórmulas de estimación que no coinciden con el diseño de muestreo (por ejemplo, un estimador de muestreo aleatorio simple en un diseño estratificado), normalizar la matriz de error o confiar en el coeficiente kappa, que ya no es recomendado por la comunidad de teledetección [R1][R2]. Las decisiones clave de diseño incluyen muestreo estratificado vs. aleatorio simple, unidades conglomeradas vs. no conglomeradas, y selección sistemática vs. aleatoria, cada una afectando la precisión y el costo de manera diferente [R8]. Además, los errores del mapa pueden propagarse a la estimación de área; por ejemplo, los píxeles mixtos (de borde) influyen en las estimaciones de proporción de cultivos [R6], y el impacto de la exactitud del mapa en la estimación de área estratificada se puede cuantificar [R7]. Programas operativos a escala nacional, como el estudio de mapeo de soya de Song et al. [R5], ilustran cómo estos protocolos rigurosos se aplican en la práctica para producir estadísticas agrícolas oficiales.\n\nEsta investigación fundamenta los conceptos del Manual de la siguiente manera:\n- **performance**: El rendimiento se entiende como el resultado de un diseño de evaluación válido; la exactitud global y el puntaje F1 deben ir acompañados de intervalos de confianza y derivarse de una muestra probabilística adecuada [R2].\n- **model-accuracy**: La exactitud del modelo se mide mediante la exactitud global y las exactitudes de usuario y productor por clase, pero estas métricas deben estimarse usando estimadores basados en el diseño que ponderen la matriz de confusión según el diseño de muestreo [R2][R3].\n- **classification-accuracy**: La exactitud de la clasificación cuantifica el grado de acuerdo entre el mapa y los datos de referencia; la matriz de confusión es la base, pero se requieren exactitud ajustada por área y estimadores estratificados para obtener resultados insesgados [R2].\n- **accuracy**: La exactitud como métrica de corrección respecto a la realidad solo es significativa cuando se obtiene de una muestra probabilística y se reporta con límites de incertidumbre [R1][R2].\n- **classification-performance**: Las métricas de rendimiento de clasificación (exactitud global, usuario, productor, F1) siguen siendo útiles pero deben complementarse con métricas basadas en área y deben evitar el coeficiente kappa [R1][R3].\n- **accuracy-metrics**: Las métricas de exactitud (exactitud global, precisión, recuperación, F1) son esenciales para evaluar modelos, pero su cálculo requiere inferencia basada en el diseño para evitar sesgos; el protocolo CEOS proporciona un marco estándar [R3].\n\nLa brecha que se llena: El Manual proporciona definiciones básicas de exactitud y métricas de rendimiento, pero carece del rigor metodológico necesario para estadísticas agrícolas operativas. La investigación verificada llena esta brecha al introducir el marco crítico de inferencia basada en el diseño, enfatizando el diseño de muestreo adecuado, la correspondencia de los estimadores con el diseño y la desaconsejación explícita de métricas obsoletas como kappa. Esto asegura que las evaluaciones de exactitud sean estadísticamente defendibles, apoyando la estimación confiable de área y la detección de cambios—resultados clave para programas de monitoreo agrícola nacionales e internacionales.",
+  "enrich": [
+    {
+      "id": "performance",
+      "disambiguation_en": "Performance in accuracy assessment refers to the overall effectiveness of a classification, quantified by metrics like overall accuracy and F1-score, but requires design-based validation.",
+      "disambiguation_es": "El rendimiento en la evaluación de exactitud se refiere a la efectividad general de una clasificación, cuantificada por métricas como la exactitud global y el puntaje F1, pero requiere validación basada en el diseño.",
+      "enrich_en": "Performance must be estimated from a probability sample using design-based estimators; confidence intervals are essential [R1][R2]. Avoid kappa coefficient.",
+      "enrich_es": "El rendimiento debe estimarse a partir de una muestra probabilística usando estimadores basados en el diseño; los intervalos de confianza son esenciales [R1][R2]. Evitar el coeficiente kappa.",
+      "refs": [
+        "R1",
+        "R2"
+      ]
+    },
+    {
+      "id": "model-accuracy",
+      "disambiguation_en": "Model accuracy indicates how often the model's predicted class matches the true class, typically reported as overall accuracy or per-class user's and producer's accuracies.",
+      "disambiguation_es": "La exactitud del modelo indica con qué frecuencia la clase predicha del modelo coincide con la clase verdadera, generalmente reportada como exactitud global o exactitudes de usuario y productor por clase.",
+      "enrich_en": "User's and producer's accuracies should be estimated as weighted proportions from the confusion matrix using the sampling design's inclusion probabilities [R2][R3].",
+      "enrich_es": "Las exactitudes de usuario y productor deben estimarse como proporciones ponderadas de la matriz de confusión usando las probabilidades de inclusión del diseño de muestreo [R2][R3].",
+      "refs": [
+        "R2",
+        "R3"
+      ]
+    },
+    {
+      "id": "classification-accuracy",
+      "disambiguation_en": "Classification accuracy quantifies the agreement between a classified map and reference data, often expressed via overall accuracy and per-class metrics.",
+      "disambiguation_es": "La exactitud de la clasificación cuantifica el acuerdo entre un mapa clasificado y los datos de referencia, a menudo expresada mediante la exactitud global y métricas por clase.",
+      "enrich_en": "The confusion matrix is the foundation, but area-adjusted accuracy and stratified estimators are needed for unbiased results [R2][R3].",
+      "enrich_es": "La matriz de confusión es la base, pero se necesitan exactitud ajustada por área y estimadores estratificados para obtener resultados insesgados [R2][R3].",
+      "refs": [
+        "R2",
+        "R3"
+      ]
+    },
+    {
+      "id": "accuracy",
+      "disambiguation_en": "Accuracy is the degree of closeness of a classification or estimate to the true value, measured by metrics such as overall accuracy and per-class errors.",
+      "disambiguation_es": "La exactitud es el grado de cercanía de una clasificación o estimación al valor verdadero, medida por métricas como la exactitud global y errores por clase.",
+      "enrich_en": "Probability sampling and design-based inference are required to obtain unbiased accuracy estimates with quantifiable uncertainty [R1][R2].",
+      "enrich_es": "Se requieren muestreo probabilístico e inferencia basada en el diseño para obtener estimaciones de exactitud insesgadas con incertidumbre cuantificable [R1][R2].",
+      "refs": [
+        "R1",
+        "R2"
+      ]
+    }
+  ]
+}
