@@ -1,0 +1,112 @@
+# Concept Mind Map — Index / Índice
+
+Start from the fundamentals and follow **This unlocks** forward, or open any concept and walk its **Lineage** backward. / Empieza por los fundamentos y sigue **Esto habilita**, o abre cualquier concepto y recorre su **Linaje**.
+
+## Fundamentals / Fundamentos (level 0)
+- [[netrc-file|.netrc file]] — Archivo .netrc
+- [[agricultural-producers|Agricultural producers]] — Productores agrícolas
+- [[annotator|Annotator]] — Anotador
+- [[ard-image-collections|ARD image collections]] — colecciones de imágenes ARD
+- [[area|Area]] — Área
+- [[assessment|Assessment]] — Evaluación
+- [[bands|Bands]] — Bandas
+- [[bias|Bias]] — Sesgo
+- [[buffering|Buffering]] — Búfer
+- [[case|Case]] — Caso
+- [[chapter|Chapter]] — Capítulo
+- [[chapter-specific-data|Chapter-Specific Data]] — Datos Específicos del Capítulo
+- [[chlorophyll|Chlorophyll]] — Clorofila
+- [[classes|Classes]] — Clases
+- [[climate|Climate]] — Clima
+- [[coefficient-of-variation|Coefficient of variation]] — Coeficiente de variación
+- [[collaboration|Collaboration]] — Colaboración
+- [[consensus|Consensus]] — Consenso
+- [[consistency|Consistency]] — Consistencia
+- [[container-image|Container image]] — Imagen de contenedor
+- [[content-hash|Content hash]] — Hash de contenido
+- [[coordinates|Coordinates]] — Coordenadas
+- [[crop|Crop]] — Cultivo
+- [[crop-type-map|Crop type map]] — Mapa de tipos de cultivo
+- [[data|Data]] — Datos
+- [[data-point|Data point]] — Punto de datos
+- [[data-preparation|Data preparation]] — Preparación de datos
+- [[dcp-mtl-model|DCP MTL model]] — modelo DCP MTL
+- [[detection|Detection]] — Detección
+- [[deviation|Deviation]] — Desviación
+- [[distribution|Distribution]] — Distribución
+- [[echo|Echo]] — Eco
+- [[efficiency|Efficiency]] — Eficiencia
+- [[elevation|Elevation]] — Elevación
+- [[experts|Experts]] — Expertos
+- [[forest|Forest]] — Bosque
+- [[function|Function]] — Función
+- [[gpu|GPU]] — GPU
+- [[grid-cell|Grid cell]] — Celda de cuadrícula
+- [[harvest|Harvest]] — Cosecha
+- [[hectares|Hectares]] — Hectáreas
+- [[images|Images]] — Imágenes
+- [[indices|Indices]] — Índices
+- [[inference|Inference]] — Inferencia
+- [[kappa|Kappa]] — Kappa
+- [[knowledge-areas|Knowledge areas]] — Áreas de conocimiento
+- [[kubernetes|Kubernetes]] — Kubernetes
+- [[level|Level]] — Nivel
+- [[line|Line]] — Línea
+- [[land-cover-land-use-mapping|LULC mapping]] — mapeo LULC
+- [[measure|Measure]] — Medida
+- [[median|Median]] — Mediana
+- [[model|Model]] — Modelo
+- [[national-statistical-systems|National statistical systems]] — Sistemas estadísticos nacionales
+- [[near-infrared|Near-infrared]] — Infrarrojo cercano
+- [[objectives|Objectives]] — Objetivos
+- [[operational-use|Operational use]] — Uso operacional
+- [[overestimation|Overestimation]] — Sobreestimación
+- [[oversampling|Oversampling]] — Sobremuestreo
+- [[per-pixel-quality|Per-pixel quality]] — Calidad por píxel
+- [[persistent-storage|Persistent storage]] — Almacenamiento persistente
+- [[petabytes|Petabytes]] — Petabytes
+- [[pilot-study|Pilot study]] — Estudio piloto
+- [[planting|Planting]] — Siembra
+- [[plot|Plot]] — Parcela
+- [[points|Points]] — Puntos
+- [[polarization|Polarization]] — Polarización
+- [[policymakers|Policymakers]] — Formuladores de políticas
+- [[principles|Principles]] — Principios
+- [[production|Production]] — Producción
+- [[r-package|R package]] — paquete de R
+- [[radiation|Radiation]] — Radiación
+- [[range|Range]] — Rango
+- [[reproducible-analysis-sessions|Reproducible analysis sessions]] — Sesiones de análisis reproducibles
+- [[results|Results]] — Resultados
+- [[robust-sampling-frame|Robust sampling frame]] — Marco muestral robusto
+- [[sample-unit|Sample unit]] — Unidad de muestra
+- [[satellite-image-collection|Satellite image collection]] — Colección de imágenes satelitales
+- [[satellite-image-time-series-classification|Satellite image time series classification]] — Clasificación de series temporales de imágenes satelitales
+- [[scale|Scale]] — Escala
+- [[segment-model|Segment Model]] — Modelo de segmentación
+- [[setup|Setup]] — Configuración
+- [[shared-teaching-artifacts|Shared Teaching Artifacts]] — Recursos Didácticos Compartidos
+- [[slope|Slope]] — Pendiente
+- [[software|Software]] — Software
+- [[som-analysis|SOM analysis]] — análisis SOM
+- [[spatial-area|Spatial area]] — Área espacial
+- [[spatial-dimension|Spatial dimension]] — Dimensión espacial
+- [[spectral-reflectance|Spectral reflectance]] — Reflectancia espectral
+- [[statistical|Statistical]] — Estadístico
+- [[statistical-unit|Statistical unit]] — Unidad estadística
+- [[study-area|Study area]] — Área de estudio
+- [[system|System]] — Sistema
+- [[tabular-statistics|Tabular statistics]] — Estadísticas tabulares
+- [[temporal-dimension|Temporal dimension]] — Dimensión temporal
+- [[tibble|Tibble]] — Tibble
+- [[time|Time]] — Tiempo
+- [[topographic-information|Topographic information]] — Información topográfica
+- [[training-program|Training program]] — Programa de capacitación
+- [[transparency|Transparency]] — Transparencia
+- [[type|Type]] — Tipo
+- [[underestimation|Underestimation]] — Subestimación
+- [[unmanned-aerial-vehicle|Unmanned aerial vehicle]] — Vehículo aéreo no tripulado
+- [[use|Use]] — Uso
+- [[users|Users]] — Usuarios
+- [[wavelength|Wavelength]] — Longitud de onda
+- [[zone|Zone]] — Zona

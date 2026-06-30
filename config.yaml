@@ -1,0 +1,60 @@
+# Configuration for the Handbook concept-tree pipeline.
+# Every tunable lives here so the build is reproducible and auditable.
+
+book:
+  title: "UN Handbook on Remote Sensing for Agricultural Statistics"
+  base_url: "https://fao-eostat.github.io/UN-Handbook/"
+
+llm:
+  model: "deepseek/deepseek-v4-flash"
+  base_url: "https://openrouter.ai/api/v1"
+  temperature: 0.0
+  top_p: 1.0
+  max_tokens: 8000
+  request_timeout: 100
+  max_retries: 3
+
+paths:
+  build: "build"
+  out: "out"
+  cache: "build/cache"
+
+mining:
+  # Candidate keyphrase length (in tokens) for noun-chunk / C-value extraction.
+  min_term_len: 1
+  max_term_len: 5
+  # Minimum corpus frequency for a candidate to be considered at all.
+  min_freq: 2
+  # Size of the Zipf-driven backbone (broad spine, before closure expansion).
+  backbone_size: 400
+  canon_batch: 130          # terms per canonicalization call (keeps reasoning bounded)
+  # Ensemble weights when blending the three rankers into one score.
+  weights:
+    zipf: 0.45      # in-corpus frequency rank (the Zipf driver)
+    cvalue: 0.35    # nested multiword technical-term salience
+    keybert: 0.20   # embedding-based semantic centrality
+  # KeyBERT / similarity model (multilingual so it also serves ES merge checks).
+  embed_model: "paraphrase-multilingual-MiniLM-L12-v2"
+
+closure:
+  max_depth: 4            # max distance from a backbone seed before forcing primitive/drop
+  max_nodes: 1000         # global hard cap on concept nodes (safety net)
+  new_terms_per_def: 3    # definition word-budget: <= this many NEW technical terms per definition
+  tau_merge_lexical: 92   # RapidFuzz token_sort_ratio >= this -> lexical match
+  tau_merge_high: 0.93    # cosine >= this -> auto-merge
+  tau_merge_low: 0.83     # cosine < this -> treat as new; [low, high) -> LLM adjudication
+  # General-language Zipf floor (wordfreq scale ~1..7). Words at/above this in BOTH
+  # en and es general usage are treated as primitive-candidate everyday vocabulary.
+  primitive_zipf_floor: 4.5
+
+definitions:
+  batch_size: 18          # concepts per DeepSeek definition call
+  max_def_words: 60       # target max length of a single-language definition
+
+translate:
+  batch_size: 14
+  backtranslation_sample: 0.10   # fraction of nodes to back-translation-check
+  backtranslation_min_cosine: 0.85
+
+validate:
+  zipf_coverage_min: 0.85   # >= this fraction of top backbone terms must map to a node

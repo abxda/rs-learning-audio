@@ -1,0 +1,20 @@
+httpx
+beautifulsoup4
+lxml
+markdownify
+spacy
+yake
+keybert
+sentence-transformers
+wordfreq
+rapidfuzz
+networkx
+pydantic
+jsonschema
+tenacity
+pyyaml
+python-dotenv
+pyvis
+numpy
+# spaCy model: python -m spacy download en_core_web_md
+# torch (CPU): pip install torch --index-url https://download.pytorch.org/whl/cpu

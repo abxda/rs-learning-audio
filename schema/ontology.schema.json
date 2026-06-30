@@ -1,0 +1,74 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Handbook Concept Tree Ontology",
+  "type": "object",
+  "required": ["meta", "nodes", "edges"],
+  "properties": {
+    "meta": {
+      "type": "object",
+      "required": ["schema_version", "source_book", "model", "stats"],
+      "properties": {
+        "schema_version": {"type": "string"},
+        "source_book": {"type": "string"},
+        "model": {"type": "string"},
+        "stats": {"type": "object"}
+      }
+    },
+    "nodes": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["id", "kind", "name", "definition", "level"],
+        "properties": {
+          "id": {"type": "string"},
+          "kind": {"enum": ["concept", "primitive"]},
+          "name": {"$ref": "#/$defs/bi"},
+          "aliases": {
+            "type": "object",
+            "properties": {"en": {"type": "array"}, "es": {"type": "array"}}
+          },
+          "definition": {"$ref": "#/$defs/bi"},
+          "category": {"type": "string"},
+          "level": {"type": "integer", "minimum": 0},
+          "topo_order": {"type": "integer"},
+          "closure_depth": {"type": "integer"},
+          "zipf": {"type": "object"},
+          "citations": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "chapter_id": {"type": "string"},
+                "anchor": {"type": "string"}
+              }
+            }
+          },
+          "definition_terms": {"type": "array", "items": {"type": "string"}},
+          "def_uses": {"type": "array", "items": {"type": "string"}},
+          "provenance": {"type": "object"}
+        }
+      }
+    },
+    "edges": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["src", "dst", "rel"],
+        "properties": {
+          "src": {"type": "string"},
+          "dst": {"type": "string"},
+          "rel": {"enum": ["prereq", "defines_uses", "see_also"]}
+        }
+      }
+    },
+    "primitive_ledger": {"type": "array", "items": {"type": "string"}},
+    "dropped": {"type": "array"}
+  },
+  "$defs": {
+    "bi": {
+      "type": "object",
+      "required": ["en", "es"],
+      "properties": {"en": {"type": "string"}, "es": {"type": "string"}}
+    }
+  }
+}
