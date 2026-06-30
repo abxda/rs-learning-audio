@@ -1,0 +1,497 @@
+{
+  "count": 123,
+  "acronyms": {
+    "NDVI": {
+      "en": "Normalized Difference Vegetation Index",
+      "es": "Índice de Vegetación de Diferencia Normalizada"
+    },
+    "SAR": {
+      "en": "Synthetic Aperture Radar",
+      "es": "Radar de Apertura Sintética"
+    },
+    "ARD": {
+      "en": "Analysis Ready Data",
+      "es": "Datos Listos para el Análisis"
+    },
+    "NASA": {
+      "en": "National Aeronautics and Space Administration",
+      "es": "Administración Nacional de Aeronáutica y el Espacio"
+    },
+    "FAO": {
+      "en": "Food and Agriculture Organization",
+      "es": "Organización de las Naciones Unidas para la Alimentación y la Agricultura"
+    },
+    "EO": {
+      "en": "Earth Observation",
+      "es": "Observación de la Tierra"
+    },
+    "UAV": {
+      "en": "Unmanned Aerial Vehicle",
+      "es": "Vehículo Aéreo No Tripulado"
+    },
+    "GPS": {
+      "en": "Global Positioning System",
+      "es": "Sistema de Posicionamiento Global"
+    },
+    "SOM": {
+      "en": "Self-Organizing Map",
+      "es": "Mapa Auto-organizado"
+    },
+    "RS": {
+      "en": "Remote Sensing",
+      "es": "Teledetección"
+    },
+    "GIS": {
+      "en": "Geographic Information System",
+      "es": "Sistema de Información Geográfica"
+    },
+    "UTM": {
+      "en": "Universal Transverse Mercator",
+      "es": "Mercator Transversal Universal"
+    },
+    "RF": {
+      "en": "Random Forest",
+      "es": "Bosque Aleatorio"
+    },
+    "CRS": {
+      "en": "Coordinate Reference System",
+      "es": "Sistema de Referencia de Coordenadas"
+    },
+    "TempCNN": {
+      "en": "Temporal Convolutional Neural Network",
+      "es": "Red Neuronal Convolucional Temporal"
+    },
+    "SAM": {
+      "en": "Spectral Angle Mapper",
+      "es": "Clasificador de Ángulo Espectral"
+    },
+    "SITS": {
+      "en": "Satellite Image Time Series",
+      "es": "Series Temporales de Imágenes Satelitales"
+    },
+    "MGRS": {
+      "en": "Military Grid Reference System",
+      "es": "Sistema de Referencia de Cuadrícula Militar"
+    },
+    "HLS": {
+      "en": "Harmonized Landsat Sentinel",
+      "es": "Landsat Sentinel Armonizado"
+    },
+    "UHR": {
+      "en": "Ultra-High Resolution",
+      "es": "Resolución Ultra Alta"
+    },
+    "USGS": {
+      "en": "United States Geological Survey",
+      "es": "Servicio Geológico de los Estados Unidos"
+    },
+    "CEOS": {
+      "en": "Committee on Earth Observation Satellites",
+      "es": "Comité de Satélites de Observación de la Tierra"
+    },
+    "GNDVI": {
+      "en": "Green Normalized Difference Vegetation Index",
+      "es": "Índice de Vegetación de Diferencia Normalizada Verde"
+    },
+    "LULC": {
+      "en": "Land Use Land Cover",
+      "es": "Uso y Cobertura del Suelo"
+    },
+    "MODIS": {
+      "en": "Moderate Resolution Imaging Spectroradiometer",
+      "es": "Espectrorradiómetro de Imágenes de Resolución Moderada"
+    },
+    "SEN2COR": {
+      "en": "Sentinel-2 Correction",
+      "es": "Corrección Sentinel-2"
+    },
+    "LAI": {
+      "en": "Leaf Area Index",
+      "es": "Índice de Área Foliar"
+    },
+    "PLSR": {
+      "en": "Partial Least Squares Regression",
+      "es": "Regresión de Mínimos Cuadrados Parciales"
+    },
+    "SMOTE": {
+      "en": "Synthetic Minority Over-sampling Technique",
+      "es": "Técnica de Sobremuestreo Sintético de Minorías"
+    },
+    "AWS": {
+      "en": "Amazon Web Services",
+      "es": "Servicios Web de Amazon"
+    },
+    "BOA": {
+      "en": "Bottom of Atmosphere",
+      "es": "Fondo de la Atmósfera"
+    },
+    "EnKF": {
+      "en": "Ensemble Kalman Filter",
+      "es": "Filtro de Kalman por Conjuntos"
+    },
+    "GPU": {
+      "en": "Graphics Processing Unit",
+      "es": "Unidad de Procesamiento Gráfico"
+    },
+    "LSTM": {
+      "en": "Long Short-Term Memory",
+      "es": "Memoria a Largo Plazo"
+    },
+    "ML": {
+      "en": "Machine Learning",
+      "es": "Aprendizaje Automático"
+    },
+    "MTL": {
+      "en": "Multi-Task Learning",
+      "es": "Aprendizaje Multitarea"
+    },
+    "NIR": {
+      "en": "Near-Infrared",
+      "es": "Infrarrojo Cercano"
+    },
+    "SVM": {
+      "en": "Support Vector Machine",
+      "es": "Máquina de Vectores de Soporte"
+    },
+    "UN": {
+      "en": "United Nations",
+      "es": "Naciones Unidas"
+    },
+    "MLP": {
+      "en": "Multilayer Perceptron",
+      "es": "Perceptrón Multicapa"
+    },
+    "NDWI": {
+      "en": "Normalized Difference Water Index",
+      "es": "Índice de Diferencia Normalizada de Agua"
+    },
+    "ARVI": {
+      "en": "Atmospherically Resistant Vegetation Index",
+      "es": "Índice de Vegetación Resistente a la Atmósfera"
+    },
+    "ASAP": {
+      "en": "Anomaly hot Spots of Agricultural Production",
+      "es": "Puntos Calientes de Anomalía de la Producción Agrícola"
+    },
+    "CDSE": {
+      "en": "Copernicus Data Space Ecosystem",
+      "es": "Ecosistema de Datos Espaciales Copernicus"
+    },
+    "DL": {
+      "en": "Deep Learning",
+      "es": "Aprendizaje Profundo"
+    },
+    "DN": {
+      "en": "Digital Number",
+      "es": "Número Digital"
+    },
+    "ESA": {
+      "en": "European Space Agency",
+      "es": "Agencia Espacial Europea"
+    },
+    "LCCS": {
+      "en": "Land Cover Classification System",
+      "es": "Sistema de Clasificación de la Cobertura del Suelo"
+    },
+    "MPC": {
+      "en": "Model Predictive Control",
+      "es": "Control Predictivo de Modelo"
+    },
+    "OLI": {
+      "en": "Operational Land Imager",
+      "es": "Generador de Imágenes Terrestres Operacional"
+    },
+    "ONU": {
+      "en": "United Nations",
+      "es": "Organización de las Naciones Unidas"
+    },
+    "OSAVI": {
+      "en": "Optimized Soil Adjusted Vegetation Index",
+      "es": "Índice de Vegetación Ajustado al Suelo Optimizado"
+    },
+    "SAFY": {
+      "en": "Simple Algorithm for Yield estimation",
+      "es": "Algoritmo Simple para la Estimación de Rendimiento"
+    },
+    "SAVI": {
+      "en": "Soil Adjusted Vegetation Index",
+      "es": "Índice de Vegetación Ajustado al Suelo"
+    },
+    "SDK": {
+      "en": "Software Development Kit",
+      "es": "Kit de Desarrollo de Software"
+    },
+    "Sen4Stat": {
+      "en": "Sentinel for Statistics",
+      "es": "Sentinel para Estadísticas"
+    },
+    "TOA": {
+      "en": "Top of Atmosphere",
+      "es": "Tope de la Atmósfera"
+    },
+    "WRS": {
+      "en": "Worldwide Reference System",
+      "es": "Sistema de Referencia Mundial"
+    },
+    "XGBoost": {
+      "en": "Extreme Gradient Boosting",
+      "es": "Aumento de Gradiente Extremo"
+    },
+    "DEM": {
+      "en": "Digital Elevation Model",
+      "es": "Modelo Digital de Elevación"
+    },
+    "EVI": {
+      "en": "Enhanced Vegetation Index",
+      "es": "Índice de Vegetación Mejorado"
+    },
+    "HPC": {
+      "en": "High Performance Computing",
+      "es": "Computación de Alto Rendimiento"
+    },
+    "MDE": {
+      "en": "Digital Elevation Model",
+      "es": "Modelo Digital de Elevación"
+    },
+    "SF": {
+      "en": "Structure from Motion",
+      "es": "Estructura a partir del Movimiento"
+    },
+    "ADC": {
+      "en": "Analog-to-Digital Converter",
+      "es": "Convertidor Analógico-Digital"
+    },
+    "AI": {
+      "en": "Artificial Intelligence",
+      "es": "Inteligencia Artificial"
+    },
+    "AVHRR": {
+      "en": "Advanced Very High Resolution Radiometer",
+      "es": "Radiómetro Avanzado de Muy Alta Resolución"
+    },
+    "BinderHub": {
+      "en": "BinderHub",
+      "es": "BinderHub"
+    },
+    "CBERS": {
+      "en": "China-Brazil Earth Resources Satellite",
+      "es": "Satélite Sino-Brasileño de Recursos Terrestres"
+    },
+    "CNN": {
+      "en": "Convolutional Neural Network",
+      "es": "Red Neuronal Convolucional"
+    },
+    "CNNs": {
+      "en": "Convolutional Neural Networks",
+      "es": "Redes Neuronales Convolucionales"
+    },
+    "CRAN": {
+      "en": "Comprehensive R Archive Network",
+      "es": "Red Integral de Archivos de R"
+    },
+    "ConvNets": {
+      "en": "Convolutional Networks",
+      "es": "Redes Convolucionales"
+    },
+    "DEAFRICA": {
+      "en": "Digital Earth Africa",
+      "es": "Tierra Digital África"
+    },
+    "DpRVI": {
+      "en": "Dual-polarized Radar Vegetation Index",
+      "es": "Índice de Vegetación de Radar de Doble Polarización"
+    },
+    "FN": {
+      "en": "False Negative",
+      "es": "Falso Negativo"
+    },
+    "FP": {
+      "en": "False Positive",
+      "es": "Falso Positivo"
+    },
+    "FTP": {
+      "en": "File Transfer Protocol",
+      "es": "Protocolo de Transferencia de Archivos"
+    },
+    "GF": {
+      "en": "Gaussian Filter",
+      "es": "Filtro Gaussiano"
+    },
+    "HTTP": {
+      "en": "Hypertext Transfer Protocol",
+      "es": "Protocolo de Transferencia de Hipertexto"
+    },
+    "IAF": {
+      "en": "Incremental Analysis and Forecasting",
+      "es": "Análisis y Pronóstico Incremental"
+    },
+    "ID": {
+      "en": "Identifier",
+      "es": "Identificador"
+    },
+    "IW": {
+      "en": "Interferometric Wide swath",
+      "es": "Franja Ancha Interferométrica"
+    },
+    "JRC": {
+      "en": "Joint Research Centre",
+      "es": "Centro Común de Investigación"
+    },
+    "L2A": {
+      "en": "Level 2A",
+      "es": "Nivel 2A"
+    },
+    "MSI": {
+      "en": "MultiSpectral Instrument",
+      "es": "Instrumento Multiespectral"
+    },
+    "OBIA": {
+      "en": "Object-Based Image Analysis",
+      "es": "Análisis de Imágenes Basado en Objetos"
+    },
+    "ODC": {
+      "en": "Open Data Cube",
+      "es": "Cubo de Datos Abiertos"
+    },
+    "RDM": {
+      "en": "Research Data Management",
+      "es": "Gestión de Datos de Investigación"
+    },
+    "RMSE": {
+      "en": "Root Mean Square Error",
+      "es": "Error Cuadrático Medio"
+    },
+    "RNN": {
+      "en": "Recurrent Neural Network",
+      "es": "Red Neuronal Recurrente"
+    },
+    "ResNet": {
+      "en": "Residual Network",
+      "es": "Red Residual"
+    },
+    "SHA256": {
+      "en": "Secure Hash Algorithm 256-bit",
+      "es": "Algoritmo de Hash Seguro de 256 bits"
+    },
+    "STAC": {
+      "en": "SpatioTemporal Asset Catalog",
+      "es": "Catálogo de Activos Espaciotemporales"
+    },
+    "STI": {
+      "en": "Spatial Temporal Index",
+      "es": "Índice Espaciotemporal"
+    },
+    "TIRS": {
+      "en": "Thermal Infrared Sensor",
+      "es": "Sensor Infrarrojo Térmico"
+    },
+    "TN": {
+      "en": "True Negative",
+      "es": "Verdadero Negativo"
+    },
+    "TP": {
+      "en": "True Positive",
+      "es": "Verdadero Positivo"
+    },
+    "TSM": {
+      "en": "Total Suspended Matter",
+      "es": "Materia Total en Suspensión"
+    },
+    "VN": {
+      "en": "Vegetation Index",
+      "es": "Índice de Vegetación"
+    },
+    "VP": {
+      "en": "Validation Point",
+      "es": "Punto de Validación"
+    },
+    "WGS": {
+      "en": "World Geodetic System",
+      "es": "Sistema Geodésico Mundial"
+    },
+    "WGS84": {
+      "en": "World Geodetic System 1984",
+      "es": "Sistema Geodésico Mundial 1984"
+    },
+    "WOFOST": {
+      "en": "WOrld FOod STudies",
+      "es": "Estudios Mundiales de Alimentos"
+    },
+    "WorldCove": {
+      "en": "WorldCover",
+      "es": "Cobertura Mundial"
+    },
+    "openEO": {
+      "en": "open Earth Observation",
+      "es": "Observación de la Tierra Abierta"
+    },
+    "AOT": {
+      "en": "Aerosol Optical Thickness",
+      "es": "Espesor Óptico de Aerosoles"
+    },
+    "CAR": {
+      "en": "Crop Area Ratio",
+      "es": "Relación de Área de Cultivo"
+    },
+    "CV": {
+      "en": "Coefficient of Variation",
+      "es": "Coeficiente de Variación"
+    },
+    "DEMs": {
+      "en": "Digital Elevation Models",
+      "es": "Modelos Digitales de Elevación"
+    },
+    "GPUs": {
+      "en": "Graphics Processing Units",
+      "es": "Unidades de Procesamiento Gráfico"
+    },
+    "IV": {
+      "en": "Indicator Variable",
+      "es": "Variable Indicadora"
+    },
+    "NSOs": {
+      "en": "National Statistical Offices",
+      "es": "Oficinas Nacionales de Estadística"
+    },
+    "ODS": {
+      "en": "Operational Data Store",
+      "es": "Almacén de Datos Operacionales"
+    },
+    "ONE": {
+      "en": "Office National de l'Électricité",
+      "es": "Oficina Nacional de Electricidad"
+    },
+    "PB": {
+      "en": "Petabyte",
+      "es": "Petabyte"
+    },
+    "RVI": {
+      "en": "Ratio Vegetation Index",
+      "es": "Índice de Vegetación de Relación"
+    },
+    "SDG": {
+      "en": "Sustainable Development Goal",
+      "es": "Objetivo de Desarrollo Sostenible"
+    },
+    "STAT": {
+      "en": "Statistical Tool",
+      "es": "Herramienta Estadística"
+    },
+    "SVI": {
+      "en": "Soil Vegetation Index",
+      "es": "Índice de Suelo y Vegetación"
+    },
+    "TCR": {
+      "en": "Temporal Correlation Ratio",
+      "es": "Relación de Correlación Temporal"
+    },
+    "UAVs": {
+      "en": "Unmanned Aerial Vehicles",
+      "es": "Vehículos Aéreos No Tripulados"
+    },
+    "VANT": {
+      "en": "Vehículo Aéreo No Tripulado",
+      "es": "Vehículo Aéreo No Tripulado"
+    }
+  }
+}

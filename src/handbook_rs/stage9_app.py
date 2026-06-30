@@ -103,13 +103,15 @@ def build_payload(ont: dict) -> dict:
                             c["members"] = [x for x in c["members"] if x not in mem]
                             c["size"] = len(c["members"])
 
+    apath = build_dir() / "acronyms.json"
+    acronyms = read_json(apath).get("acronyms", {}) if apath.exists() else {}
     return {"meta": {"title": ont["meta"]["source_book"], "stats": ont["meta"]["stats"],
                      "models": available_models(),
                      "clustering": {"method": clu.get("method"), "k": clu.get("k"),
                                     "silhouette": clu.get("silhouette")}},
             "nodes": out_nodes, "prereq": prereq, "rel": rel,
             "clusters": clusters, "node_xy": node_xy, "node_cluster": node_cluster,
-            "brains": brains}
+            "brains": brains, "acronyms": acronyms}
 
 
 def run(force: bool = False) -> Path:
@@ -180,6 +182,8 @@ header .title{font-weight:600;font-size:15px;margin-right:auto;white-space:nowra
 .savednote{font-size:.8rem;color:var(--accent2);margin-top:4px}
 .audiobar{margin:.6em 0}
 .audiobar button{padding:6px 12px;margin-right:6px}
+.siglas{background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:10px 12px}
+.siglas div{font-size:.92rem;margin:.2em 0}.siglas b{color:var(--accent)}
 #autoBtn.on{background:var(--accent);color:#fff;border-color:var(--accent)}
 #karaoke{display:none;margin:0 auto 18px;max-width:72ch;padding:14px 16px;background:var(--panel);
   border:1px solid var(--line);border-radius:12px;font-family:var(--read);font-size:1.3rem;line-height:2}
@@ -199,6 +203,11 @@ header .title{font-weight:600;font-size:15px;margin-right:auto;white-space:nowra
 .mm-label{font-family:var(--ui);font-weight:600;paint-order:stroke;stroke:var(--bg);stroke-width:3.5px;cursor:pointer}
 .mm-here{fill:none;stroke:var(--ink);stroke-width:1.6}
 .mm-here-txt{fill:var(--ink);font-family:var(--ui);font-weight:700}
+.mm-route-active{stroke:var(--accent);fill:none;stroke-width:1.6;opacity:.8;stroke-linejoin:round}
+.mm-route-trav{stroke:var(--accent2);fill:none;stroke-width:2.6;stroke-linejoin:round}
+.mm-route-other{stroke:#9aa0aa;fill:none;stroke-width:1;opacity:.4;stroke-linejoin:round}
+.mm-dot-v{stroke:var(--accent2);stroke-width:1.2}
+.mm-legend{font-family:var(--ui);font-size:11px;fill:var(--soft)}
 .themes{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:12px}
 .tcard{border:1px solid var(--line);border-radius:12px;padding:13px 14px;background:var(--panel);
   cursor:pointer;display:flex;flex-direction:column;gap:6px;transition:none}
@@ -357,6 +366,11 @@ function openConcept(id, fromRoute){
   h+=`<div class="audiobar">🔊 <button onclick="playLang('en')">▶ Leer EN</button>
       <button onclick="playLang('es')">▶ Leer ES</button>
       <button onclick="toggleAuto()" class="ghost">▶ Modo automático</button></div>`;
+  const _acr=acronymsIn(n);
+  if(_acr.length){ h+=`<div class="sec"><h3>🔤 Siglas / Acronyms</h3><div class="siglas">`+
+    _acr.map(a=>`<div><b>${esc(a)}</b> — ${esc(ACR[a].en)}`+
+      ((ACR[a].es&&ACR[a].es!==ACR[a].en)?` · <span class="es">${esc(ACR[a].es)}</span>`:'')+`</div>`).join('')+
+    `</div></div>`; }
   if(S.lang!=='es') h+=`<div class="def"><b>EN.</b> ${linkify(n.den,id)}</div>`;
   if(S.lang!=='en') h+=`<div class="def es"><b>ES.</b> ${linkify(n.des,id)}</div>`;
   if(n.src) h+=`<div class="pill">fuentes: ${esc(n.src)}</div>`;
@@ -648,20 +662,35 @@ function startTheme(idx){
   save(); openConcept(order[0]); renderCompass();
 }
 function minimapSVG(curId){
-  const W=760,H=460,P=26, sx=x=>P+x*(W-2*P), sy=y=>P+(1-y)*(H-2*P);
+  const W=760,H=470,P=26, sx=x=>P+x*(W-2*P), sy=y=>P+(1-y)*(H-2*P);
+  const pt=id=>NODE_XY[id]?`${sx(NODE_XY[id][0]).toFixed(1)},${sy(NODE_XY[id][1]).toFixed(1)}`:null;
+  // 1) route paths (caminos): every route faint; active route highlighted; traveled prefix bold
+  let paths='';
+  for(const rid in S.routes){ const r=S.routes[rid];
+    const pts=r.order.filter(id=>NODE_XY[id]).map(pt);
+    if(pts.length<2) continue;
+    const active = rid===S.activeRoute;
+    paths+=`<polyline class="${active?'mm-route-active':'mm-route-other'}" points="${pts.join(' ')}"/>`;
+    if(active){ const trav=r.order.slice(0,(r.pos||0)+1).filter(id=>NODE_XY[id]).map(pt);
+      if(trav.length>1) paths+=`<polyline class="mm-route-trav" points="${trav.join(' ')}"/>`; }
+  }
+  // 2) concept dots: visited (reviewed) highlighted + ringed; others faint
   let dots='';
-  for(const id in NODE_XY){ const p=NODE_XY[id]; const c=cluById[NODE_CLUSTER[id]];
-    dots+=`<circle class="mm-dot" cx="${sx(p[0]).toFixed(1)}" cy="${sy(p[1]).toFixed(1)}" r="3"
-      fill="${c?c.color:'#888'}" opacity="${S.visited[id]?0.95:0.45}"
-      onclick="openConcept('${id}')"><title>${esc(byId[id].en)}</title></circle>`; }
+  for(const id in NODE_XY){ const p=NODE_XY[id]; const c=cluById[NODE_CLUSTER[id]]; const v=S.visited[id];
+    dots+=`<circle class="mm-dot${v?' mm-dot-v':''}" cx="${sx(p[0]).toFixed(1)}" cy="${sy(p[1]).toFixed(1)}" r="${v?4:2.6}"
+      fill="${c?c.color:'#888'}" opacity="${v?1:0.38}" onclick="openConcept('${id}')"><title>${esc(byId[id].en)}${v?' ✓':''}</title></circle>`; }
+  // 3) theme labels
   let labels='';
   CLUSTERS.forEach(c=>{ labels+=`<text class="mm-label" x="${sx(c.cx).toFixed(1)}" y="${sy(c.cy).toFixed(1)}"
     fill="${c.color}" font-size="12.5" text-anchor="middle" onclick="startTheme(${c.idx})">${esc(c.title.en)}</text>`; });
+  // 4) you-are-here + legend
   let here='';
   if(curId && NODE_XY[curId]){ const p=NODE_XY[curId];
     here=`<circle class="mm-here" cx="${sx(p[0]).toFixed(1)}" cy="${sy(p[1]).toFixed(1)}" r="9"/>
       <text class="mm-here-txt" x="${sx(p[0]).toFixed(1)}" y="${(sy(p[1])-12).toFixed(1)}" text-anchor="middle" font-size="10">● estás aquí</text>`; }
-  return `<svg class="minimap" viewBox="0 0 ${W} ${H}">${dots}${labels}${here}</svg>`;
+  const done=Object.keys(S.visited).length;
+  const legend=`<text class="mm-legend" x="${P}" y="${H-8}">● visitados: ${done} · línea = ruta · trazo grueso = recorrido</text>`;
+  return `<svg class="minimap" viewBox="0 0 ${W} ${H}">${paths}${dots}${labels}${here}${legend}</svg>`;
 }
 function renderHome(){
   const cur = S.viewing;
@@ -690,6 +719,21 @@ function showReader(){
   document.getElementById('home').classList.add('hidden');
   document.getElementById('reader').classList.remove('hidden'); }
 document.getElementById('homeBtn').onclick = showHome;
+
+/* ---------- acronyms (siglas) ---------- */
+const ACR = DATA.acronyms || {};
+let ACR_RE = null;
+function acronymsIn(n){
+  if(ACR_RE === null){
+    const keys = Object.keys(ACR);
+    ACR_RE = keys.length ? new RegExp('\\b(' + keys.map(k=>k.replace(/[.*+?^${}()|[\]\\]/g,'\\$&')).join('|') + ')\\b','g') : false;
+  }
+  if(!ACR_RE) return [];
+  const text = [n.en, n.es, n.den, n.des].join('  ');
+  const found = new Set(); let m; ACR_RE.lastIndex = 0;
+  while((m = ACR_RE.exec(text))) found.add(m[1]);
+  return [...found].sort();
+}
 
 /* ---------- documentary brains (dossiers) ---------- */
 const BRAINS = DATA.brains || {};
