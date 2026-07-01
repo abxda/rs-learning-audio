@@ -84,7 +84,11 @@ def build_payload(ont: dict) -> dict:
             brains[str(b["idx"])] = {"title": t, "slug": b["slug"], "en": bj["brain_en"],
                                      "es": bj["brain_es"], "refs": bj["refs"]}
             if b["idx"] == 14:  # platform: add as a 15th cluster + reclassify its members
-                mem = [m for m in b["members"] if m in node_xy]
+                extra = []
+                ppath = build_dir() / "platform_extra.json"
+                if ppath.exists():
+                    extra = read_json(ppath).get("ids", [])
+                mem = [m for m in dict.fromkeys(list(b["members"]) + extra) if m in node_xy]
                 for m in mem:
                     node_cluster[m] = 14
                 if mem:
@@ -109,7 +113,7 @@ def build_payload(ont: dict) -> dict:
     deepen = {}
     if rpath.exists():
         for r in read_json(rpath)["results"]:
-            if r.get("deepen", {}).get("en") or r.get("references"):
+            if r.get("deepen", {}).get("en") or r.get("references") or r.get("alignment"):
                 deepen[r["id"]] = {"en": r["deepen"]["en"], "es": r["deepen"]["es"],
                                    "refs": r.get("references", []),
                                    "align": r.get("alignment", ""), "note": r.get("alignment_note", "")}
@@ -200,6 +204,9 @@ header .title{font-weight:600;font-size:15px;margin-right:auto;white-space:nowra
 .align.supported{background:rgba(46,125,50,.16);color:var(--accent2)}
 .align.partially_supported,.align.underspecified{background:rgba(239,108,0,.16);color:#b35900}
 .align.contradicts{background:rgba(198,40,40,.16);color:#c62828}
+.align.general{background:var(--chip);color:var(--soft)}
+.align.platform{background:rgba(109,76,65,.16);color:#6d4c41}
+.align.project_specific{background:rgba(21,101,192,.14);color:#1565c0}
 #autoBtn.on{background:var(--accent);color:#fff;border-color:var(--accent)}
 #karaoke{display:none;margin:0 auto 18px;max-width:72ch;padding:14px 16px;background:var(--panel);
   border:1px solid var(--line);border-radius:12px;font-family:var(--read);font-size:1.3rem;line-height:2}
@@ -786,8 +793,12 @@ function showBrain(idx){
 const DEEPEN = DATA.deepen || {};
 function deepenSection(id){
   const d = DEEPEN[id]; if(!d) return '';
+  const ALABEL={supported:'respaldado por la literatura',partially_supported:'parcialmente respaldado',
+    underspecified:'poco respaldado',contradicts:'contradicho por la literatura',
+    general:'concepto general (vocabulario base)',platform:'plataforma / infraestructura (no es método EO)',
+    project_specific:'específico de un caso de estudio'};
   let h = `<div class="sec"><h3>📚 Profundiza · Investigación adicional</h3><div class="deepen">`;
-  if(d.align) h += `<div><span class="align ${esc(d.align)}">alineación con la literatura: ${esc(d.align.replace(/_/g,' '))}</span>`
+  if(d.align) h += `<div><span class="align ${esc(d.align)}">${esc(ALABEL[d.align]||d.align.replace(/_/g,' '))}</span>`
     + (d.note? ` <span class="muted">${esc(d.note)}</span>`:'') + `</div>`;
   if(S.lang!=='es' && d.en) h += `<div class="lay"><b>EN.</b> ${esc(d.en)}</div>`;
   if(S.lang!=='en' && d.es) h += `<div class="lay es"><b>ES.</b> ${esc(d.es)}</div>`;

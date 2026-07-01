@@ -106,6 +106,92 @@ def enrich(concept: dict, passages: list) -> dict:
                            "source_type": p.fields.get("source_type")} for p in passages]}
 
 
+COMPLETE_SYS = (
+    "You re-assess ONE concept of a Remote Sensing for Agricultural Statistics course against retrieved "
+    "literature. First classify its NATURE; only force literature references for genuine domain concepts. "
+    "Ground claims in the passages, cite [n]. Output strict JSON only."
+)
+
+
+def enrich_complete(concept: dict, passages: list) -> dict:
+    from .llm.client import chat
+    blocks = []
+    for i, d in enumerate(passages, 1):
+        f = d.fields
+        blocks.append(f"[{i}] {f.get('title','')[:140]} ({f.get('year') or 's.f.'}) [{f.get('source_type')}] "
+                      f"{f.get('url','')}\n    EXCERPT: {f.get('text','')[:700]}")
+    user = (f"CONCEPT: {concept['name']} ({concept['id']}).\nCONTEXT (definition + prerequisites + acronyms):\n"
+            f"{concept['context']}\n\nRETRIEVED PASSAGES:\n" + "\n\n".join(blocks) +
+            "\n\nClassify alignment as ONE of: 'supported' (passages directly ground it), "
+            "'partially_supported', 'general' (everyday/generic vocabulary — no specific literature needed), "
+            "'platform' (the Handbook's reproducibility/software/infrastructure, not an EO method), "
+            "'project_specific' (a specific dataset/model/framework of a case study), 'contradicts'. "
+            "For supported/partially: write a <=70-word bilingual 'deepen' layer extending the Handbook and "
+            "choose the 2-4 best references. For general/platform/project_specific: deepen may be empty and "
+            "references [] (do not force). Return JSON {\"deepen_en\":\"\",\"deepen_es\":\"\","
+            "\"references\":[{\"n\":<int>,\"why\":\"\"}],\"alignment\":\"\",\"alignment_note\":\"<1 sentence>\"}")
+    d = chat(COMPLETE_SYS, user, json_mode=True, max_tokens=1500).json()
+    chosen = []
+    for r in d.get("references", []):
+        n = r.get("n")
+        if isinstance(n, int) and 1 <= n <= len(passages):
+            f = passages[n - 1].fields
+            chosen.append({"title": f.get("title"), "year": f.get("year"), "venue": f.get("venue"),
+                           "url": f.get("url"), "doi": f.get("doi"), "source_type": f.get("source_type"),
+                           "why": r.get("why", "")})
+    return {"id": concept["id"], "deepen": {"en": d.get("deepen_en", ""), "es": d.get("deepen_es", "")},
+            "references": chosen, "alignment": d.get("alignment", ""),
+            "alignment_note": d.get("alignment_note", "")}
+
+
+def complete_flagged(force: bool = False) -> Path:
+    """Re-assess underspecified/partially_supported concepts with an enriched query
+    (definition + prerequisites + acronyms) and a nature-aware prompt."""
+    from collections import defaultdict
+    from concurrent.futures import ThreadPoolExecutor
+    out = build_dir() / "R_enrichment.json"
+    res = read_json(out)["results"]; idx = {r["id"]: r for r in res}
+    ont = read_json(out_dir() / "ontology.json"); by_id = {n["id"]: n for n in ont["nodes"]}
+    acr = read_json(build_dir() / "acronyms.json").get("acronyms", {})
+    parents = defaultdict(list)
+    for e in ont["edges"]:
+        if e["rel"] == "prereq":
+            parents[e["dst"]].append(e["src"])
+    flagged = [r["id"] for r in res if r["alignment"] in ("underspecified", "partially_supported")]
+    print(f"  re-assessing {len(flagged)} flagged concepts ...")
+    col = zvec.open(db_path())
+
+    def ctx(n):
+        ac = " ".join(f"{a} ({acr[a]['en']})" for a in acr if re.search(rf"\b{re.escape(a)}\b",
+                      n["name"]["en"] + " " + n["definition"]["en"]))
+        ps = ", ".join(by_id[p]["name"]["en"] for p in parents.get(n["id"], [])[:5] if p in by_id)
+        return f"{n['name']['en']}. {n['definition']['en']} Prerequisites: {ps}. {ac}".strip()
+
+    jobs = [(by_id[cid], retrieve(col, ctx(by_id[cid]))) for cid in flagged if cid in by_id]
+
+    def do(job):
+        n, passages = job
+        try:
+            return enrich_complete({"id": n["id"], "name": n["name"]["en"], "context": ctx(n)}, passages)
+        except Exception as e:  # noqa: BLE001
+            print(f"    ! {n['id']} failed: {str(e)[:40]}", flush=True)
+            return None
+
+    with ThreadPoolExecutor(max_workers=6) as ex:
+        for r in ex.map(do, jobs):
+            if r:
+                idx[r["id"]].update(r)
+    write_json(out, {"results": list(idx.values())})
+    # collect platform reclassifications
+    plat = [r["id"] for r in idx.values() if r["alignment"] == "platform"]
+    write_json(build_dir() / "platform_extra.json", {"ids": plat})
+    from collections import Counter
+    al = Counter(r["alignment"] for r in idx.values())
+    print(f"Completion done. New alignment distribution: {dict(al)}")
+    print(f"  reclassified to platform: {len(plat)} -> {plat}")
+    return out
+
+
 def run_all(force: bool = False) -> Path:
     """Enrich ALL concepts: retrieve (sequential, fast) then DeepSeek rerank (threaded)."""
     from concurrent.futures import ThreadPoolExecutor
