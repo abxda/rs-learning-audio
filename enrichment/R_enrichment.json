@@ -17596,19 +17596,10 @@
           "doi": null,
           "source_type": "pmc",
           "why": "Discusses vegetation indices (e.g., NDVI) as a widespread approach for crop monitoring, supporting the VI component of CGI."
-        },
-        {
-          "title": "UN Handbook on Remote Sensing for Agricultural Statistics (FAO, official PDF)",
-          "year": null,
-          "venue": "",
-          "url": "https://openknowledge.fao.org/server/api/core/bitstreams/dcadd248-cccb-43ad-9e3c-7aa0cf2bb577/content",
-          "doi": null,
-          "source_type": "web",
-          "why": "Describes UAV platforms for very-high-resolution data collection, relevant to the UAV prerequisite of CGI."
         }
       ],
-      "alignment": "partially_supported",
-      "alignment_note": "The CGI algorithm is not explicitly described in the retrieved passages, but its components (UAV, vegetation indices) are covered in [2] and [4].",
+      "alignment": "project_specific",
+      "alignment_note": "A bespoke Crop Growth Index algorithm from the UAV crop-growth case study; its components (UAV imagery, vegetation indices, PCA) are grounded in the literature, but the named algorithm itself is specific to that study.",
       "retrieved": [
         {
           "ref_id": "https-www-ncbi-nlm-nih-gov-pmc-articles-pmc8971471",
@@ -30822,8 +30813,8 @@
           "why": "Introduces prediction-powered inference using predicted scores and a small labeled set for valid confidence intervals."
         }
       ],
-      "alignment": "partially_supported",
-      "alignment_note": "The concept is partially supported: passages [2] and [3] ground the use of prediction probabilities for confidence and inference, but do not fully cover all aspects such as thresholding or calibration.",
+      "alignment": "supported",
+      "alignment_note": "Grounded by two on-point references: WorldCereal uses per-class probabilities as confidence scores, and the prediction-powered-inference paper uses prediction scores for valid statistical inference.",
       "retrieved": [
         {
           "ref_id": "https-samv-elearning-unipd-it-pluginfile-php-175898-mod-reso",
